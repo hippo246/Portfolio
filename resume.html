@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rahil Tahir - Résumé</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 11pt;
+      line-height: 1.5;
+      color: #333;
+      background: #fff;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 50px;
+    }
+
+    .header {
+      border-bottom: 2px solid #333;
+      padding-bottom: 20px;
+      margin-bottom: 25px;
+    }
+
+    .name {
+      font-size: 24pt;
+      font-weight: 700;
+      color: #000;
+      margin-bottom: 5px;
+    }
+
+    .title {
+      font-size: 14pt;
+      color: #666;
+      margin-bottom: 15px;
+    }
+
+    .contact {
+      font-size: 10pt;
+      color: #666;
+    }
+
+    .contact span {
+      margin-right: 20px;
+    }
+
+    .section {
+      margin-bottom: 25px;
+    }
+
+    .section-title {
+      font-size: 14pt;
+      font-weight: 700;
+      color: #000;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 15px;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 5px;
+    }
+
+    .content {
+      margin-bottom: 15px;
+    }
+
+    .content p {
+      margin-bottom: 10px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .skill-category {
+      margin-bottom: 10px;
+    }
+
+    .skill-category strong {
+      display: block;
+      font-weight: 600;
+      color: #000;
+      margin-bottom: 5px;
+    }
+
+    .skill-category ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .skill-category li {
+      position: relative;
+      padding-left: 15px;
+      margin-bottom: 3px;
+    }
+
+    .skill-category li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #666;
+    }
+
+    .project-item {
+      margin-bottom: 15px;
+    }
+
+    .project-item strong {
+      display: block;
+      font-weight: 600;
+      color: #000;
+    }
+
+    .project-item p {
+      margin: 5px 0;
+      color: #555;
+    }
+
+    @media print {
+      body {
+        padding: 0;
+        max-width: 100%;
+      }
+    }
+
+    @page {
+      margin: 0.5in;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="name">RAHIL TAHIR</div>
+    <div class="title">Aspiring IT & Cybersecurity Professional</div>
+    <div class="contact">
+      <span>LinkedIn: linkedin.com/in/rahil-tahir</span>
+      <span>GitHub: github.com/hippo246</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Summary</div>
+    <div class="content">
+      <p>Hands-on IT professional with practical experience in Linux system administration, self-hosted infrastructure, networking fundamentals, and troubleshooting. Built and maintained a personal homelab with Ubuntu Server, Docker-based services, Tailscale remote access, and multi-drive storage management. Developed business software projects including Clinic CRM, Factory CRM, Restaurant CRM, and CafeOS. Currently pursuing networking and cybersecurity learning with a focus on Cisco networking, system hardening, and security fundamentals.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Technical Skills</div>
+    <div class="skills-grid">
+      <div class="skill-category">
+        <strong>Operating Systems (Hands-on)</strong>
+        <ul>
+          <li>Ubuntu Server administration (CasaOS, Docker, services, UFW)</li>
+          <li>Linux desktop troubleshooting (Mint, Fedora, fingerprint reader investigation)</li>
+          <li>Windows 10 and Windows 11 troubleshooting</li>
+          <li>Dual-boot configuration (Windows + Linux)</li>
+        </ul>
+      </div>
+      <div class="skill-category">
+        <strong>Infrastructure & Homelab (Hands-on)</strong>
+        <ul>
+          <li>Dell OptiPlex Micro 7050 server setup and maintenance</li>
+          <li>CasaOS and Docker container deployment and management</li>
+          <li>Tailscale private VPN configuration for remote access</li>
+          <li>UFW firewall rules (restrictive defaults, Tailscale allowances, Docker rules)</li>
+          <li>SMB/CIFS network shares and fstab client mounts</li>
+          <li>Multi-drive storage organisation (NVMe, SSD, HDD)</li>
+        </ul>
+      </div>
+      <div class="skill-category">
+        <strong>Self-Hosted Services (Deployed)</strong>
+        <ul>
+          <li>Jellyfin (media streaming, upgrades, port configuration)</li>
+          <li>Nextcloud (file collaboration, upgrades, Collabora integration)</li>
+          <li>Immich (photo management, storage planning)</li>
+          <li>Navidrome (music streaming, HDD storage mounts)</li>
+          <li>Netdata & Glances (system monitoring, CPU/temp observation)</li>
+          <li>AdGuard Home (DNS filtering)</li>
+          <li>Syncthing, Karakeep, Speedtest Tracker</li>
+        </ul>
+      </div>
+      <div class="skill-category">
+        <strong>Networking (Learning)</strong>
+        <ul>
+          <li>Cisco networking fundamentals (Packet Tracer labs, console access)</li>
+          <li>IP addressing and subnetting practice</li>
+          <li>TCP/IP, DNS, DHCP concepts</li>
+          <li>Router and switch CLI (PuTTY console access to Cisco 2960)</li>
+          <li>LAN troubleshooting (subnet changes, connectivity issues)</li>
+        </ul>
+      </div>
+      <div class="skill-category">
+        <strong>Troubleshooting (Hands-on)</strong>
+        <ul>
+          <li>Linux CLI investigation (/proc/cpuinfo, sensors, rdmsr, systemctl)</li>
+          <li>Hardware diagnostics (CPU turbo behaviour, stress testing, frequency monitoring)</li>
+          <li>Service connectivity debugging (port mappings, Docker networking, firewall rules)</li>
+          <li>Network mount configuration (SMB/CIFS fstab, mount options, subnet changes)</li>
+          <li>Application deployment issues (Jellyfin upgrades, Nextcloud upgrades)</li>
+        </ul>
+      </div>
+      <div class="skill-category">
+        <strong>Windows Troubleshooting (Hands-on)</strong>
+        <ul>
+          <li>Windows 10 and Windows 11 diagnostics and troubleshooting</li>
+          <li>System performance and stability investigation</li>
+          <li>Application and driver troubleshooting</li>
+          <li>Networking and connectivity diagnostics</li>
+          <li>Command-line tools (Command Prompt, PowerShell)</li>
+          <li>Task Manager, Resource Monitor, Device Manager, Event Viewer</li>
+        </ul>
+      </div>
+      <div class="skill-category">
+        <strong>Development (AI-Assisted)</strong>
+        <ul>
+          <li>Clinic CRM, Factory CRM, Restaurant CRM, CafeOS</li>
+          <li>AI-assisted development workflow (requirements, testing, configuration)</li>
+          <li>Not an experienced programmer; AI tools used for implementation</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Homelab & IT Projects</div>
+    <div class="content">
+      <div class="project-item">
+        <strong>Personal Homelab (nine-node)</strong>
+        <p>Dell OptiPlex Micro 7050 (Intel i5-7500T, 8GB RAM) running Ubuntu Server with CasaOS. Deployed and maintained 10+ self-hosted services via Docker including Jellyfin (media streaming, upgraded from 10.8.x to 10.11.x), Nextcloud (file collaboration, upgraded to nextcloud:34), Immich (photo management), Navidrome (music streaming with HDD storage), Netdata and Glances (system monitoring), and AdGuard Home (DNS filtering). Configured Tailscale for private remote access (no public exposure), UFW firewall rules with restrictive defaults and Tailscale allowances, SMB/CIFS network shares with fstab persistence on ThinkPad client, and multi-drive storage management (NVMe OS drive, additional SSD, ~1TB HDD for media). Documented troubleshooting case studies including router subnet transition (192.168.100.195 → 192.168.0.198), SMB mount configuration with _netdev/nofail/x-systemd.automount options, CPU turbo behaviour investigation using rdmsr and stress testing (~3600MHz observed), and service connectivity debugging.</p>
+      </div>
+      <div class="project-item">
+        <strong>Clinic CRM</strong>
+        <p>Healthcare administration workflow prototype developed with AI-assisted tools. Explored patient records, appointments, and staff management requirements. Personal contribution: requirements definition, interface review, testing workflows, and configuration. Uses demonstration data only. No real patient information exposed. Status: Prototype.</p>
+      </div>
+      <div class="project-item">
+        <strong>Factory CRM</strong>
+        <p>Factory-oriented management prototype focused on operational and business workflow organization. Developed with AI-assisted tools. Personal contribution: requirements definition, interface work, and testing. Status: Prototype.</p>
+      </div>
+      <div class="project-item">
+        <strong>Restaurant CRM</strong>
+        <p>Restaurant management prototype for operational workflow organization including reservations and table management concepts. Developed with AI-assisted tools. Personal contribution: requirements definition, interface review, and testing. Status: Prototype.</p>
+      </div>
+      <div class="project-item">
+        <strong>CafeOS</strong>
+        <p>Cafe point-of-sale and management project in development. Exploring order management, menus, sales dashboards, and inventory workflows. Developed with AI-assisted tools. Personal contribution: requirements definition, interface work, and testing. Current status: In Development. Note: Features like GST calculations, FSSAI reporting, and delivery platform integrations are planned but not yet implemented.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Learning & Development</div>
+    <div class="content">
+      <p>Currently building networking foundation through Cisco-focused learning, including IP addressing, subnetting, routing, switching, and network troubleshooting. Exploring Linux security fundamentals, firewall configuration, system hardening, and basic incident response concepts. Long-term goal: develop purple-team skills spanning both defensive security and ethical hacking.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Career Objective</div>
+    <div class="content">
+      <p>Seeking entry-level opportunities in IT Support, Helpdesk, Desktop Support, Junior Network Support, or IT Operations Support. Interested in roles that provide hands-on experience with systems administration, networking, troubleshooting, and infrastructure while continuing to develop cybersecurity skills.</p>
+    </div>
+  </div>
+</body>
+</html>

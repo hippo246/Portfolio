@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Detailed documentation of my personal homelab infrastructure including hardware specification, storage architecture, self-hosted services, networking configuration, and troubleshooting case studies." />
+    <title>Homelab Documentation - Rahil Tahir</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/style.css" />
+    <style>
+      body { padding-top: 80px; }
+    </style>
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <div class="nav-left">
+          <img src="/profile.jpg" alt="Rahil Tahir" class="nav-profile">
+          <a href="/" class="nav-logo">Rahil Tahir</a>
+        </div>
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul class="nav-menu">
+          <li><a href="/">Back to Portfolio</a></li>
+          <li><a href="/resume.html">Résumé</a></li>
+          <li><a href="/#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <main>
+      <section class="section">
+        <div class="container">
+          <div class="page-header">
+            <h1>Personal Homelab Documentation</h1>
+            <p class="page-subtitle">Dell OptiPlex Micro 7050 running Ubuntu Server with CasaOS for self-hosted services and IT experimentation</p>
+            <a href="/" class="btn btn-secondary">← Back to Portfolio</a>
+          </div>
+
+          <!-- Infrastructure Overview -->
+          <div class="homelab-section">
+            <h2>1. Infrastructure Overview</h2>
+            <p class="subsection-intro">
+              My homelab is built around a Dell OptiPlex Micro 7050 named "nine-node" running Ubuntu Server with CasaOS for containerised application management.
+            </p>
+
+            <div class="hardware-specs">
+              <h3>Hardware Specification</h3>
+              <ul>
+                <li><strong>Server:</strong> Dell OptiPlex Micro 7050</li>
+                <li><strong>Processor:</strong> Intel Core i5-7500T</li>
+                <li><strong>RAM:</strong> 8 GB</li>
+                <li><strong>OS Drive:</strong> ~128 GB NVMe (Ubuntu Server + applications)</li>
+                <li><strong>Additional Storage:</strong> SSD + ~1 TB surveillance HDD</li>
+                <li><strong>Storage Strategy:</strong> Separate drives maintained independently (not merged into a single pool)</li>
+              </ul>
+            </div>
+
+            <div class="architecture-diagram">
+              <h3>Infrastructure Architecture</h3>
+              <div class="diagram-box">
+                <pre>
+Client Devices (LAN)
+       ↓
+  [Home Router]
+       ↓
+192.168.0.198 (nine-node)
+       ↓
+┌─────────────────────────┐
+│  Ubuntu Server + CasaOS  │
+│  + Docker Containers     │
+└─────────────────────────┘
+       ↓
+┌─────────────────────────┐
+│  Self-Hosted Services    │
+│  • Jellyfin              │
+│  • Navidrome             │
+│  • Immich                │
+│  • Nextcloud             │
+│  • Collabora CODE        │
+│  • Syncthing             │
+│  • Netdata               │
+│  • Glances               │
+│  • Speedtest Tracker     │
+│  • Karakeep              │
+│  • AdGuard Home          │
+└─────────────────────────┘
+       ↓
+┌─────────────────────────┐
+│  Storage Drives          │
+│  • NVMe (OS + Apps)      │
+│  • SSD                   │
+│  • HDD (Media/Photos)    │
+└─────────────────────────┘
+
+Remote Access via Tailscale
+(Private VPN, no public exposure)
+                </pre>
+              </div>
+            </div>
+          </div>
+
+          <!-- Storage Architecture -->
+          <div class="homelab-section">
+            <h2>2. Storage Architecture</h2>
+            <p class="subsection-intro">
+              My storage is organised across multiple drives with separate purposes for application data, media files, and network shares.
+            </p>
+
+            <div class="storage-layout">
+              <h3>Storage Layout</h3>
+              <ul>
+                <li><strong>NVMe Drive:</strong> Operating system and application installations</li>
+                <li><strong>Additional SSD:</strong> Separate storage (capacity to be verified)</li>
+                <li><strong>~1 TB HDD:</strong> Media files, photos, and bulk storage</li>
+              </ul>
+
+              <h3>Directory Structure</h3>
+              <ul>
+                <li><strong>Storage1:</strong> Contains directories including "immich", "media", and "photos"</li>
+                <li><strong>Storage2:</strong> Contains "media2" directory with media folders including "Movies" and "Kdrama"</li>
+                <li><strong>Ubuntu Share:</strong> Filesystem share for network access</li>
+              </ul>
+
+              <div class="note-box">
+                <p><strong>Storage Philosophy:</strong> I keep drives separate rather than merging them into a single storage pool. This approach reduces the risk of data loss if a single drive fails, though it requires manual management of where data is stored.</p>
+              </div>
+
+              <div class="pending-task">
+                <p><strong>Verification Needed:</strong> Immich photo storage configuration. The intention is to use the HDD for photo storage rather than the nearly full system SSD. Current mount configuration and actual data location need verification.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Self-Hosted Services -->
+          <div class="homelab-section">
+            <h2>3. Self-Hosted Services</h2>
+            <p class="subsection-intro">
+              Docker-based applications deployed via CasaOS for self-hosted services. Port mappings and configurations have evolved over time.
+            </p>
+
+            <div class="services-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Service</th>
+                    <th>Purpose</th>
+                    <th>Host Port (Historical)</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Jellyfin</td>
+                    <td>Media streaming</td>
+                    <td>8096 (newer config)</td>
+                    <td>Deployed (upgraded from 10.8.x to 10.11.x era)</td>
+                  </tr>
+                  <tr>
+                    <td>Navidrome</td>
+                    <td>Music streaming</td>
+                    <td>4533</td>
+                    <td>Deployed (music storage mounted from HDD)</td>
+                  </tr>
+                  <tr>
+                    <td>Immich</td>
+                    <td>Photo management</td>
+                    <td>2283</td>
+                    <td>Deployed (storage configuration to be verified)</td>
+                  </tr>
+                  <tr>
+                    <td>Nextcloud</td>
+                    <td>File storage & collaboration</td>
+                    <td>10081 → 80, 10443 → 443</td>
+                    <td>Deployed (upgraded to nextcloud:34 image)</td>
+                  </tr>
+                  <tr>
+                    <td>Collabora CODE</td>
+                    <td>Document editing</td>
+                    <td>9980</td>
+                    <td>Deployed (integration with Nextcloud)</td>
+                  </tr>
+                  <tr>
+                    <td>Syncthing</td>
+                    <td>File synchronisation</td>
+                    <td>8384</td>
+                    <td>Deployed</td>
+                  </tr>
+                  <tr>
+                    <td>Netdata</td>
+                    <td>System monitoring</td>
+                    <td>19999</td>
+                    <td>Deployed</td>
+                  </tr>
+                  <tr>
+                    <td>Glances</td>
+                    <td>System monitoring</td>
+                    <td>61208–61209</td>
+                    <td>Deployed</td>
+                  </tr>
+                  <tr>
+                    <td>Speedtest Tracker</td>
+                    <td>Network speed-test tracking</td>
+                    <td>8765</td>
+                    <td>Deployed</td>
+                  </tr>
+                  <tr>
+                    <td>Karakeep</td>
+                    <td>Bookmark management</td>
+                    <td>3000</td>
+                    <td>Deployed</td>
+                  </tr>
+                  <tr>
+                    <td>AdGuard Home</td>
+                    <td>DNS filtering</td>
+                    <td>3001 (historical)</td>
+                    <td>Deployed</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="note-box">
+              <p><strong>Note:</strong> Port mappings and service status reflect historical configuration. Some services may have been removed, reconfigured, or updated since these values were recorded.</p>
+            </div>
+          </div>
+
+          <!-- Networking & Remote Access -->
+          <div class="homelab-section">
+            <h2>4. Networking & Remote Access</h2>
+            <p class="subsection-intro">
+              My networking setup prioritises private remote access through Tailscale rather than exposing services to the public internet.
+            </p>
+
+            <div class="networking-overview">
+              <h3>Network Configuration</h3>
+              <ul>
+                <li><strong>LAN Address (Current):</strong> 192.168.0.198</li>
+                <li><strong>LAN Address (Previous):</strong> 192.168.100.195 (router change)</li>
+                <li><strong>Tailscale IPv4:</strong> 100.72.219.81</li>
+                <li><strong>Remote Access Method:</strong> Tailscale private VPN</li>
+                <li><strong>Public Exposure:</strong> Services accessed privately, not exposed to public internet</li>
+              </ul>
+
+              <h3>Tailscale Usage</h3>
+              <p>Tailscale provides private remote access to homelab services. This approach avoids exposing applications to the public internet and simplifies secure access from external devices.</p>
+
+              <div class="note-box">
+                <p><strong>Security Boundary:</strong> Services are accessed through Tailscale rather than public endpoints. This reduces the attack surface but does not replace proper service hardening or security best practices.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Firewall & Access Controls -->
+          <div class="homelab-section">
+            <h2>5. Firewall & Access Controls</h2>
+            <p class="subsection-intro">
+              UFW (Uncomplicated Firewall) is used to restrict unnecessary access while allowing required service connections.
+            </p>
+
+            <div class="firewall-config">
+              <h3>UFW Configuration</h3>
+              <ul>
+                <li><strong>Default Policy:</strong> Restrictive incoming and routed traffic defaults</li>
+                <li><strong>Tailscale Rules:</strong> Rules configured to allow Tailscale-related traffic</li>
+                <li><strong>Docker-to-Collabora:</strong> Firewall rule investigated/configured for Collabora CODE connectivity</li>
+              </ul>
+
+              <p><strong>Security Approach:</strong> The firewall follows a principle of restricting unnecessary access while allowing required connections through specific rules. Services remain reachable through intended paths (LAN or Tailscale).</p>
+
+              <div class="note-box">
+                <p><strong>Important:</strong> Docker networking can create additional network interfaces that may bypass UFW rules depending on configuration. This environment has not undergone a professional security audit.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- SMB/CIFS Network Shares -->
+          <div class="homelab-section">
+            <h2>6. SMB/CIFS Network Shares</h2>
+            <div class="smb-config">
+              <p>Configured persistent SMB mounts from ThinkPad to homelab storage shares (Storage1, Storage2, Ubuntu share) using /etc/fstab entries with network-aware options (_netdev, nofail, x-systemd.automount) to handle boot-time network availability. Updated SMB configuration after LAN subnet change to reference the new server address (192.168.0.198).</p>
+            </div>
+          </div>
+
+          <!-- Hardware Performance Experiments -->
+          <div class="homelab-section">
+            <h2>7. Hardware Performance Experiments</h2>
+            <div class="hardware-summary">
+              <p>Investigated CPU turbo behaviour and power configuration on the Dell OptiPlex Micro 7050 with Intel Core i5-7500T. Used rdmsr to inspect CPU MSRs, configured systemd service for system tweaks, and monitored CPU frequency during stress testing (~3600 MHz observed).</p>
+            </div>
+          </div>
+
+          <!-- Docker & Service Troubleshooting -->
+          <div class="homelab-section">
+            <h2>8. Docker & Self-Hosted Service Management</h2>
+            <div class="docker-summary">
+              <p>Upgraded Jellyfin from 10.8.x to 10.11.x era with updated port mapping to 8096 and media directory mounts for storage access. Upgraded Nextcloud to nextcloud:34 image with port mappings (10081→80, 10443→443) and deployed Collabora CODE for document editing with firewall rules for Docker connectivity. Configured Navidrome with music storage mounted from HDD (port 4533). Planning Immich storage migration to HDD to address SSD space constraints.</p>
+            </div>
+          </div>
+
+          <!-- Linux & Windows Desktop Troubleshooting -->
+          <div class="homelab-section">
+            <h2>9. Linux & Windows Desktop Troubleshooting</h2>
+            <div class="desktop-summary">
+              <p>Work with Linux Mint Cinnamon, Fedora, and Windows (dual-boot) on ThinkPad T460. Investigated Validity fingerprint reader (USB 138a:0017) - attempted enrolment in Linux Mint Cinnamon and Fedora but device remains non-functional in tested Linux environments. Planned disk partition layout for dual-boot Linux and Windows considering zram, partition sizes, Windows requirements, and GRUB bootloader configuration. Established console connection to Cisco 2960 switch via PuTTY for basic CLI access and configuration exploration.</p>
+            </div>
+          </div>
+
+          <!-- System Administration Work -->
+          <div class="homelab-section">
+            <h2>10. System Administration Work</h2>
+            <p class="subsection-intro">
+              Practical system administration tasks performed across my homelab and personal computing environment.
+            </p>
+
+            <div class="admin-categories">
+              <h3>Service Deployment & Maintenance</h3>
+              <ul>
+                <li>Installing and configuring self-hosted applications via CasaOS/Docker</li>
+                <li>Managing containerised service lifecycles</li>
+                <li>Updating application versions (Jellyfin, Nextcloud upgrades)</li>
+                <li>Managing host and container port mappings</li>
+                <li>Investigating application connectivity issues</li>
+              </ul>
+
+              <h3>Storage Administration</h3>
+              <ul>
+                <li>Working with multiple drives (NVMe, SSD, HDD)</li>
+                <li>Organising media and application directories</li>
+                <li>Configuring network storage access (SMB/CIFS)</li>
+                <li>Maintaining client-side CIFS mounts with fstab</li>
+                <li>Investigating storage usage and mount behaviour</li>
+              </ul>
+
+              <h3>Network Administration</h3>
+              <ul>
+                <li>Working with LAN addressing and subnet changes</li>
+                <li>Maintaining private remote access via Tailscale</li>
+                <li>Managing SMB share configuration</li>
+                <li>Configuring UFW firewall rules</li>
+                <li>Investigating LAN vs. remote connectivity differences</li>
+              </ul>
+
+              <h3>Monitoring & Diagnostics</h3>
+              <ul>
+                <li>Using Netdata and Glances for system monitoring</li>
+                <li>Monitoring CPU frequency and temperature under load</li>
+                <li>Running stress tests and observing system behaviour</li>
+                <li>Inspecting system services with systemctl</li>
+                <li>Using command-line tools (/proc, sensors, rdmsr) for investigation</li>
+              </ul>
+
+              <h3>Cross-Platform Troubleshooting</h3>
+              <ul>
+                <li>Linux desktop configuration and troubleshooting</li>
+                <li>Windows desktop troubleshooting</li>
+                <li>Hardware investigation (fingerprint reader, CPU behaviour)</li>
+                <li>Network connectivity troubleshooting</li>
+                <li>Application and configuration debugging</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Lessons Learned & Future Improvements -->
+          <div class="homelab-section">
+            <h2>11. Lessons Learned & Future Improvements</h2>
+            <p class="subsection-intro">
+              Key technical insights from practical work and areas for continued development.
+            </p>
+
+            <div class="lessons-learned">
+              <h3>Key Lessons</h3>
+              <ul>
+                <li><strong>Storage Strategy:</strong> Keeping drives separate reduces single-point-of-failure risk but requires manual management of data placement</li>
+                <li><strong>Network Renumbering:</strong> Using stable identifiers (hostnames, DNS, VPN) rather than hardcoded IPs makes infrastructure more resilient to changes</li>
+                <li><strong>Firewall Complexity:</strong> Docker networking can bypass host firewall rules; understanding container networking is essential for security</li>
+                <li><strong>Service Upgrades:</strong> Application upgrades require attention to configuration changes, port mappings, and data migration</li>
+                <li><strong>Hardware Investigation:</strong> Tools like rdmsr, /proc/cpuinfo, and sensors provide insight into low-level system behaviour</li>
+                <li><strong>Unresolved Issues:</strong> Not every problem has an immediate solution; documenting the investigation process is still valuable</li>
+                <li><strong>Security Boundaries:</strong> Private VPN access (Tailscale) reduces public exposure but does not replace service hardening</li>
+              </ul>
+
+              <h3>Future Improvements</h3>
+              <ul>
+                <li>Complete verification of Immich HDD storage migration</li>
+                <li>Document specific SMB mount resolution after subnet change</li>
+                <li>Verify Nextcloud + Collabora end-to-end integration</li>
+                <li>Continue fingerprint reader investigation (alternative drivers or hardware)</li>
+                <li>Implement automated backup strategy for multi-drive storage</li>
+                <li>Develop more formalised networking labs with documented topology</li>
+                <li>Explore log analysis and monitoring for security awareness</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2024. Building things, breaking things, learning things.</p>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
