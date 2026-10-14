@@ -4,7 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Detailed documentation of my personal homelab infrastructure including hardware specification, storage architecture, self-hosted services, networking configuration, and troubleshooting case studies." />
-    <title>Homelab Documentation - Rahil Tahir</title>
+    <title>Homelab Documentation — Rahil Tahir</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Homelab Documentation — Rahil Tahir" />
+    <meta property="og:description" content="Dell OptiPlex Micro 7050 homelab running Ubuntu Server, Docker, Tailscale, and 10+ self-hosted services. Full infrastructure documentation." />
+    <meta property="og:image" content="/profile.jpg" />
+    <meta name="twitter:card" content="summary" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -14,11 +21,14 @@
     </style>
   </head>
   <body>
-    <nav class="nav">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <nav class="nav" aria-label="Primary navigation">
       <div class="nav-container">
         <div class="nav-left">
-          <img src="/profile.jpg" alt="Rahil Tahir" class="nav-profile">
-          <a href="/" class="nav-logo">Rahil Tahir</a>
+          <a href="/" class="nav-logo-link">
+            <img src="/profile.jpg" alt="Rahil Tahir" class="nav-profile">
+            <span class="nav-logo">Rahil Tahir</span>
+          </a>
         </div>
         <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
           <span></span>
@@ -33,7 +43,7 @@
       </div>
     </nav>
 
-    <main>
+    <main id="main-content">
       <section class="section">
         <div class="container">
           <div class="page-header">
@@ -404,7 +414,7 @@ Remote Access via Tailscale
 
     <footer class="footer">
       <div class="container">
-        <p>&copy; 2024. Building things, breaking things, learning things.</p>
+        <p>&copy; 2024–2026. Building things, breaking things, learning things.</p>
       </div>
     </footer>
 

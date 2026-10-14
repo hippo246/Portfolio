@@ -1,3 +1,9 @@
+// generate-pdf.js
+// Utility script: generates a PDF version of resume.html using Puppeteer.
+// Run with: node generate-pdf.js
+// Output: public/Rahil_Tahir_Resume.pdf
+// Requires puppeteer: npm install puppeteer (not included in devDependencies)
+
 const puppeteer = require('puppeteer');
 const fs = require('fs');
 const path = require('path');

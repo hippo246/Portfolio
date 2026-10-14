@@ -4,18 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Personal portfolio of an aspiring IT and cybersecurity professional showcasing practical projects, homelab experience, and learning journey." />
-    <title>IT & Cybersecurity Portfolio</title>
+    <title>Rahil Tahir — IT & Cybersecurity Portfolio</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Rahil Tahir — IT & Cybersecurity Portfolio" />
+    <meta property="og:description" content="Aspiring IT and cybersecurity professional with hands-on homelab experience, Linux administration, Docker, and networking fundamentals." />
+    <meta property="og:image" content="/profile.jpg" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Rahil Tahir — IT & Cybersecurity Portfolio" />
+    <meta name="twitter:description" content="Aspiring IT and cybersecurity professional with hands-on homelab experience, Linux administration, Docker, and networking fundamentals." />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/src/style.css" />
   </head>
   <body>
-    <nav class="nav">
+    <a href="#home" class="skip-link">Skip to main content</a>
+    <nav class="nav" aria-label="Primary navigation">
       <div class="nav-container">
         <div class="nav-left">
-          <img src="/profile.jpg" alt="Rahil Tahir" class="nav-profile">
-          <a href="#home" class="nav-logo">Rahil Tahir</a>
+          <a href="#home" class="nav-logo-link">
+            <img src="/profile.jpg" alt="Rahil Tahir" class="nav-profile">
+            <span class="nav-logo">Rahil Tahir</span>
+          </a>
         </div>
         <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
           <span></span>
@@ -25,7 +37,7 @@
         <ul class="nav-menu">
           <li><a href="#home">About</a></li>
           <li><a href="#homelab">Homelab</a></li>
-          <li><a href="#windows">Windows</a></li>
+          <li><a href="#windows">Desktop Support</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><a href="#resume">Résumé</a></li>
           <li><a href="#contact">Contact</a></li>
@@ -41,34 +53,58 @@
             <h1>Rahil Tahir</h1>
             <p class="home-title">Aspiring IT Support & Cybersecurity Professional</p>
             <p class="home-intro">
-              Hands-on IT professional with practical experience in Linux system administration, self-hosted infrastructure, networking fundamentals, and cross-platform troubleshooting. Built and maintained a Dell OptiPlex homelab with Ubuntu Server, Docker-based services, Tailscale remote access, and multi-drive storage management.
+              Building practical IT skills through hands-on Windows and Linux troubleshooting, self-hosted infrastructure, and networking practice. I manage a personal homelab running Ubuntu Server and CasaOS, with Docker-based services, private remote access through Tailscale, firewall configuration, and multi-drive storage.
             </p>
             <p class="home-intro">
-              Currently seeking entry-level opportunities in IT Support, Helpdesk, Desktop Support, Junior Network Support, or IT Operations Support.
+              I've also helped friends troubleshoot Windows 10 and Windows 11 issues and practise helpdesk workflows through ServiceDesk Simulator. I'm continuing to develop my networking and cybersecurity knowledge while seeking an entry-level opportunity where I can contribute, learn, and grow.
             </p>
 
+            <div class="home-stats">
+              <div class="home-stat">
+                <span class="home-stat-value">772</span>
+                <span class="home-stat-label">ServiceDesk Simulator score</span>
+              </div>
+              <div class="home-stat">
+                <span class="home-stat-value">37</span>
+                <span class="home-stat-label">Simulated tickets resolved</span>
+              </div>
+              <div class="home-stat">
+                <span class="home-stat-value">10+</span>
+                <span class="home-stat-label">Self-hosted services</span>
+              </div>
+              <div class="home-stat">
+                <span class="home-stat-value">4</span>
+                <span class="home-stat-label">Business software projects</span>
+              </div>
+            </div>
+
             <div class="home-actions">
-              <a href="/resume.html" target="_blank" class="btn btn-primary">View Résumé (Print to PDF)</a>
-              <a href="#homelab" class="btn btn-secondary">View Homelab</a>
+              <a href="/resume.html" target="_blank" class="btn btn-primary">View Résumé</a>
+              <a href="#homelab" class="btn btn-secondary">Explore My Work</a>
               <a href="#contact" class="btn btn-secondary">Contact Me</a>
             </div>
 
             <div class="home-featured">
               <h2>Featured Work</h2>
               <div class="featured-grid">
-                <div class="featured-card featured-homelab">
+                <div class="featured-card">
                   <h3>Personal Homelab</h3>
-                  <p>Dell OptiPlex Micro 7050 running Ubuntu Server with CasaOS. Deployed 10+ self-hosted services including Jellyfin, Nextcloud, Immich, and Netdata. Configured Tailscale for private remote access, UFW firewall rules, and SMB/CIFS network shares.</p>
-                  <a href="#homelab" class="featured-link">View Details →</a>
+                  <p>Dell OptiPlex Micro 7050 running Ubuntu Server with CasaOS. 10+ self-hosted services including Jellyfin, Nextcloud, Immich, and Netdata. Tailscale remote access, UFW firewall, and SMB/CIFS network shares.</p>
+                  <a href="#homelab" class="featured-link">View Homelab →</a>
                 </div>
-                <div class="featured-card featured-projects">
+                <div class="featured-card">
+                  <h3>Windows Desktop Support</h3>
+                  <p>Informal IT support for friends — Windows 11 connectivity issues, recovering systems after the KB5121003 update caused game crashes and BSODs, and dual-boot configuration on ThinkPad T460.</p>
+                  <a href="#windows" class="featured-link">View Experience →</a>
+                </div>
+                <div class="featured-card">
                   <h3>Business Software Projects</h3>
-                  <p>Developed four business management prototypes: Clinic CRM, Factory CRM, Restaurant CRM, and CafeOS. Explored healthcare, manufacturing, and hospitality workflows through requirements definition, interface design, and testing.</p>
+                  <p>Four AI-assisted business management prototypes — Clinic CRM, Factory CRM, Restaurant CRM, and CafeOS. Requirements definition, interface design, and functional testing across healthcare, manufacturing, and hospitality.</p>
                   <a href="#projects" class="featured-link">View Projects →</a>
                 </div>
-                <div class="featured-card featured-networking">
-                  <h3>Networking & Security Learning</h3>
-                  <p>Building networking foundation through Cisco studies, IP addressing, subnetting, and network troubleshooting. Gaining hands-on experience with Cisco 2960 switch console access via PuTTY and Packet Tracer labs.</p>
+                <div class="featured-card">
+                  <h3>Networking & Security</h3>
+                  <p>Building networking foundations through Cisco studies, IP addressing, subnetting, and Packet Tracer labs. Physical switch console access via PuTTY. Homelab firewall and VPN experience with UFW and Tailscale.</p>
                   <a href="#cybersecurity" class="featured-link">View Learning →</a>
                 </div>
               </div>
@@ -116,51 +152,343 @@
           </p>
 
           <div class="cybersecurity-content">
-            <div class="subsection">
-              <h3>Current Learning</h3>
-              <ul>
-                <li>Cisco networking studies and labs</li>
-                <li>IP addressing and subnetting</li>
-                <li>TCP/IP, DNS, DHCP, routing, and switching fundamentals</li>
-                <li>Network diagrams and lab documentation</li>
-                <li>Firewalls, ports, protocols, and access control</li>
-                <li>Security fundamentals and attack-surface awareness</li>
-                <li>Linux security and system hardening</li>
-              </ul>
-            </div>
 
-            <div class="subsection">
-              <h3>Planned Learning</h3>
-              <ul>
-                <li>Log analysis, monitoring, and incident detection</li>
-                <li>Defensive security and network defense</li>
-                <li>Vulnerability scanning on authorized lab systems</li>
-                <li>Incident response exercises</li>
-                <li>Entry-level cybersecurity certifications</li>
-              </ul>
-            </div>
-
-            <div class="subsection">
-              <h3>Lab Portfolio</h3>
-              <p class="note">Documented networking and security labs will be added here as they are completed.</p>
-
-              <div class="lab-entry">
-                <h4>Cisco 2960 Switch Console Access</h4>
-                <p><strong>Status:</strong> <span class="lab-status status-completed">Completed</span></p>
-                <p><strong>Objective:</strong> Establish console connection to Cisco 2960 switch and explore basic CLI commands.</p>
-                <p><strong>Tools Used:</strong> PuTTY, Cisco 2960 switch, console cable</p>
-                <p><strong>Findings:</strong> Successfully established console connection via PuTTY. Explored basic CLI commands for switch configuration and status viewing. Gained familiarity with Cisco IOS command structure.</p>
-                <p><strong>Lessons Learned:</strong> Understanding CLI access methods and basic switch command structure is foundational for network administration.</p>
+            <details class="cyber-panel">
+              <summary class="cyber-panel-summary">
+                <span class="cyber-panel-title">Current Learning</span>
+                <span class="cyber-panel-chevron">↓</span>
+              </summary>
+              <div class="cyber-panel-body">
+                <ul>
+                  <li>Cisco networking studies and labs</li>
+                  <li>IP addressing and subnetting</li>
+                  <li>TCP/IP, DNS, DHCP, routing, and switching fundamentals</li>
+                  <li>Network diagrams and lab documentation</li>
+                  <li>Firewalls, ports, protocols, and access control</li>
+                  <li>Security fundamentals and attack-surface awareness</li>
+                  <li>Linux security and system hardening</li>
+                </ul>
               </div>
+            </details>
 
-              <div class="lab-entry">
-                <h4>Packet Tracer Network Labs</h4>
-                <p><strong>Status:</strong> <span class="lab-status status-in-progress">In Progress</span></p>
-                <p><strong>Objective:</strong> Practice IP addressing, subnetting, and network topology design in simulated environment.</p>
-                <p><strong>Tools Used:</strong> Cisco Packet Tracer</p>
-                <p><strong>Progress:</strong> Currently working through networking fundamentals exercises.</p>
+            <details class="cyber-panel">
+              <summary class="cyber-panel-summary">
+                <span class="cyber-panel-title">Planned Learning</span>
+                <span class="cyber-panel-chevron">↓</span>
+              </summary>
+              <div class="cyber-panel-body">
+                <ul>
+                  <li>Log analysis, monitoring, and incident detection</li>
+                  <li>Defensive security and network defense</li>
+                  <li>Vulnerability scanning on authorized lab systems</li>
+                  <li>Incident response exercises</li>
+                  <li>Entry-level cybersecurity certifications</li>
+                </ul>
               </div>
-            </div>
+            </details>
+
+            <details class="cyber-panel" open>
+              <summary class="cyber-panel-summary">
+                <span class="cyber-panel-title">Lab Portfolio</span>
+                <span class="cyber-panel-meta">21 labs + hotel project</span>
+                <span class="cyber-panel-chevron">↓</span>
+              </summary>
+              <div class="cyber-panel-body">
+                <p class="note" style="margin-bottom:1.25rem;">Self-directed Cisco Packet Tracer labs, each documented with topology, addressing, full device configuration, and notes on what each command does.</p>
+
+                <div class="lab-entry">
+                  <h4>Cisco 2960 Switch Console Access</h4>
+                  <p><strong>Status:</strong> <span class="lab-status status-completed">Completed</span></p>
+                  <p><strong>Objective:</strong> Establish console connection to a physical Cisco 2960 switch and explore basic IOS CLI commands.</p>
+                  <p><strong>Tools Used:</strong> PuTTY, Cisco 2960 switch, console cable</p>
+                  <p><strong>Outcome:</strong> Successfully connected via PuTTY, explored switch configuration and status commands, gained familiarity with Cisco IOS command structure.</p>
+                </div>
+
+                <div class="lab-entry">
+                  <h4>Packet Tracer Lab Series — 19 Labs (Projects 1–19)</h4>
+                  <p><strong>Status:</strong> <span class="lab-status status-completed">Completed</span></p>
+                  <p><strong>Tools:</strong> Cisco Packet Tracer · Cisco 2911 Routers · Cisco 2960 Switches</p>
+                  <p style="margin-bottom:1.25rem;"><strong>Scope:</strong> Self-directed series of 19 progressively structured labs, each documented with objective, topology, IP addressing table, full device configuration, and command explanations.</p>
+
+                  <div class="pt-lab-grid">
+
+                    <div class="pt-lab-row">
+                      <div class="pt-lab-info">
+                        <span class="pt-lab-num">01</span>
+                        <div>
+                          <p class="pt-lab-title">Basic Device Connectivity</p>
+                          <p class="pt-lab-desc">End devices communicating over a switch. Successful ping test confirms layer 2 connectivity.</p>
+                        </div>
+                      </div>
+                      <div class="pt-lab-img" data-cert="/cers/p1-topology.png" data-cert-title="Project 1 — Basic Device Connectivity">
+                        <img src="/cers/p1-topology.png" alt="Project 1 topology" loading="lazy">
+                      </div>
+                    </div>
+
+                    <div class="pt-lab-row">
+                      <div class="pt-lab-info">
+                        <span class="pt-lab-num">02</span>
+                        <div>
+                          <p class="pt-lab-title">Connecting Two Networks with a Router</p>
+                          <p class="pt-lab-desc">Two separate LANs joined via a 2911 router with inter-network routing configured.</p>
+                        </div>
+                      </div>
+                      <div class="pt-lab-img" data-cert="/cers/p2-topology.png" data-cert-title="Project 2 — Connecting Two Networks with a Router">
+                        <img src="/cers/p2-topology.png" alt="Project 2 topology" loading="lazy">
+                      </div>
+                    </div>
+
+                    <div class="pt-lab-row">
+                      <div class="pt-lab-info">
+                        <span class="pt-lab-num">03</span>
+                        <div>
+                          <p class="pt-lab-title">Static Routing</p>
+                          <p class="pt-lab-desc">Two routers with manually configured static routes. Cross-site ping verifies reachability.</p>
+                        </div>
+                      </div>
+                      <div class="pt-lab-img" data-cert="/cers/p3-topology.png" data-cert-title="Project 3 — Static Routing">
+                        <img src="/cers/p3-topology.png" alt="Project 3 topology" loading="lazy">
+                      </div>
+                    </div>
+
+                    <div class="pt-lab-row">
+                      <div class="pt-lab-info">
+                        <span class="pt-lab-num">04</span>
+                        <div>
+                          <p class="pt-lab-title">DHCP — Automatic IP Assignment</p>
+                          <p class="pt-lab-desc">Centralised DHCP on router. Both PCs received leases; binding table confirms assignments.</p>
+                        </div>
+                      </div>
+                      <div class="pt-lab-img" data-cert="/cers/p4-topology.png" data-cert-title="Project 4 — DHCP">
+                        <img src="/cers/p4-topology.png" alt="Project 4 DHCP verification" loading="lazy">
+                      </div>
+                    </div>
+
+                    <div class="pt-lab-row">
+                      <div class="pt-lab-info">
+                        <span class="pt-lab-num">05</span>
+                        <div>
+                          <p class="pt-lab-title">VLANs — Splitting a Switch into Separate Networks</p>
+                          <p class="pt-lab-desc">VLANs 10 (SALES) and 20 (IT) configured. Intra-VLAN ping succeeds; inter-VLAN blocked (100% loss).</p>
+                        </div>
+                      </div>
+                      <div class="pt-lab-img" data-cert="/cers/p5-topology.png" data-cert-title="Project 5 — VLANs">
+                        <img src="/cers/p5-topology.png" alt="Project 5 VLAN verification" loading="lazy">
+                      </div>
+                    </div>
+
+                    <div class="pt-lab-row">
+                      <div class="pt-lab-info">
+                        <span class="pt-lab-num">06</span>
+                        <div>
+                          <p class="pt-lab-title">Inter-VLAN Routing (Router-on-a-Stick)</p>
+                          <p class="pt-lab-desc">Sub-interfaces with 802.1Q encapsulation enabling routing between VLANs through a single trunk link.</p>
+                        </div>
+                      </div>
+                      <div class="pt-lab-img" data-cert="/cers/p6-topology.png" data-cert-title="Project 6 — Inter-VLAN Routing">
+                        <img src="/cers/p6-topology.png" alt="Project 6 topology" loading="lazy">
+                      </div>
+                    </div>
+
+                    <div class="pt-lab-row">
+                      <div class="pt-lab-info">
+                        <span class="pt-lab-num">07</span>
+                        <div>
+                          <p class="pt-lab-title">Securing Router Access — SSH & Passwords</p>
+                          <p class="pt-lab-desc">Enable secret, service password-encryption, RSA keys, SSH v2 configured. Telnet disabled.</p>
+                        </div>
+                      </div>
+                      <div class="pt-lab-img" data-cert="/cers/p7-topology.png" data-cert-title="Project 7 — Securing Router Access">
+                        <img src="/cers/p7-topology.png" alt="Project 7 topology" loading="lazy">
+                      </div>
+                    </div>
+
+                    <div class="pt-lab-row">
+                      <div class="pt-lab-info">
+                        <span class="pt-lab-num">08</span>
+                        <div>
+                          <p class="pt-lab-title">Access Control Lists</p>
+                          <p class="pt-lab-desc">ACLs applied to filter traffic by IP and protocol. Verified block and permit behaviour with ping tests.</p>
+                        </div>
+                      </div>
+                      <div class="pt-lab-img" data-cert="/cers/p8-topology.png" data-cert-title="Project 8 — Access Control Lists">
+                        <img src="/cers/p8-topology.png" alt="Project 8 topology" loading="lazy">
+                      </div>
+                    </div>
+
+                    <div class="pt-lab-row">
+                      <div class="pt-lab-info">
+                        <span class="pt-lab-num">09</span>
+                        <div>
+                          <p class="pt-lab-title">Port Security</p>
+                          <p class="pt-lab-desc">Sticky MAC locking. Unknown device triggered err-disable violation on Fa0/1; security violation count confirmed.</p>
+                        </div>
+                      </div>
+                      <div class="pt-lab-img" data-cert="/cers/p9-topology.png" data-cert-title="Project 9 — Port Security">
+                        <img src="/cers/p9-topology.png" alt="Project 9 port security violation" loading="lazy">
+                      </div>
+                    </div>
+
+                    <div class="pt-lab-row">
+                      <div class="pt-lab-info">
+                        <span class="pt-lab-num">10</span>
+                        <div>
+                          <p class="pt-lab-title">OSPF — Dynamic Routing</p>
+                          <p class="pt-lab-desc">Three-router OSPF topology. All neighbours reached FULL state; O routes propagated across all routing tables.</p>
+                        </div>
+                      </div>
+                      <div class="pt-lab-img" data-cert="/cers/p10-topology.png" data-cert-title="Project 10 — OSPF">
+                        <img src="/cers/p10-topology.png" alt="Project 10 OSPF verification" loading="lazy">
+                      </div>
+                    </div>
+
+                    <div class="pt-lab-row">
+                      <div class="pt-lab-info">
+                        <span class="pt-lab-num">11</span>
+                        <div>
+                          <p class="pt-lab-title">NAT/PAT</p>
+                          <p class="pt-lab-desc">Network address translation overload configured. Internal hosts reach simulated internet via single public IP.</p>
+                        </div>
+                      </div>
+                      <div class="pt-lab-img" data-cert="/cers/p11-topology.png" data-cert-title="Project 11 — NAT/PAT">
+                        <img src="/cers/p11-topology.png" alt="Project 11 topology" loading="lazy">
+                      </div>
+                    </div>
+
+                    <div class="pt-lab-row">
+                      <div class="pt-lab-info">
+                        <span class="pt-lab-num">12</span>
+                        <div>
+                          <p class="pt-lab-title">Wireless LAN (WLAN)</p>
+                          <p class="pt-lab-desc">Two laptops connected wirelessly via WRT300N. SSID and wireless security configured.</p>
+                        </div>
+                      </div>
+                      <div class="pt-lab-img" data-cert="/cers/p12-topology.png" data-cert-title="Project 12 — Wireless LAN">
+                        <img src="/cers/p12-topology.png" alt="Project 12 WLAN topology" loading="lazy">
+                      </div>
+                    </div>
+
+                    <div class="pt-lab-row pt-lab-row--featured">
+                      <div class="pt-lab-info">
+                        <span class="pt-lab-num">13</span>
+                        <div>
+                          <p class="pt-lab-title">Final Integrated Project</p>
+                          <p class="pt-lab-desc">Multi-site network combining VLANs, DHCP, OSPF, NAT/PAT, port security, SSH, and ACLs. Verified with switch VLAN output, router routing table, DHCP bindings, NAT translations, and end-to-end ping.</p>
+                        </div>
+                      </div>
+                      <div class="pt-lab-screenshots">
+                        <div class="pt-lab-img" data-cert="/cers/p13-switch-vlan.png" data-cert-title="Project 13 — Switch VLAN & trunk verification">
+                          <img src="/cers/p13-switch-vlan.png" alt="Switch VLAN verification" loading="lazy">
+                          <span class="pt-lab-caption">Switch VLANs &amp; trunk</span>
+                        </div>
+                        <div class="pt-lab-img" data-cert="/cers/p13-router-verification.png" data-cert-title="Project 13 — Router verification (OSPF, DHCP, NAT, SSH)">
+                          <img src="/cers/p13-router-verification.png" alt="Router verification" loading="lazy">
+                          <span class="pt-lab-caption">Router: OSPF, DHCP, NAT, SSH</span>
+                        </div>
+                        <div class="pt-lab-img" data-cert="/cers/p13-pc0-ping.png" data-cert-title="Project 13 — PC0 ping test confirming NAT/PAT">
+                          <img src="/cers/p13-pc0-ping.png" alt="PC0 ping test" loading="lazy">
+                          <span class="pt-lab-caption">PC0 → internet ping via NAT</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="pt-lab-row">
+                      <div class="pt-lab-info">
+                        <span class="pt-lab-num">14</span>
+                        <div>
+                          <p class="pt-lab-title">Spanning Tree Protocol (STP)</p>
+                          <p class="pt-lab-desc">STP loop prevention configured across switches. Root bridge election and port roles verified.</p>
+                        </div>
+                      </div>
+                      <div class="pt-lab-img" data-cert="/cers/p14-topology.png" data-cert-title="Project 14 — Spanning Tree Protocol">
+                        <img src="/cers/p14-topology.png" alt="Project 14 topology" loading="lazy">
+                      </div>
+                    </div>
+
+                    <div class="pt-lab-row">
+                      <div class="pt-lab-info">
+                        <span class="pt-lab-num">15</span>
+                        <div>
+                          <p class="pt-lab-title">EtherChannel / Link Aggregation</p>
+                          <p class="pt-lab-desc">PAgP EtherChannel (Port-channel1 SU) formed between two switches. STP and spanning tree roles verified on both.</p>
+                        </div>
+                      </div>
+                      <div class="pt-lab-img" data-cert="/cers/p15-topology.png" data-cert-title="Project 15 — EtherChannel">
+                        <img src="/cers/p15-topology.png" alt="Project 15 EtherChannel verification" loading="lazy">
+                      </div>
+                    </div>
+
+                    <div class="pt-lab-row">
+                      <div class="pt-lab-info">
+                        <span class="pt-lab-num">16</span>
+                        <div>
+                          <p class="pt-lab-title">HSRP — Redundant Default Gateways</p>
+                          <p class="pt-lab-desc">Two routers in HSRP group sharing virtual IP. Active/Standby states confirmed; failover tested with ping.</p>
+                        </div>
+                      </div>
+                      <div class="pt-lab-img" data-cert="/cers/p16-topology.png" data-cert-title="Project 16 — HSRP">
+                        <img src="/cers/p16-topology.png" alt="Project 16 HSRP verification" loading="lazy">
+                      </div>
+                    </div>
+
+                    <div class="pt-lab-row">
+                      <div class="pt-lab-info">
+                        <span class="pt-lab-num">17</span>
+                        <div>
+                          <p class="pt-lab-title">IPv6 Addressing</p>
+                          <p class="pt-lab-desc">IPv6 addresses configured on router interfaces. IPv6 routing table verified; cross-subnet ping succeeds.</p>
+                        </div>
+                      </div>
+                      <div class="pt-lab-img" data-cert="/cers/p17-topology.png" data-cert-title="Project 17 — IPv6">
+                        <img src="/cers/p17-topology.png" alt="Project 17 IPv6 verification" loading="lazy">
+                      </div>
+                    </div>
+
+                    <div class="pt-lab-row">
+                      <div class="pt-lab-info">
+                        <span class="pt-lab-num">18</span>
+                        <div>
+                          <p class="pt-lab-title">Syslog and NTP</p>
+                          <p class="pt-lab-desc">Centralised logging to syslog server confirmed. NTP synchronised from unsync (stratum 16) to stratum 2.</p>
+                        </div>
+                      </div>
+                      <div class="pt-lab-img" data-cert="/cers/p18-topology.png" data-cert-title="Project 18 — Syslog and NTP">
+                        <img src="/cers/p18-topology.png" alt="Project 18 Syslog NTP verification" loading="lazy">
+                      </div>
+                    </div>
+
+                    <div class="pt-lab-row">
+                      <div class="pt-lab-info">
+                        <span class="pt-lab-num">19</span>
+                        <div>
+                          <p class="pt-lab-title">Site-to-Site VPN (IPsec Tunnel)</p>
+                          <p class="pt-lab-desc">IPsec tunnel configured between two sites. Encrypted traffic between remote subnets.</p>
+                        </div>
+                      </div>
+                      <div class="pt-lab-img pt-lab-img--none">
+                        <span>No screenshot</span>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class="lab-entry">
+                  <h4>Hotel Network Floorplan Design — Enterprise Security Project</h4>
+                  <p><strong>Status:</strong> <span class="lab-status status-completed">Completed</span></p>
+                  <p><strong>Tools:</strong> Cisco Packet Tracer · Cisco 2911 Router · Cisco 2960 Switches</p>
+                  <p><strong>Scope:</strong> Full enterprise-grade hotel network across six zones — 6 guest rooms, guest corridor (4 APs), lobby/front desk, restaurant, back office, and server room. Hierarchical topology with a core switch (SW-CORE) and central router (R1) handling all inter-VLAN routing, DHCP, NAT/PAT, and ACL enforcement.</p>
+                  <p><strong>VLAN design:</strong> 5 VLANs (Guest/10, Lobby/20, Restaurant/30, Back Office/40, Servers/50) + VLAN 99 dead VLAN for all unused ports. Native VLAN 99 on all trunk ports to prevent VLAN hopping.</p>
+                  <p><strong>Security hardening applied to every device:</strong> SSH v2 only (Telnet disabled), RSA 1024 keys, enable secret, service password-encryption, banner MOTD, exec-timeout 5 0, no ip domain-lookup, local admin account, BPDU Guard on all access ports, Storm Control (broadcast threshold 20%), DHCP Snooping, Dynamic ARP Inspection (DAI), Rapid PVST with SW-CORE as root bridge, and all unused ports administratively shut down.</p>
+                  <p><strong>ACLs:</strong> BLOCK-INBOUND (blocks external traffic targeting internal gateways), GUEST-POLICY (guests get internet only, blocked from all internal VLANs), BLOCK-BACKOFFICE (restaurant and guest traffic cannot reach back office).</p>
+                  <p><strong>Other:</strong> Centralised DHCP on R1 with per-VLAN pools, NAT/PAT overload to single public IP, NTP synchronised across all switches from R1 master, logging buffered on R1.</p>
+                  <div class="lab-topology-img">
+                    <img src="/cers/hotel-network-topology.png" alt="Hotel network floorplan topology in Cisco Packet Tracer — showing all six zones: guest rooms, corridor, lobby, restaurant, back office, and server room" loading="lazy" />
+                  </div>
+                </div>
+              </div>
+            </details>
+
           </div>
         </div>
       </section>
@@ -237,6 +565,13 @@ Remote Access via Tailscale
                 </pre>
               </div>
             </div>
+            <div class="skill-tags" style="margin-top:1.5rem;">
+              <span class="skill-tag">Ubuntu Server</span>
+              <span class="skill-tag">CasaOS</span>
+              <span class="skill-tag">Docker</span>
+              <span class="skill-tag">Tailscale</span>
+              <span class="skill-tag">Dell OptiPlex</span>
+            </div>
           </div>
 
           <!-- Storage Architecture -->
@@ -267,6 +602,12 @@ Remote Access via Tailscale
 
               <div class="pending-task">
                 <p><strong>Verification Needed:</strong> Immich photo storage configuration. The intention is to use the HDD for photo storage rather than the nearly full system SSD. Current mount configuration and actual data location need verification.</p>
+              </div>
+              <div class="skill-tags" style="margin-top:1rem;">
+                <span class="skill-tag">Storage Management</span>
+                <span class="skill-tag">NVMe / SSD / HDD</span>
+                <span class="skill-tag">Linux Filesystems</span>
+                <span class="skill-tag">Multi-drive Setup</span>
               </div>
             </div>
           </div>
@@ -362,6 +703,15 @@ Remote Access via Tailscale
             <div class="note-box">
               <p><strong>Note:</strong> Port mappings and service status reflect historical configuration. Some services may have been removed, reconfigured, or updated since these values were recorded.</p>
             </div>
+            <div class="skill-tags" style="margin-top:1rem;">
+              <span class="skill-tag">Jellyfin</span>
+              <span class="skill-tag">Nextcloud</span>
+              <span class="skill-tag">Immich</span>
+              <span class="skill-tag">Navidrome</span>
+              <span class="skill-tag">AdGuard Home</span>
+              <span class="skill-tag">Netdata</span>
+              <span class="skill-tag">Docker</span>
+            </div>
           </div>
 
           <!-- Networking & Remote Access -->
@@ -387,6 +737,12 @@ Remote Access via Tailscale
               <div class="note-box">
                 <p><strong>Security Boundary:</strong> Services are accessed through Tailscale rather than public endpoints. This reduces the attack surface but does not replace proper service hardening or security best practices.</p>
               </div>
+              <div class="skill-tags" style="margin-top:1rem;">
+                <span class="skill-tag">Tailscale VPN</span>
+                <span class="skill-tag">LAN Networking</span>
+                <span class="skill-tag">IP Addressing</span>
+                <span class="skill-tag">Private Remote Access</span>
+              </div>
             </div>
           </div>
 
@@ -410,38 +766,76 @@ Remote Access via Tailscale
               <div class="note-box">
                 <p><strong>Important:</strong> Docker networking can create additional network interfaces that may bypass UFW rules depending on configuration. This environment has not undergone a professional security audit.</p>
               </div>
+              <div class="skill-tags" style="margin-top:1rem;">
+                <span class="skill-tag">UFW</span>
+                <span class="skill-tag">Firewall Rules</span>
+                <span class="skill-tag">Docker Networking</span>
+                <span class="skill-tag">Access Control</span>
+                <span class="skill-tag">Security Hardening</span>
+              </div>
             </div>
           </div>
 
           <!-- SMB/CIFS Network Shares -->
           <div class="homelab-section">
             <h3>6. SMB/CIFS Network Shares</h3>
-            <div class="smb-config">
-              <p>Configured persistent SMB mounts from ThinkPad to homelab storage shares (Storage1, Storage2, Ubuntu share) using /etc/fstab entries with network-aware options (_netdev, nofail, x-systemd.automount) to handle boot-time network availability. Updated SMB configuration after LAN subnet change to reference the new server address (192.168.0.198).</p>
+            <div class="homelab-content-block">
+              <p>Configured persistent SMB mounts from ThinkPad to homelab storage shares (Storage1, Storage2, Ubuntu share) using <code>/etc/fstab</code> entries with network-aware options (<code>_netdev</code>, <code>nofail</code>, <code>x-systemd.automount</code>) to handle boot-time network availability. Updated SMB configuration after LAN subnet change to reference the new server address (192.168.0.198).</p>
+              <div class="skill-tags">
+                <span class="skill-tag">SMB/CIFS</span>
+                <span class="skill-tag">fstab</span>
+                <span class="skill-tag">systemd</span>
+                <span class="skill-tag">Network Shares</span>
+                <span class="skill-tag">Linux Networking</span>
+              </div>
             </div>
           </div>
 
           <!-- Hardware Performance Experiments -->
           <div class="homelab-section">
             <h3>7. Hardware Performance Experiments</h3>
-            <div class="hardware-summary">
-              <p>Investigated CPU turbo behaviour and power configuration on the Dell OptiPlex Micro 7050 with Intel Core i5-7500T. Used rdmsr to inspect CPU MSRs, configured systemd service for system tweaks, and monitored CPU frequency during stress testing (~3600 MHz observed).</p>
+            <div class="homelab-content-block">
+              <p>Investigated CPU turbo behaviour and power configuration on the Dell OptiPlex Micro 7050 with Intel Core i5-7500T. Used <code>rdmsr</code> to inspect CPU MSRs, configured a <code>systemd</code> service for persistent system tweaks, and monitored CPU frequency during stress testing — observed ~3600 MHz sustained under load.</p>
+              <div class="skill-tags">
+                <span class="skill-tag">Linux CLI</span>
+                <span class="skill-tag">rdmsr</span>
+                <span class="skill-tag">systemd</span>
+                <span class="skill-tag">CPU Diagnostics</span>
+                <span class="skill-tag">Stress Testing</span>
+              </div>
             </div>
           </div>
 
           <!-- Docker & Service Troubleshooting -->
           <div class="homelab-section">
             <h3>8. Docker & Self-Hosted Service Management</h3>
-            <div class="docker-summary">
-              <p>Upgraded Jellyfin from 10.8.x to 10.11.x era with updated port mapping to 8096 and media directory mounts for storage access. Upgraded Nextcloud to nextcloud:34 image with port mappings (10081→80, 10443→443) and deployed Collabora CODE for document editing with firewall rules for Docker connectivity. Configured Navidrome with music storage mounted from HDD (port 4533). Planning Immich storage migration to HDD to address SSD space constraints.</p>
+            <div class="homelab-content-block">
+              <p>Upgraded Jellyfin from 10.8.x to 10.11.x with updated port mapping to 8096 and media directory mounts for storage access. Upgraded Nextcloud to <code>nextcloud:34</code> image with port mappings (10081→80, 10443→443) and deployed Collabora CODE for document editing, including firewall rules to allow Docker-to-container connectivity. Configured Navidrome with music storage mounted from HDD on port 4533. Planning Immich storage migration to HDD to address SSD space constraints.</p>
+              <div class="skill-tags">
+                <span class="skill-tag">Docker</span>
+                <span class="skill-tag">CasaOS</span>
+                <span class="skill-tag">Service Upgrades</span>
+                <span class="skill-tag">Port Mapping</span>
+                <span class="skill-tag">UFW</span>
+                <span class="skill-tag">Storage Management</span>
+              </div>
             </div>
           </div>
 
           <!-- Linux & Windows Desktop Troubleshooting -->
           <div class="homelab-section">
             <h3>9. Linux & Windows Desktop Troubleshooting</h3>
-            <div class="desktop-summary">
-              <p>Work with Linux Mint Cinnamon, Fedora, and Windows (dual-boot) on ThinkPad T460. Investigated Validity fingerprint reader (USB 138a:0017) - attempted enrolment in Linux Mint Cinnamon and Fedora but device remains non-functional in tested Linux environments. Planned disk partition layout for dual-boot Linux and Windows considering zram, partition sizes, Windows requirements, and GRUB bootloader configuration. Established console connection to Cisco 2960 switch via PuTTY for basic CLI access and configuration exploration.</p>
+            <div class="homelab-content-block">
+              <p>Daily driver is a ThinkPad T460 running Linux Mint Cinnamon, Fedora, and Windows in a dual-boot configuration. Investigated the Validity fingerprint reader (USB 138a:0017) — attempted enrolment across Linux Mint and Fedora, researched driver availability, confirmed no Linux driver currently exists for this hardware. Planned dual-boot partition layout considering <code>zram</code>, partition sizes, Windows requirements, and GRUB bootloader. Established console access to a Cisco 2960 switch via PuTTY for basic CLI exploration.</p>
+              <div class="skill-tags">
+                <span class="skill-tag">Linux Desktop</span>
+                <span class="skill-tag">Windows</span>
+                <span class="skill-tag">Dual-Boot</span>
+                <span class="skill-tag">GRUB</span>
+                <span class="skill-tag">Hardware Investigation</span>
+                <span class="skill-tag">Cisco CLI</span>
+                <span class="skill-tag">PuTTY</span>
+              </div>
             </div>
           </div>
 
@@ -538,117 +932,191 @@ Remote Access via Tailscale
       <!-- Windows Troubleshooting Section -->
       <section id="windows" class="section windows">
         <div class="container">
-          <h2>Windows Troubleshooting & Desktop Support</h2>
+          <h2>Windows Desktop Support & Troubleshooting</h2>
           <p class="section-intro">
-            Practical experience with Windows 10 and Windows 11 troubleshooting, including dual-boot configuration with Linux.
+            Informal technical assistance provided to friends with Windows 10 and Windows 11 problems, with most of my hands-on experience on Windows 11. Not paid employment — practical support for people I know, with a genuine interest in diagnosing and resolving the issue rather than just getting it working by any means.
           </p>
 
+          <!-- Experience overview -->
           <div class="windows-overview">
             <h3>Experience Overview</h3>
             <div class="experience-grid">
               <div class="experience-item">
-                <h4>Operating Systems</h4>
+                <h4>Support Context</h4>
                 <ul>
-                  <li>Windows 10 troubleshooting</li>
-                  <li>Windows 11 troubleshooting</li>
-                  <li>Dual-boot configuration (Windows + Linux)</li>
+                  <li>Informal assistance for friends</li>
+                  <li>Windows 11 (primary focus)</li>
+                  <li>Windows 10 (some experience)</li>
+                  <li>Own machine: ThinkPad T460</li>
                 </ul>
               </div>
               <div class="experience-item">
-                <h4>Troubleshooting Areas</h4>
+                <h4>Areas Worked In</h4>
                 <ul>
+                  <li>Connectivity (Wi-Fi, Bluetooth)</li>
+                  <li>Windows Update issues and recovery</li>
                   <li>System performance and stability</li>
-                  <li>Application and driver issues</li>
-                  <li>Networking and connectivity</li>
-                  <li>Storage and file systems</li>
-                  <li>System configuration and maintenance</li>
+                  <li>Dual-boot and disk configuration</li>
+                  <li>Hardware compatibility (Linux/Windows)</li>
                 </ul>
               </div>
               <div class="experience-item">
-                <h4>Tools & Diagnostics</h4>
+                <h4>Approach</h4>
                 <ul>
-                  <li>Task Manager and Resource Monitor</li>
-                  <li>Device Manager</li>
-                  <li>Event Viewer</li>
-                  <li>Command Prompt and PowerShell</li>
-                  <li>System File Checker (sfc) and DISM</li>
+                  <li>Identify symptoms and recent changes</li>
+                  <li>Narrow down likely causes before acting</li>
+                  <li>Use Safe Mode and recovery options where needed</li>
+                  <li>Document what was tried and what worked</li>
                 </ul>
               </div>
             </div>
           </div>
 
+          <!-- Documented incidents -->
+          <div class="windows-case-studies">
+            <h3>Documented Troubleshooting</h3>
+            <p class="subsection-intro">Real incidents I helped with, presented accurately. Steps I did not personally confirm are marked as recommended follow-up, not completed actions.</p>
+
+            <!-- Incident 1: KB5121003 -->
+            <div class="case-study-card">
+              <div class="case-study-header">
+                <h4>Windows 11 KB5121003 — Games Crashing, BSODs After August 2026 Update</h4>
+                <span class="case-status status-completed">Resolved</span>
+              </div>
+
+              <p><strong>Environment:</strong> Friends' Windows 11 PCs (builds 24H2 / 25H2)</p>
+
+              <p><strong>Reported symptoms:</strong> Games freezing mid-session, closing unexpectedly, and Blue Screen of Death (BSOD) errors. Problems appeared shortly after a Windows Update the users identified as KB5121003, released on 11 August 2026.</p>
+
+              <p><strong>Background:</strong> KB5121003 is a confirmed problematic update. Microsoft acknowledged it causes game crashes and system instability on affected machines. The root cause is a conflict with <code>inpoutx64.sys</code> — a kernel driver commonly bundled with RGB peripheral software (keyboards, mice, headsets with lighting). On systems where this driver was present, launching certain games triggered crashes or BSODs. Not all systems were affected.</p>
+
+              <p><strong>Reasoning for Safe Mode:</strong> Because the update had already been installed and the system was unstable at normal boot, Safe Mode was the right starting point — it loads only essential drivers, bypassing the conflicting driver and making it possible to reach Settings and uninstall the update without triggering another crash.</p>
+
+              <p><strong>Recovery steps taken:</strong></p>
+              <ul>
+                <li>Guided friends through booting into Safe Mode (via Settings → Recovery → Advanced startup, or Shift + Restart)</li>
+                <li>Navigated to Settings → Windows Update → Update history → Uninstall updates</li>
+                <li>Located and uninstalled KB5121003</li>
+                <li>Restarted to normal mode and confirmed system stability</li>
+                <li>Advised pausing Windows Updates temporarily to prevent the update reinstalling automatically</li>
+              </ul>
+
+              <p><strong>Recommended follow-up</strong> <em>(not confirmed as personally performed)</em><strong>:</strong></p>
+              <ul>
+                <li>Check Device Manager for any driver errors flagged after recovery</li>
+                <li>Review Update history to confirm the uninstall completed cleanly</li>
+                <li>Test the originally crashing games to confirm symptoms resolved</li>
+                <li>If RGB peripheral software is present: check whether an updated version of the software or driver is available that resolves the <code>inpoutx64.sys</code> conflict</li>
+                <li>Re-enable Windows Updates once Microsoft releases a fixed version of the patch</li>
+              </ul>
+
+              <div class="note-box">
+                <p><strong>Note:</strong> KB5121003 is a verified update (released 11 August 2026, affecting Windows 11 builds 26100.9168 and 26200.9168). Microsoft officially confirmed the game-crash issue. Not every machine was affected — those without RGB peripherals or the conflicting driver likely had no problems.</p>
+              </div>
+            </div>
+
+            <!-- Incident 2: Wi-Fi / Bluetooth -->
+            <div class="case-study-card">
+              <div class="case-study-header">
+                <h4>Windows 11 — Wi-Fi and Bluetooth Icons Disappearing or Not Working</h4>
+                <span class="case-status status-completed">Resolved</span>
+              </div>
+
+              <p><strong>Environment:</strong> Friends' Windows 11 laptops</p>
+
+              <p><strong>Reported symptoms:</strong> Wi-Fi or Bluetooth icon missing from the taskbar or system tray, toggle unavailable in Quick Settings, or adapter showing as absent despite the hardware being physically present.</p>
+
+              <p><strong>Important distinction:</strong> These symptoms can mean different things. A missing icon or greyed-out toggle doesn't necessarily mean the adapter is broken — it can be a UI glitch, a disabled service, or a driver issue. Connectivity itself may still be working even when the icon disappears.</p>
+
+              <p><strong>Diagnostic areas investigated:</strong></p>
+              <ul>
+                <li><strong>Device Manager:</strong> Checked whether the Wi-Fi or Bluetooth adapter was listed, and whether it showed any warning flags (yellow triangle = driver issue, hidden device = disabled)</li>
+                <li><strong>Adapter status:</strong> Confirmed the adapter was enabled and not showing an error code</li>
+                <li><strong>Windows services:</strong> Relevant services (WLAN AutoConfig for Wi-Fi, Bluetooth Support Service) need to be running for the adapters to function and appear in the UI</li>
+                <li><strong>Taskbar / Quick Settings layout:</strong> Windows 11 allows customisation of Quick Settings — the icon being absent can sometimes simply mean it was removed from the panel rather than a hardware or driver fault</li>
+              </ul>
+
+              <p><strong>Recommended follow-up</strong> <em>(not confirmed as personally performed in these incidents)</em><strong>:</strong></p>
+              <ul>
+                <li>Run the built-in Internet Connections or Bluetooth troubleshooter as a first non-destructive step</li>
+                <li>Update or reinstall the adapter driver via Device Manager if a driver issue is confirmed</li>
+                <li>Check Windows Update — driver updates sometimes ship through Windows Update rather than Device Manager alone</li>
+              </ul>
+            </div>
+
+            <!-- Own machine incidents -->
+            <div class="case-study-card">
+              <div class="case-study-header">
+                <h4>Dual-Boot Configuration — ThinkPad T460 (Windows + Linux)</h4>
+                <span class="case-status status-in-progress">In Progress</span>
+              </div>
+              <p><strong>Environment:</strong> ThinkPad T460, Windows 10/11, Linux Mint Cinnamon, Fedora</p>
+              <p>Planned disk partition layout for a dual-boot setup, considering partition sizing for both operating systems, zram configuration for Linux, Windows reserved space requirements, and GRUB bootloader setup. Work in progress — not yet fully implemented.</p>
+            </div>
+
+            <div class="case-study-card">
+              <div class="case-study-header">
+                <h4>Fingerprint Reader Not Working in Linux — Validity 138a:0017</h4>
+                <span class="case-status status-unresolved">Unresolved</span>
+              </div>
+              <p><strong>Environment:</strong> ThinkPad T460, Linux Mint Cinnamon, Fedora</p>
+              <p>Investigated why the Validity fingerprint reader (USB 138a:0017) was not functional in Linux. Attempted enrolment in Linux Mint Cinnamon and Fedora, researched the device ID and driver availability across distributions. The device remains non-functional in tested Linux environments — a known compatibility gap for this hardware. No Linux driver currently exists for this specific Validity model.</p>
+            </div>
+          </div>
+
+          <!-- Memory prompt — private to me, clearly marked -->
           <div class="windows-categories">
-            <h3>Troubleshooting Categories</h3>
+            <h3>Additional Experience — To Be Confirmed</h3>
+            <p class="subsection-intro">The incidents below are common Windows support situations. They are listed here as memory prompts — not confirmed portfolio claims. If you genuinely helped with any of these, they can be documented properly and added above.</p>
 
             <div class="category-grid">
               <div class="category-card">
-                <h4>Installation, Upgrades & Recovery</h4>
-                <p>Windows installation and upgrade problems, boot failures, Windows Update issues, system recovery and repair.</p>
-                <span class="category-status status-empty">No cases documented yet</span>
+                <h4>Windows Updates Failing or Getting Stuck</h4>
+                <p>Update stuck at a percentage, update rollback loops, update error codes, failed feature upgrades.</p>
+                <span class="category-status status-empty">Confirm before adding</span>
               </div>
 
               <div class="category-card">
-                <h4>System Performance & Stability</h4>
-                <p>Slow startup or system responsiveness, high CPU/RAM/disk usage, application crashes and freezes, background process investigation.</p>
-                <span class="category-status status-empty">No cases documented yet</span>
+                <h4>Slow Performance / High Resource Usage</h4>
+                <p>Slow startup, sluggish responsiveness, high CPU/RAM/disk in Task Manager, background processes causing issues.</p>
+                <span class="category-status status-empty">Confirm before adding</span>
               </div>
 
               <div class="category-card">
-                <h4>Drivers & Hardware</h4>
-                <p>Missing or problematic device drivers, Device Manager errors, peripheral and hardware recognition issues, hardware-versus-software fault isolation.</p>
-                <span class="category-status status-empty">No cases documented yet</span>
+                <h4>Wi-Fi Connected but No Internet</h4>
+                <p>"No internet access" despite showing connected, DNS problems, network adapter resets, router vs. PC fault isolation.</p>
+                <span class="category-status status-empty">Confirm before adding</span>
               </div>
 
               <div class="category-card">
-                <h4>Networking & Connectivity</h4>
-                <p>Wi-Fi and Ethernet troubleshooting, IP configuration, DNS and connectivity diagnostics, network share access, name-resolution problems.</p>
-                <span class="category-status status-empty">No cases documented yet</span>
+                <h4>Bluetooth Device Won't Connect</h4>
+                <p>Device pairing failures, device showing but not connecting, Bluetooth service issues, driver conflicts.</p>
+                <span class="category-status status-empty">Confirm before adding</span>
               </div>
 
               <div class="category-card">
-                <h4>Storage & File Systems</h4>
-                <p>Disk space and partition investigations, file and folder permissions, drive recognition and access issues, file system troubleshooting.</p>
-                <span class="category-status status-empty">No cases documented yet</span>
+                <h4>Audio, Microphone, or Camera Not Working</h4>
+                <p>No sound output, mic not detected, camera not available in apps, privacy settings blocking access.</p>
+                <span class="category-status status-empty">Confirm before adding</span>
               </div>
 
               <div class="category-card">
-                <h4>Applications & System Configuration</h4>
-                <p>Software installation and compatibility, application errors, services and startup applications, permissions and configuration problems.</p>
-                <span class="category-status status-empty">No cases documented yet</span>
+                <h4>Apps Crashing or Refusing to Launch</h4>
+                <p>Application error on open, crashes after update, missing dependencies, reinstall or repair needed.</p>
+                <span class="category-status status-empty">Confirm before adding</span>
               </div>
 
               <div class="category-card">
-                <h4>Command-Line Diagnostics</h4>
-                <p>Command Prompt and PowerShell usage, Task Manager and Resource Monitor, Device Manager, Event Viewer, Services and startup management, sfc and DISM.</p>
-                <span class="category-status status-empty">No cases documented yet</span>
+                <h4>Startup, Boot, or Recovery Problems</h4>
+                <p>PC won't boot, boot loop, recovery environment needed, startup repair, boot order issues.</p>
+                <span class="category-status status-empty">Confirm before adding</span>
               </div>
-            </div>
-          </div>
 
-          <div class="windows-case-studies">
-            <h3>Case Studies</h3>
-            <p class="subsection-intro">Windows troubleshooting incidents documented with diagnostic process and resolution.</p>
-
-            <div class="case-study-card">
-              <h4>Dual-Boot Configuration (Windows + Linux)</h4>
-              <p><strong>Environment:</strong> ThinkPad T460, Windows 10/11, Linux Mint Cinnamon, Fedora</p>
-              <p><strong>Problem:</strong> Need to configure dual-boot system for both Windows and Linux operating systems on single machine.</p>
-              <p><strong>Investigation:</strong> Planned disk partition layout considering zram, partition sizes, Windows requirements, and GRUB bootloader configuration. Evaluated partition sizing for both operating systems.</p>
-              <p><strong>Status:</strong> <span class="case-status status-in-progress">In Progress</span></p>
-              <p><strong>Technical Learning:</strong> Understanding dual-boot requirements, bootloader configuration, and partition management across different operating systems.</p>
-              <div class="note-box">
-                <p><strong>Verification Needed:</strong> Actual implementation status and current dual-boot configuration require verification from system.</p>
+              <div class="category-card">
+                <h4>Storage Running Low or Drive Issues</h4>
+                <p>Low disk space, temporary files, WinSxS folder size, drive not showing up, partition visibility.</p>
+                <span class="category-status status-empty">Confirm before adding</span>
               </div>
-            </div>
-
-            <div class="case-study-card">
-              <h4>Fingerprint Reader Investigation (Validity 138a:0017)</h4>
-              <p><strong>Environment:</strong> ThinkPad T460, Linux Mint Cinnamon, Fedora</p>
-              <p><strong>Problem:</strong> Validity fingerprint reader (USB 138a:0017) not functioning in Linux environments.</p>
-              <p><strong>Investigation:</strong> Attempted device enrolment in Linux Mint Cinnamon and Fedora. Investigated device ID and driver availability. Tested with different Linux distributions.</p>
-              <p><strong>Findings:</strong> Device remains non-functional in tested Linux environments. Alternative drivers or solutions may be required.</p>
-              <p><strong>Status:</strong> <span class="case-status status-unresolved">Unresolved</span></p>
-              <p><strong>Technical Learning:</strong> Hardware compatibility investigation, device driver research, and cross-distribution testing.</p>
             </div>
           </div>
 
@@ -837,16 +1305,65 @@ Remote Access via Tailscale
             <h3>Certifications & Courses</h3>
 
             <div class="cert-category">
-              <h4>Certifications Earned</h4>
-              <div class="empty-state">
-                <p>No certifications earned yet. This section will be updated as I complete relevant certifications.</p>
-              </div>
-            </div>
+              <h4>Certifications &amp; Courses Earned</h4>
+              <div class="cert-cards-grid">
 
-            <div class="cert-category">
-              <h4>Courses In Progress</h4>
-              <div class="empty-state">
-                <p>Courses currently being studied will be documented here with progress and completion status.</p>
+                <div class="cert-card" role="button" tabindex="0" aria-label="View First Line Support certificate" data-cert="/cers/first-line-support.png" data-cert-title="First Line Support">
+                  <div class="cert-card-img-wrap">
+                    <img src="/cers/first-line-support.png" alt="First Line Support certificate — Service Desk Simulator" loading="lazy" />
+                    <div class="cert-card-overlay">
+                      <span>View Certificate</span>
+                    </div>
+                  </div>
+                  <div class="cert-card-body">
+                    <p class="cert-card-title">First Line Support</p>
+                    <p class="cert-card-issuer">Service Desk Simulator</p>
+                    <p class="cert-card-meta">9 September 2026 &nbsp;·&nbsp; 20+ tickets resolved</p>
+                  </div>
+                </div>
+
+                <div class="cert-card" role="button" tabindex="0" aria-label="View Learn Ethical Hacking From Scratch certificate" data-cert="/cers/udemy-ethical-hacking.png" data-cert-title="Learn Ethical Hacking From Scratch">
+                  <div class="cert-card-img-wrap">
+                    <img src="/cers/udemy-ethical-hacking.png" alt="Learn Ethical Hacking From Scratch certificate — Udemy" loading="lazy" />
+                    <div class="cert-card-overlay">
+                      <span>View Certificate</span>
+                    </div>
+                  </div>
+                  <div class="cert-card-body">
+                    <p class="cert-card-title">Learn Ethical Hacking From Scratch</p>
+                    <p class="cert-card-issuer">Udemy &nbsp;·&nbsp; Zaid Sabih, z Security</p>
+                    <p class="cert-card-meta">22 January 2026 &nbsp;·&nbsp; 15 hours</p>
+                  </div>
+                </div>
+
+                <div class="cert-card" role="button" tabindex="0" aria-label="View Exploring Networking with Cisco Packet Tracer certificate" data-cert="/cers/cisco-packet-tracer-exploring.png" data-cert-title="Exploring Networking with Cisco Packet Tracer">
+                  <div class="cert-card-img-wrap">
+                    <img src="/cers/cisco-packet-tracer-exploring.png" alt="Exploring Networking with Cisco Packet Tracer certificate — Cisco Networking Academy" loading="lazy" />
+                    <div class="cert-card-overlay">
+                      <span>View Certificate</span>
+                    </div>
+                  </div>
+                  <div class="cert-card-body">
+                    <p class="cert-card-title">Exploring Networking with Cisco Packet Tracer</p>
+                    <p class="cert-card-issuer">Cisco Networking Academy</p>
+                    <p class="cert-card-meta">28 October 2025</p>
+                  </div>
+                </div>
+
+                <div class="cert-card" role="button" tabindex="0" aria-label="View Getting Started with Cisco Packet Tracer certificate" data-cert="/cers/cisco-packet-tracer-getting-started.png" data-cert-title="Getting Started with Cisco Packet Tracer">
+                  <div class="cert-card-img-wrap">
+                    <img src="/cers/cisco-packet-tracer-getting-started.png" alt="Getting Started with Cisco Packet Tracer certificate — Cisco Networking Academy" loading="lazy" />
+                    <div class="cert-card-overlay">
+                      <span>View Certificate</span>
+                    </div>
+                  </div>
+                  <div class="cert-card-body">
+                    <p class="cert-card-title">Getting Started with Cisco Packet Tracer</p>
+                    <p class="cert-card-issuer">Cisco Networking Academy</p>
+                    <p class="cert-card-meta">2 October 2025</p>
+                  </div>
+                </div>
+
               </div>
             </div>
 
@@ -965,36 +1482,54 @@ Remote Access via Tailscale
         <div class="container">
           <h2>About & Contact</h2>
 
-          <div class="about-content">
-            <h3>About Me</h3>
-            <p>
-              I'm an aspiring IT and cybersecurity professional who enjoys learning by doing. My interests include networking, Linux and Windows systems, infrastructure, troubleshooting, and understanding how to protect systems against security threats.
-            </p>
-            <p>
-              I also enjoy building business software projects because they help me understand practical workflows, user requirements, testing, and problem-solving. My long-term goal is to develop a strong foundation across both defensive security and ethical hacking, with an interest in eventually working towards a purple-team skill set.
-            </p>
-            <p>
-              I'm currently looking for opportunities to develop professionally, gain practical experience, and contribute to an IT team while continuing to strengthen my technical skills.
-            </p>
+          <div class="about-contact-grid">
 
-            <h3>Roles of Interest</h3>
-            <ul>
-              <li>IT Support / Helpdesk</li>
-              <li>Desktop Support / Technical Support</li>
-              <li>Junior Network Support</li>
-              <li>IT Operations Support</li>
-              <li>Entry-level cybersecurity opportunities appropriate to my current skills</li>
-            </ul>
-          </div>
+            <div class="about-content">
+              <h3>About Me</h3>
+              <p>
+                I'm an aspiring IT and cybersecurity professional who learns by doing. I manage a personal homelab, help friends with Windows problems, practise helpdesk workflows through ServiceDesk Simulator, and build software projects to understand real-world business requirements.
+              </p>
+              <p>
+                My technical interests span Linux and Windows systems administration, self-hosted infrastructure, networking, and security. Long-term I want to develop skills across both defensive security and ethical hacking — working towards a purple-team foundation.
+              </p>
+              <p>
+                I'm looking for an entry-level role where I can contribute practically, keep learning, and grow alongside an IT team.
+              </p>
 
-          <div class="contact-content">
-            <h3>Contact</h3>
-            <ul>
-              <li>LinkedIn: <a href="https://www.linkedin.com/in/rahil-tahir/" target="_blank" rel="noopener noreferrer">linkedin.com/in/rahil-tahir</a></li>
-              <li>GitHub: <a href="https://github.com/hippo246" target="_blank" rel="noopener noreferrer">github.com/hippo246</a></li>
-              <li>Résumé: <a href="/resume.html" target="_blank">View Résumé</a></li>
-            </ul>
-            <p class="note" style="margin-top: 1rem;">Professional email available upon request.</p>
+              <div class="about-roles">
+                <p class="about-roles-label">Open to</p>
+                <div class="role-tags">
+                  <span class="role-tag">IT Support</span>
+                  <span class="role-tag">Helpdesk</span>
+                  <span class="role-tag">Desktop Support</span>
+                  <span class="role-tag">Junior Network Support</span>
+                  <span class="role-tag">IT Operations Support</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-content">
+              <h3>Get in Touch</h3>
+              <ul class="contact-list">
+                <li>
+                  <span class="contact-label">Email</span>
+                  <a href="mailto:Rahil.tahir01@gmail.com">Rahil.tahir01@gmail.com</a>
+                </li>
+                <li>
+                  <span class="contact-label">LinkedIn</span>
+                  <a href="https://www.linkedin.com/in/rahil-tahir/" target="_blank" rel="noopener noreferrer">linkedin.com/in/rahil-tahir</a>
+                </li>
+                <li>
+                  <span class="contact-label">GitHub</span>
+                  <a href="https://github.com/hippo246" target="_blank" rel="noopener noreferrer">github.com/hippo246</a>
+                </li>
+                <li>
+                  <span class="contact-label">Résumé</span>
+                  <a href="/resume.html" target="_blank">View / Print PDF</a>
+                </li>
+              </ul>
+            </div>
+
           </div>
         </div>
       </section>
@@ -1002,9 +1537,19 @@ Remote Access via Tailscale
 
     <footer class="footer">
       <div class="container">
-        <p>&copy; 2024. Building things, breaking things, learning things.</p>
+        <p>&copy; 2024–2026. Building things, breaking things, learning things.</p>
       </div>
     </footer>
+
+    <!-- Certificate Lightbox Modal -->
+    <div class="cert-modal" id="certModal" role="dialog" aria-modal="true" aria-labelledby="certModalTitle" hidden>
+      <div class="cert-modal-backdrop"></div>
+      <div class="cert-modal-content">
+        <button class="cert-modal-close" aria-label="Close certificate">&times;</button>
+        <p class="cert-modal-title" id="certModalTitle"></p>
+        <img class="cert-modal-img" src="" alt="" />
+      </div>
+    </div>
 
     <script type="module" src="/src/main.js"></script>
   </body>

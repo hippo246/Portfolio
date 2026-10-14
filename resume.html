@@ -1,9 +1,20 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rahil Tahir - Résumé</title>
+  <meta name="description" content="Résumé of Rahil Tahir — aspiring IT and cybersecurity professional with hands-on homelab, Linux administration, Docker, and networking experience." />
+  <title>Rahil Tahir — Résumé</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Rahil Tahir — Résumé" />
+  <meta property="og:description" content="Résumé of Rahil Tahir — aspiring IT and cybersecurity professional with hands-on homelab, Linux administration, Docker, and networking experience." />
+  <meta property="og:image" content="/profile.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -13,64 +24,71 @@
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      font-size: 11pt;
-      line-height: 1.5;
+      font-size: 10.5pt;
+      line-height: 1.55;
       color: #333;
       background: #fff;
-      max-width: 800px;
+      max-width: 820px;
       margin: 0 auto;
       padding: 40px 50px;
     }
 
     .header {
-      border-bottom: 2px solid #333;
-      padding-bottom: 20px;
-      margin-bottom: 25px;
+      border-bottom: 2px solid #1a1a1a;
+      padding-bottom: 18px;
+      margin-bottom: 22px;
     }
 
     .name {
-      font-size: 24pt;
+      font-size: 22pt;
       font-weight: 700;
+      letter-spacing: -0.02em;
       color: #000;
-      margin-bottom: 5px;
+      margin-bottom: 4px;
     }
 
     .title {
-      font-size: 14pt;
-      color: #666;
-      margin-bottom: 15px;
+      font-size: 10pt;
+      color: #777;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
     .contact {
-      font-size: 10pt;
-      color: #666;
+      font-size: 9.5pt;
+      color: #555;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem 1.5rem;
     }
 
     .contact span {
-      margin-right: 20px;
+      margin-right: 0;
     }
 
     .section {
-      margin-bottom: 25px;
+      margin-bottom: 20px;
     }
 
     .section-title {
-      font-size: 14pt;
+      font-size: 8.5pt;
       font-weight: 700;
-      color: #000;
+      color: #888;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 15px;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 5px;
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+      border-bottom: 1px solid #e0e0e0;
+      padding-bottom: 4px;
     }
 
     .content {
-      margin-bottom: 15px;
+      margin-bottom: 10px;
     }
 
     .content p {
-      margin-bottom: 10px;
+      margin-bottom: 8px;
+      line-height: 1.6;
     }
 
     .skills-grid {
@@ -80,14 +98,15 @@
     }
 
     .skill-category {
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .skill-category strong {
       display: block;
       font-weight: 600;
-      color: #000;
-      margin-bottom: 5px;
+      color: #111;
+      margin-bottom: 3px;
+      font-size: 9.5pt;
     }
 
     .skill-category ul {
@@ -97,30 +116,43 @@
 
     .skill-category li {
       position: relative;
-      padding-left: 15px;
-      margin-bottom: 3px;
+      padding-left: 12px;
+      margin-bottom: 2px;
+      font-size: 9.5pt;
+      color: #444;
     }
 
     .skill-category li::before {
-      content: "•";
+      content: "·";
       position: absolute;
       left: 0;
-      color: #666;
+      color: #999;
+      font-weight: 700;
     }
 
     .project-item {
-      margin-bottom: 15px;
+      margin-bottom: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .project-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
     }
 
     .project-item strong {
       display: block;
       font-weight: 600;
       color: #000;
+      margin-bottom: 3px;
     }
 
     .project-item p {
-      margin: 5px 0;
+      margin: 0;
       color: #555;
+      line-height: 1.55;
     }
 
     @media print {
@@ -133,15 +165,84 @@
     @page {
       margin: 0.5in;
     }
+
+    .contact a {
+      color: #333;
+      text-decoration: none;
+    }
+
+    .contact a:hover {
+      text-decoration: underline;
+    }
+
+    /* ─── Back button bar (screen only) ─── */
+    .resume-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 28px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #e8e8e8;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 10pt;
+      font-weight: 500;
+      color: #555;
+      text-decoration: none;
+      padding: 0.4rem 0.9rem;
+      border: 1px solid #d0d0d0;
+      border-radius: 4px;
+      transition: color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .back-btn:hover {
+      color: #000;
+      border-color: #999;
+    }
+
+    .print-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 10pt;
+      font-weight: 500;
+      color: #fff;
+      background: #1a1a1a;
+      text-decoration: none;
+      padding: 0.4rem 0.9rem;
+      border: 1px solid #1a1a1a;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+
+    .print-btn:hover {
+      background: #333;
+    }
+
+    @media print {
+      .resume-nav {
+        display: none;
+      }
+    }
   </style>
 </head>
 <body>
+  <div class="resume-nav">
+    <a href="/" class="back-btn">← Back to Portfolio</a>
+    <button class="print-btn" onclick="window.print()">Print / Save PDF</button>
+  </div>
+
   <div class="header">
     <div class="name">RAHIL TAHIR</div>
     <div class="title">Aspiring IT & Cybersecurity Professional</div>
     <div class="contact">
-      <span>LinkedIn: linkedin.com/in/rahil-tahir</span>
-      <span>GitHub: github.com/hippo246</span>
+      <span>LinkedIn: <a href="https://www.linkedin.com/in/rahil-tahir/" target="_blank" rel="noopener noreferrer">linkedin.com/in/rahil-tahir</a></span>
+      <span>GitHub: <a href="https://github.com/hippo246" target="_blank" rel="noopener noreferrer">github.com/hippo246</a></span>
     </div>
   </div>
 
@@ -191,9 +292,10 @@
         <strong>Networking (Learning)</strong>
         <ul>
           <li>Cisco networking fundamentals (Packet Tracer labs, console access)</li>
-          <li>IP addressing and subnetting practice</li>
-          <li>TCP/IP, DNS, DHCP concepts</li>
-          <li>Router and switch CLI (PuTTY console access to Cisco 2960)</li>
+          <li>19-lab self-directed series: VLANs, OSPF, NAT, ACLs, SSH, STP, EtherChannel, HSRP, IPv6, IPsec VPN, Syslog/NTP</li>
+          <li>Hotel enterprise network project: hierarchical topology, 5 VLANs, DHCP snooping, DAI, BPDU Guard, Storm Control, SSH v2, ACLs, NAT/PAT, NTP (Packet Tracer)</li>
+          <li>Physical Cisco 2960 switch console access via PuTTY</li>
+          <li>IP addressing, subnetting, TCP/IP, DNS, DHCP concepts</li>
           <li>LAN troubleshooting (subnet changes, connectivity issues)</li>
         </ul>
       </div>
@@ -256,9 +358,46 @@
   </div>
 
   <div class="section">
+    <div class="section-title">Windows Desktop Support</div>
+    <div class="content">
+      <div class="project-item">
+        <strong>Informal IT Support — Friends & Family (Windows 11 focus)</strong>
+        <p>Provided informal technical assistance to friends experiencing Windows 10 and Windows 11 issues. Not paid employment — practical support with a genuine focus on diagnosing and resolving problems. Primary experience on Windows 11.</p>
+      </div>
+      <div class="project-item">
+        <strong>Windows 11 KB5121003 — Game Crashes & BSODs (August 2026)</strong>
+        <p>Assisted friends whose systems developed game crashes and Blue Screen of Death errors following the KB5121003 Windows 11 update (released 11 August 2026, confirmed Microsoft-acknowledged issue caused by inpoutx64.sys driver conflict with RGB peripherals). Guided recovery via Safe Mode, uninstalled the update through Settings → Windows Update → Update history, restored system stability, and advised temporarily pausing Windows Updates.</p>
+      </div>
+      <div class="project-item">
+        <strong>Windows 11 Wi-Fi & Bluetooth Connectivity Issues</strong>
+        <p>Investigated missing Wi-Fi/Bluetooth icons and unavailable adapters on Windows 11 laptops. Diagnosed across Device Manager adapter status, service state (WLAN AutoConfig, Bluetooth Support Service), and Quick Settings layout — distinguishing UI-level issues from actual hardware/driver faults.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
     <div class="section-title">Learning & Development</div>
     <div class="content">
-      <p>Currently building networking foundation through Cisco-focused learning, including IP addressing, subnetting, routing, switching, and network troubleshooting. Exploring Linux security fundamentals, firewall configuration, system hardening, and basic incident response concepts. Long-term goal: develop purple-team skills spanning both defensive security and ethical hacking.</p>
+      <p>Currently building networking foundation through Cisco-focused learning, including IP addressing, subnetting, routing, switching, and network troubleshooting. Completed a self-directed 19-lab Packet Tracer series covering VLANs, OSPF, NAT/PAT, ACLs, port security, SSH, STP, EtherChannel, HSRP, IPv6, Syslog/NTP, and site-to-site IPsec VPN — each lab documented with topology, addressing, full configuration, and command explanations. Also completed a hotel network floorplan design project in Packet Tracer. Exploring Linux security fundamentals, firewall configuration, system hardening, and basic incident response concepts. Long-term goal: develop purple-team skills spanning both defensive security and ethical hacking.</p>
+    </div>
+    <div class="content">
+      <strong style="display:block; font-size:9.5pt; margin-bottom:6px; color:#111;">Certificates &amp; Courses</strong>
+      <div class="project-item">
+        <strong>First Line Support — Service Desk Simulator</strong>
+        <p>Completed 9 September 2026 · 31 tickets resolved · 94% accuracy · 6 hrs 38 min logged</p>
+      </div>
+      <div class="project-item">
+        <strong>Learn Ethical Hacking From Scratch — Udemy</strong>
+        <p>Completed 22 January 2026 · 15 hours · Instructors: Zaid Sabih, z Security</p>
+      </div>
+      <div class="project-item">
+        <strong>Exploring Networking with Cisco Packet Tracer — Cisco Networking Academy</strong>
+        <p>Completed 28 October 2025</p>
+      </div>
+      <div class="project-item">
+        <strong>Getting Started with Cisco Packet Tracer — Cisco Networking Academy</strong>
+        <p>Completed 2 October 2025</p>
+      </div>
     </div>
   </div>
 
