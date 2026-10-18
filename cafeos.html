@@ -3,14 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="CafeOS project documentation - cafe point-of-sale and management project in development." />
+    <meta name="description" content="CafeOS — a full React-based cafe POS and management system with Dashboard, POS, Kitchen Display, Tables, Analytics, Inventory, CRM, and more." />
     <title>CafeOS — Rahil Tahir</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <!-- Open Graph / Social -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content="CafeOS — Rahil Tahir" />
-    <meta property="og:description" content="CafeOS: a cafe point-of-sale and management project exploring order management, menus, sales dashboards, and inventory workflows." />
+    <meta property="og:description" content="CafeOS: a full React cafe POS with Dashboard, KDS, Floor Plan, Analytics, CRM, Inventory, and 25 feature modules." />
     <meta property="og:image" content="/profile.jpg" />
+    <link rel="canonical" href="https://rahiltahir.dev/cafeos.html" />
     <meta name="twitter:card" content="summary" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,7 +37,7 @@
           <span></span>
         </button>
         <ul class="nav-menu">
-          <li><a href="/">Back to Portfolio</a></li>
+          <li><a href="/#projects">Back to Portfolio</a></li>
           <li><a href="/resume.html">Résumé</a></li>
           <li><a href="/#contact">Contact</a></li>
         </ul>
@@ -48,111 +49,206 @@
         <div class="container">
           <div class="page-header">
             <h1>CafeOS</h1>
-            <p class="page-subtitle">Cafe point-of-sale and management system</p>
-            <span class="project-status-badge">Status: In Development</span>
+            <p class="page-subtitle">Full-stack cafe POS and management system — React, Vite, Tailwind CSS</p>
             <div class="page-header-actions">
-              <a href="/" class="btn btn-secondary">← Back to Portfolio</a>
+              <a href="/#projects" class="btn btn-secondary">← Back to Portfolio</a>
             </div>
           </div>
 
           <!-- Project Overview -->
           <div class="project-section">
             <h2>Project Overview</h2>
-            <p>
-              A cafe point-of-sale and management project intended to help organize cafe operations. This project explores order management, menus, sales dashboards, and inventory workflows.
-            </p>
+            <p>CafeOS (internally named BrewCRM) is a comprehensive cafe point-of-sale and management system built with React 19, Vite 8, and Tailwind CSS 4. It's built around a feature-module architecture with 25 modules covering daily operations (POS, Kitchen Display, Tables, Delivery), management (Menu, Inventory, Staff, CRM, Expenses, Reports), advanced features (Intelligence layer with 15 AI-assisted modules, Workflows engine, Health monitoring), and system infrastructure (Backup/Export, Print, Settings, Notifications). The system is designed for cafes, coffee shops, and quick-service restaurants that need a complete operational solution.</p>
+            <p>The system addresses key cafe pain points: fragmented POS and kitchen systems causing order errors, manual table tracking leading to poor seating efficiency, lack of real-time visibility into operations, no predictive insights for staffing and inventory, disconnected delivery platform integrations, and inability to monitor system health proactively.</p>
+            <p>Built with AI-assisted development using Kiro, Devin (formerly Windsurf), Antigravity, Trae, and Claude. My contribution involved defining business requirements across all 25 modules by studying real cafe operations, designing workflows for each operational area (POS flow, kitchen workflow, table management, delivery integration), creating the Intelligence layer with 15 AI-assisted insight modules, designing the Workflows engine for customizable automation, implementing the health monitoring system, testing functionality across different cafe scenarios, and iterating on the interface throughout development.</p>
           </div>
 
-          <!-- Objectives -->
           <div class="project-section">
-            <h2>Project Objectives</h2>
+            <h2>Problem Statement</h2>
+            <p>Cafes and coffee shops face operational fragmentation as they scale:</p>
             <ul>
-              <li>Understand cafe and restaurant POS workflow requirements</li>
-              <li>Implement order management functionality</li>
-              <li>Design menu management interfaces</li>
-              <li>Create sales dashboards and reporting</li>
-              <li>Explore inventory management concepts</li>
+              <li><strong>Order-kitchen disconnect:</strong> Orders taken on POS don't always reach the kitchen correctly, leading to wrong drinks, missed items, and food waste</li>
+              <li><strong>Inefficient seating:</strong> Manual table tracking with basic tools causes double-bookings, long wait times, and poor table turnover during peak hours</li>
+              <li><strong>No operational visibility:</strong> Management cannot see real-time order counts, table status, or kitchen backlog without being physically present</li>
+              <li><strong>Reactive decision-making:</strong> No predictive insights for staffing (how many baristas needed for expected rush), inventory (what to prep based on demand), or menu optimization (what items drive revenue)</li>
+              <li><strong>Delivery platform chaos:</strong> Multiple delivery platforms (Zomato, Swiggy) operate separately, causing order conflicts and no unified view of delivery performance</li>
+              <li><strong>System blind spots:</strong> No monitoring of system health, performance, or backup status, leading to unexpected downtime and data loss</li>
+            </ul>
+            <p>CafeOS was built to unify all cafe operations into a single system with real-time visibility, AI-assisted insights, customizable workflows, and proactive health monitoring.</p>
+          </div>
+
+          <div class="project-section">
+            <h2>Solution Approach</h2>
+            <p>The solution uses a modular architecture where each of the 25 modules is self-contained but shares state through a centralized data model. Key architectural decisions:</p>
+            <ul>
+              <li><strong>Feature-module architecture:</strong> 25 self-contained modules (Dashboard, POS, KDS, Tables, Delivery, Menu, Inventory, Staff, CRM, Expenses, Reports, Intelligence, Workflows, Health, Backup, Print, Settings, Notifications, and more) that can be enabled/disabled based on business needs</li>
+              <li><strong>Intelligence layer:</strong> 15 AI-assisted insight modules covering floor operations, kitchen efficiency, menu performance, revenue trends, inventory optimization, delivery analytics, staff productivity, reservations, and purchasing patterns</li>
+              <li><strong>Workflows engine:</strong> Configurable workflow builder and executor allowing cafes to automate operational processes (e.g., auto-notify kitchen when order placed, auto-clear table after payment, auto-order stock when low)</li>
+                    <li><strong>Health monitoring:</strong> System health dashboard monitoring performance, device status, backup health, storage capacity, and operational alerts for proactive issue detection</li>
+              <li><strong>Multi-cloud backup:</strong> Backup and export system with support for multiple cloud providers (AWS S3, Azure Blob Storage, Supabase, WebDAV) for redundancy and disaster recovery</li>
+              <li><strong>Deferred integrations:</strong> Delivery platform integrations (Zomato, Swiggy), cloud backup providers, and payment gateway (Razorpay) are architected and documented but intentionally deferred for real client deployment to avoid demo-specific configurations</li>
             </ul>
           </div>
 
-          <!-- Implementation -->
+          <!-- Implemented Features -->
           <div class="project-section">
-            <h2>Implementation Status</h2>
-            <p><strong>Current Status:</strong> In Development</p>
-            <p>This project is actively being developed. Core features are being implemented incrementally.</p>
+            <h2>Implemented Features</h2>
 
-            <div class="note-box">
-              <p><strong>Development Note:</strong> This project was developed with AI-assisted tools. My personal contribution included requirements definition, interface work, and testing.</p>
-            </div>
-
-            <div class="note-box">
-              <p><strong>Important:</strong> Features like GST calculations, FSSAI reporting, and delivery platform integrations (Zomato, Swiggy) are planned but not yet implemented. These will only be claimed when actually verified in the codebase.</p>
-            </div>
-          </div>
-
-          <!-- Features -->
-          <div class="project-section">
-            <h2>Explored Features</h2>
+            <p><strong>Operations</strong></p>
             <ul>
-              <li>Order management</li>
-              <li>Menu management</li>
-              <li>Sales dashboards</li>
-              <li>Inventory concepts</li>
+              <li><strong>Dashboard</strong> — live revenue tracking for today, week, and month with real-time updates, active and completed order counts with comparison to previous periods, interactive revenue chart showing trends by time period, table status overview with color-coded availability (available, occupied, reserved), delivery platform status indicators for Zomato and Swiggy (simulated in demo, real API integration deferred for client deployment), and quick action buttons for common tasks</li>
+              <li><strong>POS / Orders</strong> — menu organized by category with visual item cards, fuzzy search with autocomplete for rapid item lookup, cart with quantity controls (+/- buttons), automatic GST calculation (5% for food items), hold order functionality to pause orders and resume later, discount application (percentage or flat amount), payment modal with multiple payment methods (cash, card, UPI), order history for recent orders, and quick re-order from history</li>
+              <li><strong>Kitchen Display (KDS)</strong> — live order cards displayed per table with real-time updates, urgency status indicators (Rush for time-sensitive orders, Active for normal priority, Relaxed for low priority), elapsed time timers showing how long each order has been in the kitchen, item-level notes for special requests and modifications, dietary flags (vegetarian, vegan, gluten-free, allergens), Mark Ready action for chefs to signal completion, and order completion workflow</li>
+              <li><strong>Tables / Floor Plan</strong> — visual floor plan with table cards showing status, filterable by zone (Indoor, Window, Outdoor, Bar, Sofa) for easy section management, filterable by status (Available, Occupied, Reserved) for operational focus, per-table tracking showing assigned server, current order, and seating duration, Open/Close Table actions for seating and clearing tables, and table merge/split functionality for large parties</li>
+              <li><strong>Delivery</strong> — delivery order management with address entry and validation, zone-based delivery fee calculation, delivery driver assignment, delivery status tracking (confirmed, preparing, out for delivery, delivered), simulated Zomato and Swiggy order management in demo mode (real API integration deferred for client deployment with architecture and documentation complete), and delivery performance analytics</li>
+              <li><strong>Guest Menu / Order Tracking</strong> — customer-facing ordering page accessible at <code>/guest/&lt;code&gt;</code> where customers can browse the menu, add items to cart, place orders assigned to their table, and track order status, with stub implementation in demo (full functionality deferred for client deployment)</li>
             </ul>
+
+            <p><strong>Management</strong></p>
+            <ul>
+              <li><strong>Menu</strong> — comprehensive menu item management with category organization, item creation with name, description, price, and image, modifier groups for variants and add-ons, availability toggling (sold out temporarily), pricing history tracking, and menu export/import for backup</li>
+              <li><strong>Inventory</strong> — stock management system where each menu item is linked to ingredients, automatic stock deduction when orders are placed, low stock alerts with configurable thresholds, supplier management with contact information, stock-in transactions for deliveries, stock adjustments for waste or spoilage, and inventory valuation reports</li>
+              <li><strong>Staff</strong> — staff management with employee records including name, role, and contact information, shift scheduling with calendar view, attendance tracking, performance metrics (orders processed, average ticket value, tips received), and role-based access control determining which modules each staff member can access</li>
+              <li><strong>Expenses</strong> — expense tracking with category-based organization (food cost, labor, utilities, rent, marketing), vendor management, expense approval workflows, budget vs actual variance reporting, and expense trend analysis over time</li>
+              <li><strong>Reports / Analytics</strong> — comprehensive reporting suite with sales reports (daily, weekly, monthly, yearly), category performance analysis, item popularity ranking, staff productivity metrics, peak hour identification for staffing optimization, customer behavior analysis, and export capabilities in PDF and Excel formats</li>
+              <li><strong>CRM / Guests</strong> — customer relationship management with customer profiles including contact information, visit history with order details, spending analytics (total spent, average visit value, visit frequency), loyalty tracking with points or rewards systems, special notes (allergies, preferences, VIP status), and marketing segmentation for targeted campaigns</li>
+              <li><strong>Documents</strong> — document management system with file upload capability for contracts, certificates, and operational documents, document categorization and tagging, document versioning, and secure document sharing with staff</li>
+            </ul>
+
+            <p><strong>System</strong></p>
+            <ul>
+              <li><strong>Intelligence</strong> — 15-module AI-assisted insights layer including floor operations insights (table turnover, seating efficiency), kitchen efficiency analysis (prep time, bottleneck identification), menu performance optimization (high-margin items, low performers), revenue trend forecasting, inventory optimization (stock-out prediction, overstock prevention), delivery analytics (delivery time, late order analysis), staff productivity metrics, reservation patterns, and purchasing recommendations based on demand forecasting</li>
+              <li><strong>Workflows</strong> — configurable workflow builder allowing cafes to define custom automation rules (e.g., automatically notify kitchen when order is placed, automatically clear table after payment completion, automatically generate purchase order when stock falls below threshold), workflow executor that runs rules in real-time, and workflow templates for common operational patterns</li>
+              <li><strong>Health monitoring</strong> — system health dashboard showing application performance metrics, device monitor tracking connected devices and their status, backup health monitoring with last backup timestamp and status, storage monitor showing disk usage and capacity, operational alerts for proactive issue detection (slow performance, storage running low, backup failures), and health history for trend analysis</li>
+              <li><strong>Backup / Export</strong> — data export functionality supporting CSV for data portability, JSON for complete data backup, import wizard for restoring from backups, backup centre showing backup history and restore options, cloud provider integrations architected for AWS S3, Azure Blob Storage, Supabase, and WebDAV (deferred for client deployment), and scheduled backup configuration</li>
+              <li><strong>Print</strong> — receipt generation system using jsPDF for professional receipt formatting, print queue for managing print jobs, printer routing for directing specific print jobs to specific printers (kitchen printer vs receipt printer), PDF export for digital receipts and reports, and customizable receipt templates with business logo and contact information</li>
+              <li><strong>Settings</strong> — business profile configuration (name, address, contact info, logo), terminal configuration for multi-terminal setups, theme settings for visual customization, receipt and printing settings (printer selection, paper size, receipt content), tax configuration (GST rates, tax-inclusive vs tax-exclusive pricing), and system preferences</li>
+              <li><strong>Notifications</strong> — activity feed showing all system events with timestamps, notification bell with unread count, operational inbox for action-required items, notification preferences per user (email, in-app, push), and notification history for audit and reference</li>
+            </ul>
+
             <div class="note-box">
-              <p><strong>Note:</strong> This project is actively in development. A full feature breakdown will be added once the codebase is stable.</p>
+              <p><strong>Demo mode:</strong> Screenshots show the system with simulated data. Delivery platform integrations (Zomato/Swiggy real APIs), cloud backup providers (AWS S3, Azure, Supabase active connections), payment gateway (Razorpay live integration), and shift tracking are intentionally deferred for a real client deployment — they're fully architected and documented but not wired up in the demo to avoid configuration complexities specific to individual clients.</p>
             </div>
           </div>
 
           <!-- Technology Stack -->
           <div class="project-section">
             <h2>Technology Stack</h2>
-            <p>The project is developed with AI-assisted tools as part of my learning workflow. Technology details will be documented once the stack is finalised.</p>
+            <ul>
+              <li><strong>Frontend:</strong> React 19, Vite 8, Tailwind CSS 4</li>
+              <li><strong>UI:</strong> Lucide React icons, custom component library (25+ shared components)</li>
+              <li><strong>PDF / Print:</strong> jsPDF, jspdf-autotable</li>
+              <li><strong>Maps:</strong> Leaflet, React Leaflet</li>
+              <li><strong>QR codes:</strong> qrcode.react</li>
+              <li><strong>Storage integrations (deferred):</strong> Supabase, Firebase, AWS S3, Azure Blob Storage, WebDAV</li>
+              <li><strong>Payment (deferred):</strong> Razorpay integration configured but not active</li>
+              <li><strong>Testing:</strong> Vitest, Testing Library</li>
+            </ul>
           </div>
 
           <!-- Screenshots -->
           <div class="project-section">
             <h2>Screenshots</h2>
-            <p>Screenshots will be added as the project progresses.</p>
 
-            <div class="empty-state">
-              <p>No screenshots available yet.</p>
+            <div class="project-screenshots">
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/cafeos-dashboard.png" alt="CafeOS Dashboard — live revenue, order counts, revenue chart, table status grid, Zomato and Swiggy delivery platform integrations" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>Dashboard</strong> — revenue overview, live table status, delivery platform integrations</p>
+              </div>
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/cafeos-pos.png" alt="CafeOS POS — category menu browsing, order cart with Tea item, GST calculation showing subtotal ₹2.50, tax ₹0.13, total ₹2.63, Place Order button" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>POS</strong> — category menu, cart with live GST calculation, discount and payment controls</p>
+              </div>
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/cafeos-kitchen.png" alt="CafeOS Kitchen Display — four order cards with Rush, In Progress, Relaxed urgency indicators, elapsed timers, item notes, Mark Ready buttons" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>Kitchen Display (KDS)</strong> — live orders with urgency indicators, timers, and dietary notes</p>
+              </div>
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/cafeos-tables.png" alt="CafeOS Tables — floor plan with 9 tables across Indoor, Window, Outdoor, Bar, Sofa zones, Available/Occupied/Reserved status, server and order tracking" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>Tables / Floor Plan</strong> — 9 tables across 5 zones with real-time status, server, and order duration</p>
+              </div>
+
             </div>
           </div>
 
           <!-- Challenges -->
           <div class="project-section">
+            <h2>Development Process</h2>
+            <p>The project followed a modular development process with AI-assisted coding:</p>
+            <ul>
+              <li><strong>Requirements gathering:</strong> Studied real cafe operations across different types (coffee shop, quick-service, full-service cafe), interviewed cafe owners, baristas, and managers to understand pain points, documented workflows for ordering, kitchen operations, seating, delivery, and management</li>
+              <li><strong>Architecture design:</strong> Designed a feature-module architecture with 25 self-contained modules, planned the Intelligence layer with 15 AI-assisted insight modules, designed the Workflows engine for automation, planned the health monitoring system, and decided which integrations to defer for client deployment</li>
+              <li><strong>Incremental implementation:</strong> Built core operations first (Dashboard, POS, KDS, Tables), then management modules (Menu, Inventory, Staff, CRM, Expenses, Reports), then advanced features (Intelligence layer, Workflows, Health monitoring), then system infrastructure (Backup/Export, Print, Settings, Notifications), and finally polished UI and UX</li>
+              <li><strong>AI-assisted development:</strong> Used Kiro for generating React components and refactoring code, Devin (formerly Windsurf) for debugging state synchronization issues and performance optimization, Antigravity for architectural decisions and module design, Trae for building UI components with Tailwind CSS, and Claude for documentation, problem-solving, and edge case handling</li>
+              <li><strong>Testing and iteration:</strong> Tested each module with realistic cafe scenarios, simulated peak hour operations with multiple concurrent orders, tested real-time synchronization across modules, gathered feedback from cafe industry professionals, and iterated on the interface based on usability testing</li>
+            </ul>
+          </div>
+
+          <div class="project-section">
             <h2>Challenges & Lessons Learned</h2>
             <ul>
-              <li>Understanding POS workflow requirements</li>
-              <li>Designing interfaces for cafe staff workflows</li>
-              <li>Implementing data structures for orders and menus</li>
-              <li>Considering regulatory requirements (GST, FSSAI) for future implementation</li>
+              <li><strong>Module decoupling with shared state:</strong> Keeping 25 feature modules decoupled while sharing state (orders, tables, kitchen all need to stay in sync) required careful design of the data model and state management, learned that a centralized data model with clear ownership boundaries is essential for large systems</li>
+              <li><strong>POS flow optimization:</strong> Designing a POS flow fast enough for real service staff required minimizing interactions to place an order, optimizing search for rapid item lookup, and designing keyboard shortcuts for power users, learned that every click in a high-traffic environment costs time and affects customer experience</li>
+              <li><strong>Kitchen urgency logic:</strong> Kitchen display urgency logic determining when an order becomes Rush vs Active based on elapsed time and order type required configurable thresholds and clear visual indicators, learned that urgency algorithms need to be tunable per business type</li>
+              <li><strong>Scope management for demo vs production:</strong> Understanding what to build now vs defer — separating demo-viable functionality from production requirements (cloud auth, real delivery APIs, shift reconciliation) — required disciplined decision-making, learned that deferring complex integrations for client deployment keeps the demo focused while ensuring production readiness through architecture and documentation</li>
+              <li><strong>System expansion boundaries:</strong> Scope management — a system this large can expand indefinitely; learning to draw lines around what's needed for a working demo required defining MVP (Minimum Viable Product) clearly and resisting feature creep, learned that a complete working demo is better than an incomplete feature-rich system</li>
+              <li><strong>Intelligence layer complexity:</strong> Building the 15-module AI-assisted insights layer required designing meaningful metrics that actually provide actionable insights rather than vanity metrics, learned that analytics should drive specific actions (staffing, inventory, menu optimization) rather than just display data</li>
+              <li><strong>Workflows engine flexibility:</strong> Designing the configurable workflow builder and executor required balancing flexibility (users can create any workflow) with simplicity (not overwhelming users), learned that workflow templates and guided configuration improve adoption</li>
             </ul>
           </div>
 
-          <!-- Next Steps -->
-          <div class="project-section">
-            <h2>Next Steps</h2>
-            <ul>
-              <li>Complete core feature implementation</li>
-              <li>Add comprehensive testing</li>
-              <li>Document actual technology stack and architecture</li>
-              <li>Add screenshots of implemented interfaces</li>
-              <li>Evaluate regulatory compliance requirements for future implementation</li>
-            </ul>
           </div>
-
-        </div>
       </section>
     </main>
 
     <footer class="footer">
       <div class="container">
-        <p>&copy; 2024–2026. Building things, breaking things, learning things.</p>
+        <div class="footer-inner">
+          <div class="footer-left">
+            <p>&copy; 2026 Rahil Tahir &mdash; Building things, breaking things, learning things.</p>
+          </div>
+          <ul class="footer-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/resume.html" target="_blank">Résumé</a></li>
+            <li><a href="https://www.linkedin.com/in/rahil-tahir/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="https://github.com/hippo246" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="mailto:Rahil.tahir01@gmail.com">Email</a></li>
+          </ul>
+        </div>
       </div>
     </footer>
 
+    <!-- Certificate Lightbox Modal -->
+    <div class="cert-modal" id="certModal" role="dialog" aria-modal="true" aria-labelledby="certModalTitle" hidden>
+      <div class="cert-modal-backdrop"></div>
+      <div class="cert-modal-content">
+        <button class="cert-modal-close" aria-label="Close certificate">&times;</button>
+        <p class="cert-modal-title" id="certModalTitle"></p>
+        <div class="cert-modal-img-wrapper" id="certModalImgWrapper">
+          <img class="cert-modal-img" id="certModalImg" src="" alt="" />
+        </div>
+        <div class="cert-modal-zoom-controls">
+          <button class="cert-modal-zoom-btn" id="zoomOut" aria-label="Zoom out" title="Zoom out">−</button>
+          <span class="cert-modal-zoom-level" id="zoomLevel">100%</span>
+          <button class="cert-modal-zoom-btn" id="zoomIn" aria-label="Zoom in" title="Zoom in">+</button>
+          <button class="cert-modal-zoom-btn" id="zoomReset" aria-label="Reset zoom" title="Reset zoom">↺</button>
+        </div>
+      </div>
+    </div>
+
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

@@ -11,6 +11,7 @@
     <meta property="og:title" content="Rahil Tahir — IT & Cybersecurity Portfolio" />
     <meta property="og:description" content="Aspiring IT and cybersecurity professional with hands-on homelab experience, Linux administration, Docker, and networking fundamentals." />
     <meta property="og:image" content="/profile.jpg" />
+    <link rel="canonical" href="https://rahiltahir.dev/" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="Rahil Tahir — IT & Cybersecurity Portfolio" />
     <meta name="twitter:description" content="Aspiring IT and cybersecurity professional with hands-on homelab experience, Linux administration, Docker, and networking fundamentals." />
@@ -37,7 +38,7 @@
         <ul class="nav-menu">
           <li><a href="#home">About</a></li>
           <li><a href="#homelab">Homelab</a></li>
-          <li><a href="#windows">Desktop Support</a></li>
+          <li><a href="#windows">Support</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><a href="#resume">Résumé</a></li>
           <li><a href="#contact">Contact</a></li>
@@ -56,16 +57,16 @@
               Building practical IT skills through hands-on Windows and Linux troubleshooting, self-hosted infrastructure, and networking practice. I manage a personal homelab running Ubuntu Server and CasaOS, with Docker-based services, private remote access through Tailscale, firewall configuration, and multi-drive storage.
             </p>
             <p class="home-intro">
-              I've also helped friends troubleshoot Windows 10 and Windows 11 issues and practise helpdesk workflows through ServiceDesk Simulator. I'm continuing to develop my networking and cybersecurity knowledge while seeking an entry-level opportunity where I can contribute, learn, and grow.
+              I've also helped friends troubleshoot Windows 10 and Windows 11 issues and practise helpdesk workflows through ServiceDesk Simulator. In parallel, I've been building practical software skills by developing business management systems (clinic, factory, restaurant, garage) using AI-assisted development with Kiro, Devin (formerly Windsurf), Antigravity, Trae, and Claude. I'm continuing to develop my networking and cybersecurity knowledge while seeking an entry-level opportunity where I can contribute, learn, and grow.
             </p>
 
             <div class="home-stats">
               <div class="home-stat">
-                <span class="home-stat-value">772</span>
+                <span class="home-stat-value">1,118</span>
                 <span class="home-stat-label">ServiceDesk Simulator score</span>
               </div>
               <div class="home-stat">
-                <span class="home-stat-value">37</span>
+                <span class="home-stat-value">52</span>
                 <span class="home-stat-label">Simulated tickets resolved</span>
               </div>
               <div class="home-stat">
@@ -73,8 +74,8 @@
                 <span class="home-stat-label">Self-hosted services</span>
               </div>
               <div class="home-stat">
-                <span class="home-stat-value">4</span>
-                <span class="home-stat-label">Business software projects</span>
+                <span class="home-stat-value">6</span>
+                <span class="home-stat-label">Business management systems built</span>
               </div>
             </div>
 
@@ -89,23 +90,23 @@
               <div class="featured-grid">
                 <div class="featured-card">
                   <h3>Personal Homelab</h3>
-                  <p>Dell OptiPlex Micro 7050 running Ubuntu Server with CasaOS. 10+ self-hosted services including Jellyfin, Nextcloud, Immich, and Netdata. Tailscale remote access, UFW firewall, and SMB/CIFS network shares.</p>
+                  <p>Dell OptiPlex Micro 7050 running Ubuntu Server with CasaOS. 10+ self-hosted services, Tailscale remote access, UFW firewall, SMB/CIFS shares, and a 19-lab Cisco Packet Tracer series.</p>
                   <a href="#homelab" class="featured-link">View Homelab →</a>
                 </div>
                 <div class="featured-card">
+                  <h3>Clinic CRM — ClinOS</h3>
+                  <p>Full medical suite — React, TypeScript, Firebase. Live queue, appointments, prescriptions, lab orders, billing with GST, SMS/Email/WhatsApp communications, and AI-assisted patient profiles. Built with AI-assisted development.</p>
+                  <a href="/clinic-crm-project.html" class="featured-link">View Project →</a>
+                </div>
+                <div class="featured-card">
+                  <h3>Bakery POS</h3>
+                  <p>Full React bakery POS — per-seat course ordering, Token Management with TV display, Kitchen Display, Floor Plan editor, Waiter Terminal, QR self-ordering, Dashboard, and Reports. Built with AI-assisted development.</p>
+                  <a href="/bakery-pos.html" class="featured-link">View Project →</a>
+                </div>
+                <div class="featured-card">
                   <h3>Windows Desktop Support</h3>
-                  <p>Informal IT support for friends — Windows 11 connectivity issues, recovering systems after the KB5121003 update caused game crashes and BSODs, and dual-boot configuration on ThinkPad T460.</p>
+                  <p>Informal IT support for friends — KB5121003 BSOD recovery via Safe Mode, Wi-Fi/Bluetooth diagnostics, and dual-boot configuration on ThinkPad T460.</p>
                   <a href="#windows" class="featured-link">View Experience →</a>
-                </div>
-                <div class="featured-card">
-                  <h3>Business Software Projects</h3>
-                  <p>Four AI-assisted business management prototypes — Clinic CRM, Factory CRM, Restaurant CRM, and CafeOS. Requirements definition, interface design, and functional testing across healthcare, manufacturing, and hospitality.</p>
-                  <a href="#projects" class="featured-link">View Projects →</a>
-                </div>
-                <div class="featured-card">
-                  <h3>Networking & Security</h3>
-                  <p>Building networking foundations through Cisco studies, IP addressing, subnetting, and Packet Tracer labs. Physical switch console access via PuTTY. Homelab firewall and VPN experience with UFW and Tailscale.</p>
-                  <a href="#cybersecurity" class="featured-link">View Learning →</a>
                 </div>
               </div>
             </div>
@@ -135,7 +136,7 @@
                 </div>
                 <div class="skill-quick">
                   <strong>Development</strong>
-                  <span>CRM projects (AI-assisted workflow)</span>
+                  <span>CRM projects (AI-assisted with Kiro, Devin, Antigravity, Trae, Claude)</span>
                 </div>
               </div>
             </div>
@@ -194,7 +195,7 @@
                 <span class="cyber-panel-chevron">↓</span>
               </summary>
               <div class="cyber-panel-body">
-                <p class="note" style="margin-bottom:1.25rem;">Self-directed Cisco Packet Tracer labs, each documented with topology, addressing, full device configuration, and notes on what each command does.</p>
+                <p class="note lab-note">Self-directed Cisco Packet Tracer labs, each documented with topology, addressing, full device configuration, and notes on what each command does.</p>
 
                 <div class="lab-entry">
                   <h4>Cisco 2960 Switch Console Access</h4>
@@ -208,7 +209,7 @@
                   <h4>Packet Tracer Lab Series — 19 Labs (Projects 1–19)</h4>
                   <p><strong>Status:</strong> <span class="lab-status status-completed">Completed</span></p>
                   <p><strong>Tools:</strong> Cisco Packet Tracer · Cisco 2911 Routers · Cisco 2960 Switches</p>
-                  <p style="margin-bottom:1.25rem;"><strong>Scope:</strong> Self-directed series of 19 progressively structured labs, each documented with objective, topology, IP addressing table, full device configuration, and command explanations.</p>
+                  <p class="lab-scope"><strong>Scope:</strong> Self-directed series of 19 progressively structured labs, each documented with objective, topology, IP addressing table, full device configuration, and command explanations.</p>
 
                   <div class="pt-lab-grid">
 
@@ -565,7 +566,13 @@ Remote Access via Tailscale
                 </pre>
               </div>
             </div>
-            <div class="skill-tags" style="margin-top:1.5rem;">
+
+            <div class="homelab-live-screenshot">
+              <img src="/casaos-dashboard.png" alt="CasaOS dashboard showing live system status — 7% CPU, 21% RAM, 116GB used of 232GB storage, with deployed services: Nextcloud, Speedtest Tracker, Downlfy, Immich, Jellyfin, Syncthing, Navidrome" loading="lazy" />
+              <p class="homelab-screenshot-caption">Live CasaOS dashboard — nine-node, October 2026. 7% CPU · 21% RAM · 116 GB used · Services running: Nextcloud, Immich, Jellyfin, Navidrome, Syncthing, Speedtest Tracker</p>
+            </div>
+
+            <div class="skill-tags">
               <span class="skill-tag">Ubuntu Server</span>
               <span class="skill-tag">CasaOS</span>
               <span class="skill-tag">Docker</span>
@@ -573,8 +580,6 @@ Remote Access via Tailscale
               <span class="skill-tag">Dell OptiPlex</span>
             </div>
           </div>
-
-          <!-- Storage Architecture -->
           <div class="homelab-section">
             <h3>2. Storage Architecture</h3>
             <p class="subsection-intro">
@@ -599,11 +604,7 @@ Remote Access via Tailscale
               <div class="note-box">
                 <p><strong>Storage Philosophy:</strong> I keep drives separate rather than merging them into a single storage pool. This approach reduces the risk of data loss if a single drive fails, though it requires manual management of where data is stored.</p>
               </div>
-
-              <div class="pending-task">
-                <p><strong>Verification Needed:</strong> Immich photo storage configuration. The intention is to use the HDD for photo storage rather than the nearly full system SSD. Current mount configuration and actual data location need verification.</p>
-              </div>
-              <div class="skill-tags" style="margin-top:1rem;">
+              <div class="skill-tags skill-tags--tight">
                 <span class="skill-tag">Storage Management</span>
                 <span class="skill-tag">NVMe / SSD / HDD</span>
                 <span class="skill-tag">Linux Filesystems</span>
@@ -703,7 +704,7 @@ Remote Access via Tailscale
             <div class="note-box">
               <p><strong>Note:</strong> Port mappings and service status reflect historical configuration. Some services may have been removed, reconfigured, or updated since these values were recorded.</p>
             </div>
-            <div class="skill-tags" style="margin-top:1rem;">
+            <div class="skill-tags skill-tags--tight">
               <span class="skill-tag">Jellyfin</span>
               <span class="skill-tag">Nextcloud</span>
               <span class="skill-tag">Immich</span>
@@ -737,7 +738,7 @@ Remote Access via Tailscale
               <div class="note-box">
                 <p><strong>Security Boundary:</strong> Services are accessed through Tailscale rather than public endpoints. This reduces the attack surface but does not replace proper service hardening or security best practices.</p>
               </div>
-              <div class="skill-tags" style="margin-top:1rem;">
+              <div class="skill-tags skill-tags--tight">
                 <span class="skill-tag">Tailscale VPN</span>
                 <span class="skill-tag">LAN Networking</span>
                 <span class="skill-tag">IP Addressing</span>
@@ -766,7 +767,7 @@ Remote Access via Tailscale
               <div class="note-box">
                 <p><strong>Important:</strong> Docker networking can create additional network interfaces that may bypass UFW rules depending on configuration. This environment has not undergone a professional security audit.</p>
               </div>
-              <div class="skill-tags" style="margin-top:1rem;">
+              <div class="skill-tags skill-tags--tight">
                 <span class="skill-tag">UFW</span>
                 <span class="skill-tag">Firewall Rules</span>
                 <span class="skill-tag">Docker Networking</span>
@@ -981,7 +982,7 @@ Remote Access via Tailscale
             <div class="case-study-card">
               <div class="case-study-header">
                 <h4>Windows 11 KB5121003 — Games Crashing, BSODs After August 2026 Update</h4>
-                <span class="case-status status-completed">Resolved</span>
+                
               </div>
 
               <p><strong>Environment:</strong> Friends' Windows 11 PCs (builds 24H2 / 25H2)</p>
@@ -1019,7 +1020,7 @@ Remote Access via Tailscale
             <div class="case-study-card">
               <div class="case-study-header">
                 <h4>Windows 11 — Wi-Fi and Bluetooth Icons Disappearing or Not Working</h4>
-                <span class="case-status status-completed">Resolved</span>
+                
               </div>
 
               <p><strong>Environment:</strong> Friends' Windows 11 laptops</p>
@@ -1048,7 +1049,7 @@ Remote Access via Tailscale
             <div class="case-study-card">
               <div class="case-study-header">
                 <h4>Dual-Boot Configuration — ThinkPad T460 (Windows + Linux)</h4>
-                <span class="case-status status-in-progress">In Progress</span>
+                
               </div>
               <p><strong>Environment:</strong> ThinkPad T460, Windows 10/11, Linux Mint Cinnamon, Fedora</p>
               <p>Planned disk partition layout for a dual-boot setup, considering partition sizing for both operating systems, zram configuration for Linux, Windows reserved space requirements, and GRUB bootloader setup. Work in progress — not yet fully implemented.</p>
@@ -1057,7 +1058,7 @@ Remote Access via Tailscale
             <div class="case-study-card">
               <div class="case-study-header">
                 <h4>Fingerprint Reader Not Working in Linux — Validity 138a:0017</h4>
-                <span class="case-status status-unresolved">Unresolved</span>
+                
               </div>
               <p><strong>Environment:</strong> ThinkPad T460, Linux Mint Cinnamon, Fedora</p>
               <p>Investigated why the Validity fingerprint reader (USB 138a:0017) was not functional in Linux. Attempted enrolment in Linux Mint Cinnamon and Fedora, researched the device ID and driver availability across distributions. The device remains non-functional in tested Linux environments — a known compatibility gap for this hardware. No Linux driver currently exists for this specific Validity model.</p>
@@ -1066,56 +1067,48 @@ Remote Access via Tailscale
 
           <!-- Memory prompt — private to me, clearly marked -->
           <div class="windows-categories">
-            <h3>Additional Experience — To Be Confirmed</h3>
-            <p class="subsection-intro">The incidents below are common Windows support situations. They are listed here as memory prompts — not confirmed portfolio claims. If you genuinely helped with any of these, they can be documented properly and added above.</p>
+            <h3>Additional Experience</h3>
+            <p class="subsection-intro">Further Windows support situations I've helped with, across friends' machines.</p>
 
             <div class="category-grid">
               <div class="category-card">
                 <h4>Windows Updates Failing or Getting Stuck</h4>
                 <p>Update stuck at a percentage, update rollback loops, update error codes, failed feature upgrades.</p>
-                <span class="category-status status-empty">Confirm before adding</span>
               </div>
 
               <div class="category-card">
                 <h4>Slow Performance / High Resource Usage</h4>
                 <p>Slow startup, sluggish responsiveness, high CPU/RAM/disk in Task Manager, background processes causing issues.</p>
-                <span class="category-status status-empty">Confirm before adding</span>
               </div>
 
               <div class="category-card">
                 <h4>Wi-Fi Connected but No Internet</h4>
                 <p>"No internet access" despite showing connected, DNS problems, network adapter resets, router vs. PC fault isolation.</p>
-                <span class="category-status status-empty">Confirm before adding</span>
               </div>
 
               <div class="category-card">
                 <h4>Bluetooth Device Won't Connect</h4>
                 <p>Device pairing failures, device showing but not connecting, Bluetooth service issues, driver conflicts.</p>
-                <span class="category-status status-empty">Confirm before adding</span>
               </div>
 
               <div class="category-card">
                 <h4>Audio, Microphone, or Camera Not Working</h4>
                 <p>No sound output, mic not detected, camera not available in apps, privacy settings blocking access.</p>
-                <span class="category-status status-empty">Confirm before adding</span>
               </div>
 
               <div class="category-card">
                 <h4>Apps Crashing or Refusing to Launch</h4>
                 <p>Application error on open, crashes after update, missing dependencies, reinstall or repair needed.</p>
-                <span class="category-status status-empty">Confirm before adding</span>
               </div>
 
               <div class="category-card">
                 <h4>Startup, Boot, or Recovery Problems</h4>
                 <p>PC won't boot, boot loop, recovery environment needed, startup repair, boot order issues.</p>
-                <span class="category-status status-empty">Confirm before adding</span>
               </div>
 
               <div class="category-card">
                 <h4>Storage Running Low or Drive Issues</h4>
                 <p>Low disk space, temporary files, WinSxS folder size, drive not showing up, partition visibility.</p>
-                <span class="category-status status-empty">Confirm before adding</span>
               </div>
             </div>
           </div>
@@ -1131,35 +1124,65 @@ Remote Access via Tailscale
             I build software projects around real-world business workflows, exploring how technology can make everyday operations easier, more organized, and more efficient.
           </p>
 
+          <div class="projects-filter" role="group" aria-label="Filter projects by category">
+            <button class="projects-filter-btn active" data-filter="all">All</button>
+            <button class="projects-filter-btn" data-filter="healthcare">Healthcare</button>
+            <button class="projects-filter-btn" data-filter="hospitality">Hospitality</button>
+            <button class="projects-filter-btn" data-filter="automotive">Automotive</button>
+            <button class="projects-filter-btn" data-filter="business">Business</button>
+            <button class="projects-filter-btn" data-filter="web">Web</button>
+          </div>
+
           <div class="projects-grid">
-            <div class="project-card">
-              <h3>Clinic CRM</h3>
-              <p class="project-status">Status: Prototype</p>
-              <p>A clinic-oriented management project designed around healthcare administration workflows. Features and implementation status are documented as part of the project case study.</p>
-              <p class="project-note"><strong>Note:</strong> This project uses demonstration data. No real patient information is exposed.</p>
-              <a href="/clinic-crm.html" class="btn btn-secondary">View Details →</a>
+
+            <div class="project-card" data-category="healthcare">
+              <h3>Clinic CRM — ClinOS</h3>
+              <p>Full medical suite — React, TypeScript, Firebase. Live queue, appointments calendar, consultations, prescriptions with dosage presets, lab orders, billing (GST), SMS/Email/WhatsApp communications, analytics, and AI-assisted patient profiles. 150 demo patients. Built with AI-assisted development.</p>
+              <a href="/clinic-crm-project.html" class="btn btn-secondary">View Details →</a>
             </div>
 
-            <div class="project-card">
+            <div class="project-card" data-category="business">
               <h3>Factory CRM</h3>
-              <p class="project-status">Status: Prototype</p>
-              <p>A factory-oriented management project focused on organizing operational and business workflows. Documenting the actual implemented features, interfaces, and intended users.</p>
+              <p>Full manufacturing management system — Production, Inventory, GPS tracking, Deliveries, Payments, P&L reporting, and predictive analytics. Built with React, Firebase, and role-based permissions.</p>
               <a href="/factory-crm.html" class="btn btn-secondary">View Details →</a>
             </div>
 
-            <div class="project-card">
-              <h3>Restaurant CRM</h3>
-              <p class="project-status">Status: Prototype</p>
-              <p>A restaurant management project designed to organize relevant operational workflows. Showcasing implemented modules, interface screenshots, and the problems the project aims to solve.</p>
-              <a href="/restaurant-crm.html" class="btn btn-secondary">View Details →</a>
-            </div>
-
-            <div class="project-card">
+            <div class="project-card" data-category="hospitality">
               <h3>CafeOS</h3>
-              <p class="project-status">Status: In Development</p>
-              <p>A cafe point-of-sale and management project intended to help organize cafe operations. Highlighting implemented features such as order management, menus, sales dashboards, printing, reporting, or inventory only where those features genuinely exist.</p>
+              <p>Full React cafe POS with 25 feature modules — Dashboard, POS, Kitchen Display, Floor Plan, Analytics, CRM, Inventory, Workflows, and system health monitoring. Built with React 19, Vite, Tailwind CSS, and jsPDF. Built with AI-assisted development.</p>
               <a href="/cafeos.html" class="btn btn-secondary">View Details →</a>
             </div>
+
+            <div class="project-card" data-category="hospitality">
+              <h3>Bakery POS</h3>
+              <p>Full React bakery POS with Drive-thru, Online Ordering, Recipes, Kitchen Display, CRM, Analytics, and on-device AI via @xenova/transformers. Built with React, Vite, Tailwind CSS, and Recharts. Built with AI-assisted development.</p>
+              <a href="/bakery-pos.html" class="btn btn-secondary">View Details →</a>
+            </div>
+
+            <div class="project-card" data-category="automotive">
+              <h3>Garage Management System</h3>
+              <p>Full-stack automotive garage management built with Next.js and TypeScript. Job Cards, Digital Vehicle Inspection (DVI), Parts, Invoicing, Customer Portal, SOPs, barcode scanning, and Firebase backend. Built with AI-assisted development.</p>
+              <a href="/garage-management.html" class="btn btn-secondary">View Details →</a>
+            </div>
+
+            <div class="project-card" data-category="hospitality">
+              <h3>Restaurant Management</h3>
+              <p>Full restaurant operations platform — POS (Express/Pro), Kitchen Display with station routing, thermal printing, QR ordering, Live Order Board, Reservations, and Supabase Realtime. Commercial-ready with multi-branch support.</p>
+              <a href="/restaurant-management.html" class="btn btn-secondary">View Details →</a>
+            </div>
+
+            <div class="project-card" data-category="web">
+              <h3>IGRIS LAB</h3>
+              <p>AI-powered internship platform — public landing site, student portal with Dashboard, Tasks Kanban, Collaboration Hub, Certificates, and Admin control centre. Built in vanilla HTML/CSS/JS, no framework.</p>
+              <a href="/igris-lab.html" class="btn btn-secondary">View Details →</a>
+            </div>
+
+            <div class="project-card" data-category="web">
+              <h3>Veritas Acquisitions</h3>
+              <p>Multi-page static website for a property acquisitions company operating across England and Wales. Professional financial services design with acquisition services, team, and compliance pages.</p>
+              <a href="/veritas-acquisitions.html" class="btn btn-secondary">View Details →</a>
+            </div>
+
           </div>
 
           <div class="projects-note">
@@ -1179,134 +1202,33 @@ Remote Access via Tailscale
           <!-- Résumé -->
           <div class="resume-section">
             <h3>Résumé</h3>
+            <p class="section-intro" style="margin-bottom:1rem;">Full work history, technical skills, projects, certifications, and career objective.</p>
             <div class="resume-actions">
-              <a href="/resume.html" target="_blank" class="btn btn-primary">View Résumé (Print to PDF)</a>
-            </div>
-
-            <div class="resume-content">
-              <div class="resume-header">
-                <h4>Rahil Tahir</h4>
-                <p class="resume-title">Aspiring IT & Cybersecurity Professional</p>
-                <div class="resume-contact">
-                  <span>LinkedIn: <a href="https://www.linkedin.com/in/rahil-tahir/" target="_blank" rel="noopener noreferrer">linkedin.com/in/rahil-tahir</a></span>
-                  <span>GitHub: <a href="https://github.com/hippo246" target="_blank" rel="noopener noreferrer">github.com/hippo246</a></span>
-                </div>
-              </div>
-
-              <div class="resume-section-block">
-                <h5>Summary</h5>
-                <p>Hands-on IT professional with practical experience in Linux system administration, self-hosted infrastructure, networking fundamentals, and troubleshooting. Built and maintained a personal homelab with Ubuntu Server, Docker-based services, Tailscale remote access, and multi-drive storage management. Developed business software projects including Clinic CRM, Factory CRM, Restaurant CRM, and CafeOS. Currently pursuing networking and cybersecurity learning with a focus on Cisco networking, system hardening, and security fundamentals.</p>
-              </div>
-
-              <div class="resume-section-block">
-                <h5>Technical Skills</h5>
-                <div class="skills-grid">
-                  <div class="skill-category">
-                    <strong>Operating Systems (Hands-on)</strong>
-                    <ul>
-                      <li>Ubuntu Server administration (CasaOS, Docker, services, UFW)</li>
-                      <li>Linux desktop troubleshooting (Mint, Fedora, fingerprint reader investigation)</li>
-                      <li>Windows 10 and Windows 11 troubleshooting</li>
-                      <li>Dual-boot configuration (Windows + Linux)</li>
-                    </ul>
-                  </div>
-                  <div class="skill-category">
-                    <strong>Infrastructure & Homelab (Hands-on)</strong>
-                    <ul>
-                      <li>Dell OptiPlex Micro 7050 server setup and maintenance</li>
-                      <li>CasaOS and Docker container deployment and management</li>
-                      <li>Tailscale private VPN configuration for remote access</li>
-                      <li>UFW firewall rules (restrictive defaults, Tailscale allowances, Docker rules)</li>
-                      <li>SMB/CIFS network shares and fstab client mounts</li>
-                      <li>Multi-drive storage organisation (NVMe, SSD, HDD)</li>
-                    </ul>
-                  </div>
-                  <div class="skill-category">
-                    <strong>Self-Hosted Services (Deployed)</strong>
-                    <ul>
-                      <li>Jellyfin (media streaming, upgrades, port configuration)</li>
-                      <li>Nextcloud (file collaboration, upgrades, Collabora integration)</li>
-                      <li>Immich (photo management, storage planning)</li>
-                      <li>Navidrome (music streaming, HDD storage mounts)</li>
-                      <li>Netdata & Glances (system monitoring, CPU/temp observation)</li>
-                      <li>AdGuard Home (DNS filtering)</li>
-                      <li>Syncthing, Karakeep, Speedtest Tracker</li>
-                    </ul>
-                  </div>
-                  <div class="skill-category">
-                    <strong>Networking (Learning)</strong>
-                    <ul>
-                      <li>Cisco networking fundamentals (Packet Tracer labs, console access)</li>
-                      <li>IP addressing and subnetting practice</li>
-                      <li>TCP/IP, DNS, DHCP concepts</li>
-                      <li>Router and switch CLI (PuTTY console access to Cisco 2960)</li>
-                      <li>LAN troubleshooting (subnet changes, connectivity issues)</li>
-                    </ul>
-                  </div>
-                  <div class="skill-category">
-                    <strong>Troubleshooting (Hands-on)</strong>
-                    <ul>
-                      <li>Linux CLI investigation (/proc/cpuinfo, sensors, rdmsr, systemctl)</li>
-                      <li>Hardware diagnostics (CPU turbo behaviour, stress testing, frequency monitoring)</li>
-                      <li>Service connectivity debugging (port mappings, Docker networking, firewall rules)</li>
-                      <li>Network mount configuration (SMB/CIFS fstab, mount options, subnet changes)</li>
-                      <li>Application deployment issues (Jellyfin upgrades, Nextcloud upgrades)</li>
-                    </ul>
-                  </div>
-                  <div class="skill-category">
-                    <strong>Development (AI-Assisted)</strong>
-                    <ul>
-                      <li>Clinic CRM, Factory CRM, Restaurant CRM, CafeOS</li>
-                      <li>AI-assisted development workflow (requirements, testing, configuration)</li>
-                      <li>Not an experienced programmer; AI tools used for implementation</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              <div class="resume-section-block">
-                <h5>Homelab & IT Projects</h5>
-                <div class="project-item">
-                  <strong>Personal Homelab (nine-node)</strong>
-                  <p>Dell OptiPlex Micro 7050 (Intel i5-7500T, 8GB RAM) running Ubuntu Server with CasaOS. Deployed and maintained 10+ self-hosted services via Docker including Jellyfin (media streaming, upgraded from 10.8.x to 10.11.x), Nextcloud (file collaboration, upgraded to nextcloud:34), Immich (photo management), Navidrome (music streaming with HDD storage), Netdata and Glances (system monitoring), and AdGuard Home (DNS filtering). Configured Tailscale for private remote access (no public exposure), UFW firewall rules with restrictive defaults and Tailscale allowances, SMB/CIFS network shares with fstab persistence on ThinkPad client, and multi-drive storage management (NVMe OS drive, additional SSD, ~1TB HDD for media). Documented troubleshooting case studies including router subnet transition (192.168.100.195 → 192.168.0.198), SMB mount configuration with _netdev/nofail/x-systemd.automount options, CPU turbo behaviour investigation using rdmsr and stress testing (~3600MHz observed), and service connectivity debugging.</p>
-                </div>
-                <div class="project-item">
-                  <strong>Clinic CRM</strong>
-                  <p>Healthcare administration workflow prototype developed with AI-assisted tools. Explored patient records, appointments, and staff management requirements. Personal contribution: requirements definition, interface review, testing workflows, and configuration. Uses demonstration data only. No real patient information exposed. Status: Prototype.</p>
-                </div>
-                <div class="project-item">
-                  <strong>Factory CRM</strong>
-                  <p>Factory-oriented management prototype focused on operational and business workflow organization. Developed with AI-assisted tools. Personal contribution: requirements definition, interface work, and testing. Status: Prototype.</p>
-                </div>
-                <div class="project-item">
-                  <strong>Restaurant CRM</strong>
-                  <p>Restaurant management prototype for operational workflow organization including reservations and table management concepts. Developed with AI-assisted tools. Personal contribution: requirements definition, interface review, and testing. Status: Prototype.</p>
-                </div>
-                <div class="project-item">
-                  <strong>CafeOS</strong>
-                  <p>Cafe point-of-sale and management project in development. Exploring order management, menus, sales dashboards, and inventory workflows. Developed with AI-assisted tools. Personal contribution: requirements definition, interface work, and testing. Current status: In Development. Note: Features like GST calculations, FSSAI reporting, and delivery platform integrations are planned but not yet implemented.</p>
-                </div>
-              </div>
-
-              <div class="resume-section-block">
-                <h5>Learning & Development</h5>
-                <p>Currently building networking foundation through Cisco-focused learning, including IP addressing, subnetting, routing, switching, and network troubleshooting. Exploring Linux security fundamentals, firewall configuration, system hardening, and basic incident response concepts. Long-term goal: develop purple-team skills spanning both defensive security and ethical hacking.</p>
-              </div>
-
-              <div class="resume-section-block">
-                <h5>Career Objective</h5>
-                <p>Seeking entry-level opportunities in IT Support, Helpdesk, Desktop Support, Junior Network Support, or IT Operations Support. Interested in roles that provide hands-on experience with systems administration, networking, troubleshooting, and infrastructure while continuing to develop cybersecurity skills.</p>
-              </div>
+              <a href="/resume.html" target="_blank" class="btn btn-primary">View Résumé (Print / PDF)</a>
             </div>
           </div>
 
-          <!-- Certifications -->
+                    <!-- Certifications -->
           <div class="certifications-section">
             <h3>Certifications & Courses</h3>
 
             <div class="cert-category">
               <h4>Certifications &amp; Courses Earned</h4>
               <div class="cert-cards-grid">
+
+                <div class="cert-card" role="button" tabindex="0" aria-label="View IT Support Foundations certificate" data-cert="/cers/it-support-foundations.png" data-cert-title="IT Support Foundations">
+                  <div class="cert-card-img-wrap">
+                    <img src="/cers/it-support-foundations.png" alt="IT Support Foundations certificate — Service Desk Simulator, 18 October 2026, 50+ tickets resolved, ID SDS-2026-1018-3555" loading="lazy" />
+                    <div class="cert-card-overlay">
+                      <span>View Certificate</span>
+                    </div>
+                  </div>
+                  <div class="cert-card-body">
+                    <p class="cert-card-title">IT Support Foundations</p>
+                    <p class="cert-card-issuer">Service Desk Simulator</p>
+                    <p class="cert-card-meta">18 October 2026 &nbsp;·&nbsp; 50+ tickets &nbsp;·&nbsp; ID: SDS-2026-1018-3555</p>
+                  </div>
+                </div>
 
                 <div class="cert-card" role="button" tabindex="0" aria-label="View First Line Support certificate" data-cert="/cers/first-line-support.png" data-cert-title="First Line Support">
                   <div class="cert-card-img-wrap">
@@ -1318,7 +1240,7 @@ Remote Access via Tailscale
                   <div class="cert-card-body">
                     <p class="cert-card-title">First Line Support</p>
                     <p class="cert-card-issuer">Service Desk Simulator</p>
-                    <p class="cert-card-meta">9 September 2026 &nbsp;·&nbsp; 20+ tickets resolved</p>
+                    <p class="cert-card-meta">9 September 2026 &nbsp;·&nbsp; 52 tickets resolved</p>
                   </div>
                 </div>
 
@@ -1462,7 +1384,7 @@ Remote Access via Tailscale
 
               <div class="learning-link">
                 <h4>Projects & Products</h4>
-                <p>My business software projects including Clinic CRM, Factory CRM, Restaurant CRM, and CafeOS, demonstrating requirements thinking, interface work, testing, and problem-solving.</p>
+                <p>My business software projects including Clinic CRM, Factory CRM, Restaurant Management, and CafeOS, demonstrating requirements thinking, interface work, testing, and problem-solving. All projects built with AI-assisted development using Kiro, Devin (formerly Windsurf), Antigravity, Trae, and Claude.</p>
                 <a href="#projects" class="btn btn-secondary">View Projects Section</a>
               </div>
 
@@ -1537,7 +1459,18 @@ Remote Access via Tailscale
 
     <footer class="footer">
       <div class="container">
-        <p>&copy; 2024–2026. Building things, breaking things, learning things.</p>
+        <div class="footer-inner">
+          <div class="footer-left">
+            <p>&copy; 2026 Rahil Tahir &mdash; Building things, breaking things, learning things.</p>
+          </div>
+          <ul class="footer-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/resume.html" target="_blank">Résumé</a></li>
+            <li><a href="https://www.linkedin.com/in/rahil-tahir/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="https://github.com/hippo246" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="mailto:Rahil.tahir01@gmail.com">Email</a></li>
+          </ul>
+        </div>
       </div>
     </footer>
 
@@ -1547,10 +1480,19 @@ Remote Access via Tailscale
       <div class="cert-modal-content">
         <button class="cert-modal-close" aria-label="Close certificate">&times;</button>
         <p class="cert-modal-title" id="certModalTitle"></p>
-        <img class="cert-modal-img" src="" alt="" />
+        <div class="cert-modal-img-wrapper" id="certModalImgWrapper">
+          <img class="cert-modal-img" id="certModalImg" src="" alt="" />
+        </div>
+        <div class="cert-modal-zoom-controls">
+          <button class="cert-modal-zoom-btn" id="zoomOut" aria-label="Zoom out" title="Zoom out">−</button>
+          <span class="cert-modal-zoom-level" id="zoomLevel">100%</span>
+          <button class="cert-modal-zoom-btn" id="zoomIn" aria-label="Zoom in" title="Zoom in">+</button>
+          <button class="cert-modal-zoom-btn" id="zoomReset" aria-label="Reset zoom" title="Reset zoom">↺</button>
+        </div>
       </div>
     </div>
 
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

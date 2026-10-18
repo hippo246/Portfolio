@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Garage Management System — a full Next.js automotive garage management platform with Job Cards, DVI, Vehicles, Parts, Invoicing, Customer Portal, and more." />
+    <title>Garage Management — Rahil Tahir</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Garage Management — Rahil Tahir" />
+    <meta property="og:description" content="Full Next.js automotive garage management with Job Cards, DVI, Parts, Invoicing, SOPs, Customer Portal, and Firebase backend." />
+    <meta property="og:image" content="/profile.jpg" />
+    <link rel="canonical" href="https://rahiltahir.dev/garage-management.html" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/style.css" />
+    <style>body { padding-top: 80px; }</style>
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <nav class="nav" aria-label="Primary navigation">
+      <div class="nav-container">
+        <div class="nav-left">
+          <a href="/" class="nav-logo-link">
+            <img src="/profile.jpg" alt="Rahil Tahir" class="nav-profile">
+            <span class="nav-logo">Rahil Tahir</span>
+          </a>
+        </div>
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-menu">
+          <li><a href="/#projects">Back to Portfolio</a></li>
+          <li><a href="/resume.html">Résumé</a></li>
+          <li><a href="/#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <main id="main-content">
+      <section class="section">
+        <div class="container">
+          <div class="page-header">
+            <h1>Garage Management System</h1>
+            <p class="page-subtitle">Full-stack automotive garage management — Next.js, TypeScript, Firebase, Tailwind CSS</p>
+            <div class="page-header-actions">
+              <a href="/#projects" class="btn btn-secondary">← Back to Portfolio</a>
+            </div>
+          </div>
+
+          <div class="project-section">
+            <h2>Project Overview</h2>
+            <p>A full-stack automotive garage management platform built with Next.js 16 (App Router) and TypeScript. It covers the complete workflow of a modern service garage — from customer intake and vehicle history through to job cards, Digital Vehicle Inspection (DVI) with photo evidence, parts inventory management, invoicing with PDF generation, barcode scanning for vehicles and parts, Standard Operating Procedures (SOPs) documentation, and a customer-facing portal for service history tracking. The system is designed to replace paper-based garage operations with a digital, searchable, and auditable workflow.</p>
+            <p>The system addresses key garage pain points: paper job cards that get lost or damaged, no centralized vehicle history leading to repeat diagnostic work, manual parts tracking causing stock-outs and overstocking, fragmented customer communication, lack of standardized inspection procedures, and inability to provide customers with transparent service history.</p>
+            <p>Built with AI-assisted development using Kiro, Devin (formerly Windsurf), Antigravity, Trae, and Claude. My contribution involved defining automotive workshop requirements by studying real garage operations, designing the job card workflow from vehicle intake to completion, creating the Digital Vehicle Inspection system with pass/fail/advisory results and photo upload, implementing the barcode scanner integration for vehicles and parts using browser APIs, designing the SOP documentation system, building the customer portal with role-based access, testing functionality across different garage scenarios, and iterating on the interface based on usability feedback.</p>
+          </div>
+
+          <div class="project-section">
+            <h2>Problem Statement</h2>
+            <p>Automotive service garages, especially independent workshops, operate with fragmented systems:</p>
+            <ul>
+              <li><strong>Paper-based job cards:</strong> Job cards written on paper get lost, damaged, or misplaced, leading to incomplete service records and billing disputes</li>
+              <li><strong>No vehicle history:</strong> Without centralized vehicle records, mechanics repeat diagnostic work, can't see previous repairs, and miss recurring issues that indicate larger problems</li>
+              <li><strong>Manual parts tracking:</strong> Parts inventory tracked in notebooks or spreadsheets leads to stock-outs during critical repairs, overstocking of slow-moving parts, and no cost tracking per job</li>
+              <li><strong>Fragmented customer communication:</strong> Customers call for updates, mechanics can't easily provide status, and there's no transparent record of what was done and why</li>
+              <li><strong>Inconsistent inspections:</strong> Without standardized Digital Vehicle Inspection (DVI) procedures, different mechanics miss different issues, leading to inconsistent service quality and customer dissatisfaction</li>
+              <li><strong>No customer visibility:</strong> Customers have no way to view their vehicle's service history, upcoming maintenance needs, or current job status without calling the garage</li>
+            </ul>
+            <p>Garage Management System was built to digitize all garage operations into a single system where vehicle history is complete and searchable, job cards track from intake to invoicing, parts inventory is automatically deducted from jobs, inspections are standardized with photo evidence, and customers have portal access to their service history.</p>
+          </div>
+
+          <div class="project-section">
+            <h2>Solution Approach</h2>
+            <p>The solution uses Next.js App Router with TypeScript for type safety and modern React patterns, Firebase Firestore for real-time data synchronization, and Tailwind CSS for consistent styling. Key architectural decisions:</p>
+            <ul>
+              <li><strong>Next.js App Router:</strong> Leveraged Next.js 16 App Router for server-side rendering, optimized performance, and file-based routing, with TypeScript for compile-time type checking and better developer experience</li>
+              <li><strong>Firebase backend:</strong> Firebase Firestore for real-time data sync across devices, Firebase Auth for secure authentication, and Firestore security rules for role-based data access control</li>
+              <li><strong>Job card-centric workflow:</strong> Designed the entire system around the job card as the central object — vehicles, customers, parts, inspections, and invoices all link to job cards, creating a complete audit trail</li>
+              <li><strong>DVI with photo evidence:</strong> Digital Vehicle Inspection system with structured inspection forms, pass/fail/advisory results, photo upload for each inspection point, and digital signature capture for customer acknowledgment</li>
+              <li><strong>Barcode scanning integration:</strong> Browser-based barcode scanning using the device camera for vehicle VINs and parts SKUs, eliminating manual entry errors and speeding up intake and parts management</li>
+              <li><strong>SOP documentation:</strong> Standard Operating Procedures system where each service type has documented steps, ensuring consistent quality regardless of which mechanic performs the work</li>
+              <li><strong>Customer portal:</strong> Role-based customer portal showing only their vehicles and service history, with current job status and upcoming maintenance reminders</li>
+            </ul>
+          </div>
+
+          <div class="project-section">
+            <h2>Implemented Features</h2>
+            <p><strong>Workshop Operations</strong></p>
+            <ul>
+              <li><strong>Job Cards</strong> — comprehensive job card system creating a digital record for each service visit, vehicle intake with customer and vehicle details, problem description and customer concerns, assigned mechanic with work allocation, job status tracking (intake, diagnosis, in progress, waiting parts, completed, invoiced), time tracking for labor hours, parts association with automatic stock deduction, and job notes for internal communication</li>
+              <li><strong>Digital Vehicle Inspection (DVI)</strong> — structured inspection forms with customizable inspection points (brakes, suspension, engine, electrical, tires, fluids, safety), pass/fail/advisory result classification per inspection point, photo upload for each finding with timestamp and mechanic attribution, severity scoring for prioritization, digital signature capture for customer acknowledgment of inspection results, inspection report generation with photos and recommendations, and historical inspection tracking to identify recurring issues</li>
+              <li><strong>Appointments</strong> — appointment scheduling with calendar view showing daily capacity, time slot configuration with duration per appointment type, customer and vehicle pre-assignment, appointment status tracking (scheduled, confirmed, checked in, completed, cancelled, no-show), automated reminders, and waitlist management for overbooked periods</li>
+              <li><strong>Services</strong> — service catalogue with standardized service types (oil change, brake service, tune-up, diagnostic, etc.), labor hour estimates per service, pricing with labor rates and parts pricing, service categories for organization, and service history tracking per vehicle</li>
+              <li><strong>Standard Operating Procedures (SOPs)</strong> — documented procedures per service type with step-by-step instructions, tool and equipment requirements, safety checklists, quality control checkpoints, and technician sign-off requirements ensuring consistent service quality regardless of which mechanic performs the work</li>
+            </ul>
+            <p><strong>Customer &amp; Vehicle Management</strong></p>
+            <ul>
+              <li><strong>Customers</strong> — comprehensive customer records with contact information, customer dossier modal showing complete interaction timeline (all job cards, communications, payments), vehicle ownership history, payment history and credit status, special notes (preferences, VIP status, payment terms), and communication logging (calls, emails, SMS)</li>
+              <li><strong>Vehicles</strong> — detailed vehicle records linked to customers with VIN, make, model, year, registration, mileage tracking with service intervals, complete service history (all job cards, inspections, repairs), recurring issue identification (problems that appear multiple times), upcoming maintenance reminders based on mileage or time, and vehicle photos for reference</li>
+              <li><strong>Customer Portal</strong> — customer-facing portal with secure login showing only their vehicles, complete service history per vehicle with downloadable reports, current job status with real-time updates, upcoming maintenance reminders, appointment booking capability, and payment status for open invoices</li>
+              <li><strong>Barcode Scanner</strong> — browser-based barcode scanning using device camera for vehicle VIN scanning (eliminating manual entry errors), parts SKU scanning for quick inventory lookup and job card association, barcode generation for parts labels, and scanning integration throughout the workflow (intake, parts selection, inventory management)</li>
+            </ul>
+            <p><strong>Finance &amp; Documents</strong></p>
+            <ul>
+              <li><strong>Invoices</strong> — invoice generation directly from completed job cards with automatic labor calculation (hours × rate), parts pricing with automatic stock deduction, tax calculation, discount application, multiple payment method support (cash, card, bank transfer), PDF generation with professional formatting, email invoice to customer, and payment tracking against invoices</li>
+              <li><strong>Billing &amp; POS</strong> — point-of-sale billing interface for walk-in customers, quick invoice creation without job card, payment processing with receipt generation, cash drawer management, and daily sales reconciliation</li>
+              <li><strong>Credit Notes</strong> — credit note generation for refunds or adjustments, linkage to original invoices, credit note history tracking, and customer credit balance management</li>
+              <li><strong>Parts</strong> — comprehensive parts inventory management with parts catalogue (SKU, description, supplier, cost, selling price), stock level tracking with low stock alerts, parts ordering with supplier management, automatic stock deduction when parts are used on job cards, parts return and restock functionality, and inventory valuation reports</li>
+              <li><strong>Documents</strong> — document management system with file upload for vehicle photos, inspection reports, manufacturer documents, and customer documents, document categorization and tagging, document versioning, and secure document sharing with customers via portal</li>
+              <li><strong>Reports</strong> — workshop reporting including job completion rates, average job duration, mechanic productivity, vehicle service frequency, financial reporting including revenue by service type, parts margin analysis, labor utilization, and Excel (xlsx) export for all reports with multiple sheets and formatting</li>
+            </ul>
+            <p><strong>System</strong></p>
+            <ul>
+              <li><strong>Employees</strong> — staff management with employee records, role-based access control (Admin, Manager, Mechanic, Receptionist), shift scheduling, attendance tracking, and performance metrics (jobs completed, average repair time, customer satisfaction)</li>
+              <li><strong>Settings &amp; Setup</strong> — business configuration including company details, logo and branding, labor rate configuration, tax settings, service catalog customization, inspection form templates, and system preferences</li>
+              <li><strong>Trash</strong> — soft-delete functionality for all major records (job cards, customers, vehicles, parts, invoices), trash bin for viewing deleted items, restore functionality for recovery, and permanent delete with admin approval</li>
+              <li><strong>Global Search</strong> — unified search across customers, vehicles, and job cards with filters by date range, status, and type, search results with direct links to records, and recent searches history</li>
+            </ul>
+          </div>
+
+          <div class="project-section">
+            <h2>Technology Stack</h2>
+            <ul>
+              <li><strong>Frontend:</strong> Next.js (App Router), TypeScript, Tailwind CSS</li>
+              <li><strong>Backend / Database:</strong> Firebase (Firestore, Auth)</li>
+              <li><strong>UI components:</strong> class-variance-authority, clsx, tailwind-merge, Lucide React</li>
+              <li><strong>PDF / Print:</strong> jsPDF, jspdf-autotable, react-to-print</li>
+              <li><strong>Spreadsheets:</strong> xlsx</li>
+              <li><strong>QR codes:</strong> qrcode, qrcode.react</li>
+            </ul>
+          </div>
+
+          <div class="project-section">
+            <h2>Screenshots</h2>
+            <div class="empty-state"><p>Screenshots will be added as the project progresses. The system includes 15+ screens across Job Cards, DVI, Vehicles, Parts, Invoicing, and Customer Portal.</p></div>
+          </div>
+
+          <div class="project-section">
+            <h2>Development Process</h2>
+            <p>The project followed a structured development process with AI-assisted coding:</p>
+            <ul>
+              <li><strong>Requirements gathering:</strong> Studied real garage operations at independent workshops, interviewed garage owners, mechanics, and service advisors to understand pain points, documented workflows for vehicle intake, inspection, repair, parts management, and invoicing</li>
+              <li><strong>Architecture design:</strong> Chose Next.js App Router for modern React patterns and server-side rendering, TypeScript for type safety and better developer experience, Firebase for real-time data sync and authentication, and Tailwind CSS for consistent styling</li>
+              <li><strong>Incremental implementation:</strong> Built core data models first (customers, vehicles, job cards), then the job card workflow from intake to completion, then DVI with photo upload, then parts inventory with automatic stock deduction, then invoicing and PDF generation, then barcode scanner integration, then customer portal, and finally SOP documentation</li>
+              <li><strong>AI-assisted development:</strong> Used Kiro for generating Next.js components and TypeScript interfaces, Devin (formerly Windsurf) for debugging server/client component issues and performance optimization, Antigravity for architectural decisions and database schema design, Trae for building UI components with Tailwind CSS, and Claude for documentation, problem-solving, and edge case handling</li>
+              <li><strong>Testing and iteration:</strong> Tested each module with realistic garage scenarios, simulated the complete workflow from vehicle intake to invoicing, tested barcode scanning on different devices, validated PDF invoice generation, gathered feedback from garage industry professionals, and iterated on the interface based on usability testing</li>
+            </ul>
+          </div>
+
+          <div class="project-section">
+            <h2>Challenges &amp; Lessons Learned</h2>
+            <ul>
+              <li><strong>DVI workflow complexity:</strong> Designing DVI workflows that mirror real garage inspection processes required balancing structure (standardized inspection points) with flexibility (ability to add custom notes and photos for unique findings), learned that inspection forms should be customizable per vehicle type while maintaining core structure</li>
+              <li><strong>Parts inventory integration:</strong> Linking parts inventory directly to job cards and automatically adjusting stock on job completion required careful transaction design to handle partial usage, returns, and stock corrections, learned that inventory transactions need complete audit trails for reconciliation</li>
+              <li><strong>Customer portal security:</strong> Building a customer portal that shows only relevant data without exposing internal workshop operations required implementing row-level security in Firebase rules and ensuring the customer UI only shows their own vehicles and job cards, learned that data filtering must be enforced at both the database and UI level</li>
+              <li><strong>Next.js App Router learning curve:</strong> Using Next.js App Router with TypeScript for the first time required understanding server vs client component boundaries, when to use server components for data fetching vs client components for interactivity, and how to pass data between them, learned that server components should be used by default and client components only when necessary</li>
+              <li><strong>Barcode scanning browser limitations:</strong> Implementing barcode scanning in the browser revealed limitations with camera access permissions and barcode detection accuracy, learned to provide manual entry as fallback and to test scanning on multiple devices</li>
+              <li><strong>PDF generation complexity:</strong> Generating professional PDF invoices from job card data required careful layout design, handling multi-page invoices for large jobs, and ensuring consistent formatting across browsers, learned to use established PDF libraries (jsPDF) rather than building from scratch</li>
+            </ul>
+          </div>
+
+          </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-left">
+            <p>&copy; 2026 Rahil Tahir &mdash; Building things, breaking things, learning things.</p>
+          </div>
+          <ul class="footer-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/resume.html" target="_blank">Résumé</a></li>
+            <li><a href="https://www.linkedin.com/in/rahil-tahir/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="https://github.com/hippo246" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="mailto:Rahil.tahir01@gmail.com">Email</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Certificate Lightbox Modal -->
+    <div class="cert-modal" id="certModal" role="dialog" aria-modal="true" aria-labelledby="certModalTitle" hidden>
+      <div class="cert-modal-backdrop"></div>
+      <div class="cert-modal-content">
+        <button class="cert-modal-close" aria-label="Close certificate">&times;</button>
+        <p class="cert-modal-title" id="certModalTitle"></p>
+        <div class="cert-modal-img-wrapper" id="certModalImgWrapper">
+          <img class="cert-modal-img" id="certModalImg" src="" alt="" />
+        </div>
+        <div class="cert-modal-zoom-controls">
+          <button class="cert-modal-zoom-btn" id="zoomOut" aria-label="Zoom out" title="Zoom out">−</button>
+          <span class="cert-modal-zoom-level" id="zoomLevel">100%</span>
+          <button class="cert-modal-zoom-btn" id="zoomIn" aria-label="Zoom in" title="Zoom in">+</button>
+          <button class="cert-modal-zoom-btn" id="zoomReset" aria-label="Reset zoom" title="Reset zoom">↺</button>
+        </div>
+      </div>
+    </div>
+
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

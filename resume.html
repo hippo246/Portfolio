@@ -230,10 +230,11 @@
       }
     }
   </style>
-</head>
+    <link rel="canonical" href="https://rahiltahir.dev/resume.html" />
+  </head>
 <body>
   <div class="resume-nav">
-    <a href="/" class="back-btn">← Back to Portfolio</a>
+    <a href="/#projects" class="back-btn">← Back to Portfolio</a>
     <button class="print-btn" onclick="window.print()">Print / Save PDF</button>
   </div>
 
@@ -249,7 +250,7 @@
   <div class="section">
     <div class="section-title">Summary</div>
     <div class="content">
-      <p>Hands-on IT professional with practical experience in Linux system administration, self-hosted infrastructure, networking fundamentals, and troubleshooting. Built and maintained a personal homelab with Ubuntu Server, Docker-based services, Tailscale remote access, and multi-drive storage management. Developed business software projects including Clinic CRM, Factory CRM, Restaurant CRM, and CafeOS. Currently pursuing networking and cybersecurity learning with a focus on Cisco networking, system hardening, and security fundamentals.</p>
+      <p>Hands-on IT professional with practical experience in Linux system administration, self-hosted infrastructure, networking fundamentals, and troubleshooting. Built and maintained a personal homelab with Ubuntu Server, Docker-based services, Tailscale remote access, and multi-drive storage management. Provided informal Windows 10/11 desktop support for friends, including recovery from the KB5121003 update issue. Completed a self-directed 19-lab Cisco Packet Tracer series and an enterprise hotel network design project. Practised helpdesk workflows through ServiceDesk Simulator (52 tickets, 93% accuracy, 1,118 score). Developed business software projects including ClinOS, Bakery POS, CafeOS, Garage Management, and others. Currently building networking and cybersecurity knowledge towards entry-level IT and security roles.</p>
     </div>
   </div>
 
@@ -323,9 +324,10 @@
       <div class="skill-category">
         <strong>Development (AI-Assisted)</strong>
         <ul>
-          <li>Clinic CRM, Factory CRM, Restaurant CRM, CafeOS</li>
-          <li>AI-assisted development workflow (requirements, testing, configuration)</li>
-          <li>Not an experienced programmer; AI tools used for implementation</li>
+          <li>React, TypeScript, Next.js, Vite, Tailwind CSS</li>
+          <li>Firebase, Supabase, Recharts, jsPDF, xlsx</li>
+          <li>10 projects: ClinOS, BakeryPOS, CafeOS, Garage Management, Restaurant Management, IGRIS LAB, Veritas Acquisitions, Factory CRM, Restaurant CRM</li>
+          <li>AI-assisted workflow — requirements definition, interface design, testing, iteration</li>
         </ul>
       </div>
     </div>
@@ -339,20 +341,40 @@
         <p>Dell OptiPlex Micro 7050 (Intel i5-7500T, 8GB RAM) running Ubuntu Server with CasaOS. Deployed and maintained 10+ self-hosted services via Docker including Jellyfin (media streaming, upgraded from 10.8.x to 10.11.x), Nextcloud (file collaboration, upgraded to nextcloud:34), Immich (photo management), Navidrome (music streaming with HDD storage), Netdata and Glances (system monitoring), and AdGuard Home (DNS filtering). Configured Tailscale for private remote access (no public exposure), UFW firewall rules with restrictive defaults and Tailscale allowances, SMB/CIFS network shares with fstab persistence on ThinkPad client, and multi-drive storage management (NVMe OS drive, additional SSD, ~1TB HDD for media). Documented troubleshooting case studies including router subnet transition (192.168.100.195 → 192.168.0.198), SMB mount configuration with _netdev/nofail/x-systemd.automount options, CPU turbo behaviour investigation using rdmsr and stress testing (~3600MHz observed), and service connectivity debugging.</p>
       </div>
       <div class="project-item">
-        <strong>Clinic CRM</strong>
-        <p>Healthcare administration workflow prototype developed with AI-assisted tools. Explored patient records, appointments, and staff management requirements. Personal contribution: requirements definition, interface review, testing workflows, and configuration. Uses demonstration data only. No real patient information exposed. Status: Prototype.</p>
+        <strong>Clinic CRM — ClinOS</strong>
+        <p>Full medical suite built with React, TypeScript, and Firebase. Live queue management, appointments calendar, consultations and encounter notes, prescription builder with dosage presets (OD/BD/TDS/QID/SOS), lab and diagnostics orders, billing with GST, SMS/Email/WhatsApp communications, analytics and reporting, and AI-assisted patient profiles with risk scoring. 150 demo patients, role-based access (Admin/Receptionist/Doctor). Demo data only — no real patient information used.</p>
+      </div>
+      <div class="project-item">
+        <strong>Bakery POS</strong>
+        <p>Full React bakery POS with Standard and Advanced (per-seat course) ordering modes, Token Management with customer-facing TV display mode, Kitchen Order Tickets (KOT), Kitchen Display System (KDS), floor plan editor with live table status, Waiter Service Terminal, QR self-ordering for customers (menu, cart, tip, Pay at Counter/UPI/Card/Call Waiter), Dashboard with revenue charts, Reports (section/category/employee/item sales with Excel/PDF export), Menu Designer with cost/margin tracking, Raw Ingredients and Stock. Tech: React, Vite, Tailwind CSS, Recharts, jsPDF, xlsx.</p>
+      </div>
+      <div class="project-item">
+        <strong>CafeOS (BrewCRM)</strong>
+        <p>Full React cafe POS with 25 feature modules — Dashboard, POS (GST, discounts, payment), Kitchen Display (urgency/timers/dietary notes), Tables/Floor Plan, Inventory, Staff, CRM, Analytics, Workflows, Health monitoring, and PDF receipt generation. Tech: React 19, Vite, Tailwind CSS, jsPDF.</p>
+      </div>
+      <div class="project-item">
+        <strong>Garage Management System</strong>
+        <p>Full-stack automotive garage management built with Next.js, TypeScript, and Firebase. Job Cards, Digital Vehicle Inspection (DVI) with photo upload and digital signature, Vehicles, Customers with dossier and interaction history, Appointments, Parts inventory, Invoicing, Billing, Credit Notes, SOPs, Customer Portal, Reports with Excel export.</p>
+      </div>
+      <div class="project-item">
+        <strong>Restaurant Management System</strong>
+        <p>Full React restaurant operations platform with QR ordering, Live Order Board, Tables, Reservations, Delivery, Inventory, Staff, CRM, Expenses, Wastage, Analytics, and Supabase backend.</p>
+      </div>
+      <div class="project-item">
+        <strong>IGRIS LAB</strong>
+        <p>Internship launch and management platform in vanilla HTML/CSS/JS. Dashboard, Tasks, Community Hub, Announcements, Certificates, Admin panel, and AI chat bubble with mobile-aware positioning. No framework, no build step — SPA pattern implemented manually.</p>
+      </div>
+      <div class="project-item">
+        <strong>Veritas Acquisitions Ltd</strong>
+        <p>Multi-page static website for a property acquisitions company (England and Wales). Acquisition services, investor matching, due diligence, team, and compliance pages. Vanilla HTML/CSS/JS with shared nav/footer components.</p>
       </div>
       <div class="project-item">
         <strong>Factory CRM</strong>
-        <p>Factory-oriented management prototype focused on operational and business workflow organization. Developed with AI-assisted tools. Personal contribution: requirements definition, interface work, and testing. Status: Prototype.</p>
+        <p>Factory-oriented management prototype. Requirements definition, interface work, and testing. AI-assisted development.</p>
       </div>
       <div class="project-item">
         <strong>Restaurant CRM</strong>
-        <p>Restaurant management prototype for operational workflow organization including reservations and table management concepts. Developed with AI-assisted tools. Personal contribution: requirements definition, interface review, and testing. Status: Prototype.</p>
-      </div>
-      <div class="project-item">
-        <strong>CafeOS</strong>
-        <p>Cafe point-of-sale and management project in development. Exploring order management, menus, sales dashboards, and inventory workflows. Developed with AI-assisted tools. Personal contribution: requirements definition, interface work, and testing. Current status: In Development. Note: Features like GST calculations, FSSAI reporting, and delivery platform integrations are planned but not yet implemented.</p>
+        <p>Restaurant management prototype covering reservations and table management workflows. AI-assisted development.</p>
       </div>
     </div>
   </div>
@@ -383,8 +405,12 @@
     <div class="content">
       <strong style="display:block; font-size:9.5pt; margin-bottom:6px; color:#111;">Certificates &amp; Courses</strong>
       <div class="project-item">
+        <strong>IT Support Foundations — Service Desk Simulator</strong>
+        <p>Completed 18 October 2026 · Certificate ID: SDS-2026-1018-3555 · 50+ tickets resolved</p>
+      </div>
+      <div class="project-item">
         <strong>First Line Support — Service Desk Simulator</strong>
-        <p>Completed 9 September 2026 · 31 tickets resolved · 94% accuracy · 6 hrs 38 min logged</p>
+        <p>Completed 9 September 2026 · 52 tickets resolved · 93% accuracy · 1,118 score · 8 hrs 12 min logged</p>
       </div>
       <div class="project-item">
         <strong>Learn Ethical Hacking From Scratch — Udemy</strong>
@@ -407,5 +433,6 @@
       <p>Seeking entry-level opportunities in IT Support, Helpdesk, Desktop Support, Junior Network Support, or IT Operations Support. Interested in roles that provide hands-on experience with systems administration, networking, troubleshooting, and infrastructure while continuing to develop cybersecurity skills.</p>
     </div>
   </div>
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
 </body>
 </html>

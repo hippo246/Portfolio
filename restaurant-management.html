@@ -1,0 +1,799 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Restaurant Management System — a full React/Supabase restaurant operations platform with Orders, Tables, Reservations, QR Ordering, Live Order Board, Delivery, and more." />
+    <title>Restaurant Management — Rahil Tahir</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Restaurant Management — Rahil Tahir" />
+    <meta property="og:description" content="Full React restaurant management platform with QR ordering, live order board, reservations, delivery, CRM, and Supabase backend." />
+    <meta property="og:image" content="/profile.jpg" />
+    <link rel="canonical" href="https://rahiltahir.dev/restaurant-management.html" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/style.css" />
+    <style>body { padding-top: 80px; }</style>
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <nav class="nav" aria-label="Primary navigation">
+      <div class="nav-container">
+        <div class="nav-left">
+          <a href="/" class="nav-logo-link">
+            <img src="/profile.jpg" alt="Rahil Tahir" class="nav-profile">
+            <span class="nav-logo">Rahil Tahir</span>
+          </a>
+        </div>
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-menu">
+          <li><a href="/#projects">Back to Portfolio</a></li>
+          <li><a href="/resume.html">Résumé</a></li>
+          <li><a href="/#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <main id="main-content">
+      <section class="section">
+        <div class="container">
+          <div class="page-header">
+            <h1>Restaurant Management System</h1>
+            <p class="page-subtitle">Full-stack restaurant operations platform — React, Vite, Supabase</p>
+            <div class="page-header-actions">
+              <a href="/#projects" class="btn btn-secondary">← Back to Portfolio</a>
+            </div>
+          </div>
+
+          <div class="project-section">
+            <h2>Project Overview</h2>
+            <p>RestoCRM is a comprehensive restaurant management system built with React 19 and Vite 8, backed by Supabase for real-time data synchronization using PostgreSQL and WebSocket-based subscriptions. It covers the complete restaurant workflow — from customer QR self-ordering at the table through to POS operations for staff, kitchen display systems for chefs, table management for hosts, reservation booking for front desk, delivery management for takeout, and advanced analytics for management. The system is designed for commercial deployment with client provisioning workflows, licensing system documentation, support access management, client deployment processes, and update workflows for production environments.</p>
+            <p>The system addresses key restaurant pain points: disconnected POS and kitchen systems leading to order errors, manual table tracking causing seating inefficiencies, lack of real-time order visibility for customers, fragmented reservation systems, no centralized inventory tracking across ordering channels, and inability to scale to multiple locations with consistent operations.</p>
+            <p>Built with AI-assisted development using Kiro, Devin (formerly Windsurf), Antigravity, Trae, and Claude. My contribution involved defining restaurant workflow requirements across all modules by studying real restaurant operations, designing the data model and user flows for each operational area, creating the kitchen routing engine with station-based item assignment, implementing the complete print infrastructure with ESC/POS thermal printer support, building the multi-branch architecture for scalability, designing the role-based permission system, creating the tax engine for GST calculation, testing functionality across different restaurant scenarios, and iterating on the interface based on usability feedback.</p>
+          </div>
+
+          <div class="project-section">
+            <h2>Problem Statement</h2>
+            <p>Restaurants, especially those scaling from single to multiple locations, face operational fragmentation:</p>
+            <ul>
+              <li><strong>Order inaccuracies:</strong> Orders taken on POS don't always match what kitchen prepares due to manual communication gaps, leading to wrong dishes and food waste</li>
+              <li><strong>Inefficient seating:</strong> Hosts manage tables manually with paper or basic tools, causing double-bookings, long wait times, and poor table turnover</li>
+              <li><strong>Customer disconnect:</strong> Customers have no visibility into order status after placing it, leading to repeated "is my food ready?" questions frustrating both customers and staff</li>
+              <li><strong>Reservation chaos:</strong> Reservations tracked in separate systems or on paper, leading to overbooking, no-shows, and poor capacity planning</li>
+              <li><strong>Inventory blind spots:</strong> No connection between ordering channels (dine-in, delivery, QR) and inventory, leading to stock-outs during service and food waste from over-preparation</li>
+              <li><strong>Scaling challenges:</strong> Opening a second location means duplicating systems manually, with no centralized management, consistent reporting, or unified operations</li>
+            </ul>
+            <p>RestoCRM was built to unify all restaurant operations into a single real-time system where an order placed via QR immediately shows on the kitchen display, table status updates in real-time across all devices, and management has complete visibility into all locations from a single dashboard.</p>
+          </div>
+
+          <div class="project-section">
+            <h2>Solution Approach</h2>
+            <p>The solution uses a real-time architecture where Supabase PostgreSQL stores all data and WebSocket subscriptions push updates instantly to all connected devices. Key architectural decisions:</p>
+            <ul>
+              <li><strong>Supabase real-time backend:</strong> All data lives in PostgreSQL with Supabase Realtime subscriptions, ensuring that an order placed on a customer's phone immediately appears on the kitchen display without polling</li>
+              <li><strong>Station-based kitchen routing:</strong> Menu items are assigned to kitchen stations (grill, fry, prep, bar, etc.), and the kitchen engine automatically routes orders to the appropriate stations based on item configuration</li>
+              <li><strong>Multi-branch architecture:</strong> Each restaurant branch has isolated data with a branch switching system, allowing management to view and manage multiple locations from a single interface</li>
+              <li><strong>Custom state management:</strong> Instead of Redux or Zustand, built a custom useStore hook with localStorage persistence and optional cloud sync, keeping the bundle small and dependencies minimal</li>
+              <li><strong>Role-based permissions:</strong> Fine-grained permission system with Admin, Manager, Staff, Kitchen, and Cashier roles, each with specific access to tabs, widgets, and actions</li>
+              <li><strong>Print infrastructure:</strong> Complete printing system supporting browser-based printing for invoices and ESC/POS commands for thermal printers, with network/USB/Bluetooth connectivity</li>
+              <li><strong>Tax engine:</strong> Built a tax calculation engine that handles CGST/SGST by category with configurable rates, automatically calculating taxes at order time</li>
+              <li><strong>Commercial readiness:</strong> Phase 13 completed with demo deployment guides, client provisioning workflows, licensing documentation, and update processes for production deployments</li>
+            </ul>
+          </div>
+
+          <div class="project-section">
+            <h2>Implemented Features</h2>
+
+            <p><strong>Point of Sale</strong></p>
+            <ul>
+              <li><strong>POS Express</strong> — streamlined 3-step checkout for high-volume fast service: step 1 select items from categorized menu, step 2 review order with subtotal and tax, step 3 select payment method and complete. Designed for cafes and quick-service restaurants where speed is critical.</li>
+              <li><strong>POS Pro</strong> — full-featured POS for full-service restaurants with modifier selection (add-ons, substitutions, special requests), split bill functionality (by item, by percentage, by seat), delivery support with address entry and zone-based pricing, automatic tax calculation (CGST/SGST by category), discount application (percentage or flat), and advanced order management with hold, recall, and void capabilities.</li>
+              <li><strong>Split Bill</strong> — flexible bill splitting system supporting three modes: split by item (each person pays for specific items), split by percentage (equal percentage splits like 50/50 or 33/33/33), and split by custom amount (manual entry per person). Automatically recalculates taxes and totals for each split.</li>
+              <li><strong>Modifier Picker</strong> — modal interface for selecting menu variants and modifiers, supporting nested modifier groups (e.g., "choose one" + "choose any"), price adjustments for premium options, and special request text fields for custom instructions.</li>
+              <li><strong>Kitchen Pickup Display</strong> — customer-facing screen showing order status (pending, preparing, ready, served) with order numbers and estimated wait times, designed for display on tablets or TVs near the pickup counter.</li>
+            </ul>
+
+            <p><strong>Kitchen Operations</strong></p>
+            <ul>
+              <li><strong>Kitchen Display System (KDS)</strong> — comprehensive KDS with tabbed interface for different views (all orders, by station, by table), bump mode to clear completed orders with keyboard shortcuts, station-based order routing, color-coded order cards with heat indicators (cold/warm/hot based on elapsed time), rush status badges for VIP or time-sensitive orders, and order completion workflow with chef acknowledgment.</li>
+              <li><strong>Kitchen Order Cards</strong> — individual order cards displaying table number, order time, elapsed time with color-coded urgency, complete item list with quantities, dietary flags (vegetarian, vegan, gluten-free, allergens), special requests highlighted, preparation stage indicators (new, in progress, ready, served), and fire/call waiter action buttons.</li>
+              <li><strong>Kitchen Engine</strong> — pure JavaScript calculation engine (no React dependencies) that performs heat analysis based on elapsed time and order type, rush detection using configurable thresholds, stage transitions (new → preparing → ready → served), allergen cross-contamination warnings, and kitchen analytics (average prep time, bottleneck identification, station load balancing).</li>
+              <li><strong>Station Routing</strong> — automatic routing system where menu items are assigned to kitchen stations (grill, fry station, cold prep, bar, dessert, etc.) in the menu configuration, and the kitchen engine groups items by station and displays them on the appropriate KDS tab, enabling chefs to focus only on their station's orders.</li>
+            </ul>
+
+            <p><strong>Print Infrastructure</strong></p>
+            <ul>
+              <li><strong>Browser Print</strong> — browser window-based printing system for customer invoices, kitchen tickets (itemized by station), and delivery labels, using CSS print media queries for consistent formatting across browsers and devices.</li>
+              <li><strong>ESC/POS Support</strong> — ESC/POS command builder implementing thermal printer commands including text formatting (bold, underline, double-height), barcode printing (QR codes, Code 128), cut commands, cash drawer kick, and image printing for logos, compatible with most Epson, Star, and USB thermal printers.</li>
+              <li><strong>Receipt Builders</strong> — modular line builders for different receipt types: customer receipts with itemized bill, tax breakdown, and payment info; kitchen tickets with station-separated items and preparation notes; delivery labels with address, contact info, and order summary; all with configurable headers, footers, and formatting.</li>
+              <li><strong>Printer Manager</strong> — thermal printer connection manager supporting network printers (via HTTP/WebSocket), USB printers (via WebUSB API), and Bluetooth printers (via WebBluetooth API), with connection state monitoring, automatic reconnection, error handling, and a sendToThermal function that accepts ESC/POS commands and handles encoding and transmission.</li>
+              <li><strong>Takeaway Labels</strong> — label generation system for takeaway orders with customer name, order number, item summary, special dietary flags, preparation time, and QR code for order tracking, including a preview modal and customizable label settings (size, font, logo inclusion).</li>
+            </ul>
+
+            <p><strong>Front of House</strong></p>
+            <ul>
+              <li><strong>Dashboard</strong> — management dashboard showing live revenue (today, week, month), active order counts, table status overview (available, occupied, reserved), key performance metrics (average order value, table turnover rate), pending reservations count, and quick action buttons for common tasks.</li>
+              <li><strong>Tables</strong> — visual floor plan editor with drag-and-drop table positioning, real-time table status updates across all devices (available → seated → dirty → cleaning), merge tables functionality for large parties, split tables for separating checks, duration tracking to identify long-seated tables, and per-table order access.</li>
+              <li><strong>Reservations</strong> — reservation booking system with calendar view, time slot configuration with capacity limits, customer contact information, special requests, reservation status tracking (confirmed, seated, cancelled, no-show), automated reminders, and waitlist management for overbooked periods.</li>
+              <li><strong>Live Order Board</strong> — real-time order status display using Supabase Realtime subscriptions, showing all active orders across the restaurant with table numbers, elapsed time, status indicators, and kitchen completion status, updated instantly without page refresh or polling.</li>
+              <li><strong>QR Ordering</strong> — customer-facing QR code menu where scanning a table QR code opens a mobile-optimized menu, customers browse items with images and descriptions, add items to cart, specify special requests, and place orders assigned to their table, with guest session management that persists across page refreshes without requiring login.</li>
+              <li><strong>Combo Manager</strong> — combo meal and bundle creation system allowing restaurants to define fixed-price combinations (e.g., "Lunch Combo: Burger + Fries + Drink"), pricing rules (fixed price or component-based pricing), and component substitutions, with automatic combo breakdown in kitchen tickets.</li>
+            </ul>
+
+            <p><strong>Management</strong></p>
+            <ul>
+              <li><strong>Menu</strong> — comprehensive menu management with category organization, item creation with images, descriptions, and pricing, modifier groups with nested options, variant support (size options, flavor choices), availability toggling (sold out temporarily), and pricing history tracking.</li>
+              <li><strong>Inventory</strong> — stock tracking system where each menu item is linked to ingredients, automatic stock deduction when orders are placed, low stock alerts with reorder thresholds, supplier management with contact information, stock-in transactions for deliveries, stock adjustments for waste or theft, and inventory valuation reports.</li>
+              <li><strong>Staff</strong> — staff management with employee records, shift scheduling with calendar view, attendance tracking, performance metrics (orders processed, average ticket value, tips received), role-based access control with the permission system, and productivity dashboards comparing staff performance.</li>
+              <li><strong>Customers (CRM)</strong> — customer relationship management with contact information and profiles, visit history with order details, spending analytics (total spent, average visit value, visit frequency), loyalty tracking with points or rewards systems, special notes (allergies, preferences, VIP status), and marketing segmentation.</li>
+              <li><strong>Deliveries</strong> — delivery order management with address entry and validation, zone-based pricing (different delivery fees by distance), delivery driver assignment, delivery status tracking (confirmed, preparing, out for delivery, delivered), proof of delivery (signature or photo), and delivery performance analytics (average delivery time, late deliveries).</li>
+              <li><strong>Expenses</strong> — expense tracking with category-based organization (food cost, labor, utilities, rent, marketing), vendor management, expense approval workflows, budget vs actual variance reporting, and expense trend analysis over time with visualization.</li>
+              <li><strong>Wastage</strong> — waste logging system with reason codes (expired, spoiled, preparation error, customer return, theft), cost impact calculation, waste reduction reporting with trend lines, root cause analysis to identify problem areas, and waste percentage tracking as a KPI.</li>
+              <li><strong>Analytics</strong> — comprehensive analytics suite with sales trends (daily, weekly, monthly, yearly), category performance analysis (which menu categories drive revenue), peak hour identification for staffing optimization, staff productivity metrics, customer behavior analysis (frequency, average spend), profitability analysis (margin by item and category), and exportable reports in PDF and Excel formats.</li>
+            </ul>
+
+            <p><strong>System &amp; Infrastructure</strong></p>
+            <ul>
+              <li><strong>Multi-Branch Support</strong> — branch switching interface allowing management to view and manage multiple restaurant locations, branch-specific data isolation ensuring each location's data stays separate, centralized reporting across all branches, and branch configuration (address, contact info, tax rates, business hours).</li>
+              <li><strong>Authentication</strong> — secure login system using Web Crypto API for PBKDF2 password hashing (no plaintext passwords), session management with configurable timeout, secure session storage, password reset functionality, and failed login attempt monitoring with lockout thresholds.</li>
+              <li><strong>Role-Based Permissions</strong> — fine-grained permission system with five core roles (Admin with full access, Manager with operational access, Staff with order-taking access, Kitchen with KDS access only, Cashier with payment access only), each role has specific tab access, widget visibility, and action permissions, with custom role creation capability for specialized needs.</li>
+              <li><strong>Theme System</strong> — customizable theme system with token-based color palette, support for light and dark modes, brand color customization for each restaurant branch, theme persistence across sessions, and consistent styling across all components using CSS custom properties.</li>
+              <li><strong>Export System</strong> — data export functionality supporting CSV for data portability, PDF for formatted reports and invoices, Excel with multiple sheets for complex reports, scheduled exports for backup purposes, and export templates for consistent formatting.</li>
+              <li><strong>Activity Log</strong> — comprehensive audit trail logging all system actions including who performed the action, what was changed, when it happened, and from which device, with filtering and search capabilities for compliance and debugging.</li>
+              <li><strong>Notifications</strong> — in-app notification system with real-time alerts for new orders, order status changes, low stock warnings, and reservation confirmations, browser push notification support for staff when away from the app, notification history, and notification preferences per user.</li>
+              <li><strong>Tax Engine</strong> — tax calculation engine supporting GST with CGST/SGST split, category-based tax rates (e.g., food at 5%, beverages at 12%, service charges at 18%), automatic tax calculation at order time, tax-inclusive and tax-exclusive pricing modes, and tax reporting by category and period.</li>
+              <li><strong>Profit Helpers</strong> — profitability calculation utilities including margin calculation per item (selling price minus cost of goods sold), gross margin analysis by category, cost analysis by ingredient, food cost percentage tracking, and profitability reports highlighting high-margin and low-margin items.</li>
+            </ul>
+
+            <div class="note-box">
+              <p><strong>Commercial Readiness:</strong> Phase 13 (Commercial Readiness) completed. The system includes demo deployment guides for production environments, client provisioning workflows for onboarding new restaurant locations, licensing system documentation for commercial distribution, support access management for customer support teams, client deployment processes for smooth handovers, domains and certificates configuration for custom URLs, customer dashboard for internal support operations, and update workflows for rolling out new features to existing clients without downtime.</p>
+            </div>
+          </div>
+
+          <div class="project-section">
+            <h2>Technology Stack</h2>
+            <ul>
+              <li><strong>Frontend:</strong> React 19, Vite 8</li>
+              <li><strong>Backend / Database:</strong> Supabase (PostgreSQL, Auth, Realtime subscriptions)</li>
+              <li><strong>State Management:</strong> Custom useStore hook with localStorage + cloudStorage fallback</li>
+              <li><strong>Routing:</strong> React Router DOM</li>
+              <li><strong>QR Codes:</strong> qrcode, qrcode.react</li>
+              <li><strong>Testing:</strong> Vitest</li>
+              <li><strong>Styling:</strong> Custom global CSS with theme token system</li>
+              <li><strong>Security:</strong> Web Crypto API for password hashing (PBKDF2)</li>
+            </ul>
+          </div>
+
+          <div class="project-section">
+            <h2>Screenshots</h2>
+            <div class="project-screenshots">
+
+              <h3>Login</h3>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/01.png" alt="Login" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Login</p>
+              </div>
+
+              <h3>Dashboard</h3>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/02.png" alt="Dashboard" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Dashboard</p>
+              </div>
+
+              <h3>Tables</h3>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/03.png" alt="Tables" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Tables</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/04.png" alt="Tables" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Tables</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/05.png" alt="Tables" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Tables</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/06.png" alt="Tables" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Tables</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/07.png" alt="Tables" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Tables</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/08.png" alt="Tables" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Tables</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/09.png" alt="Tables" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Tables</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/10.png" alt="Tables" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Tables</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/11.png" alt="Tables" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Tables</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/12.png" alt="Tables" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Tables</p>
+              </div>
+
+              <h3>Orders</h3>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/13.png" alt="Orders" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Orders</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/14.png" alt="Orders" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Orders</p>
+              </div>
+
+              <h3>Order Board</h3>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/15.png" alt="Order Board" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Order Board</p>
+              </div>
+
+              <h3>Menu</h3>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/16.png" alt="Menu" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Menu</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/17.png" alt="Menu" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Menu</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/18.png" alt="Menu" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Menu</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/19.png" alt="Menu" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Menu</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/20.png" alt="Menu" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Menu</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/21.png" alt="Menu" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Menu</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/22.png" alt="Menu" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Menu</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/23.png" alt="Menu" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Menu</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/24.png" alt="Menu" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Menu</p>
+              </div>
+
+              <h3>Combos</h3>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/25.png" alt="Combos" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Combos</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/26.png" alt="Combos" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Combos</p>
+              </div>
+
+              <h3>QR Ordering</h3>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/27.png" alt="QR Ordering" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">QR Ordering</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/28.png" alt="QR Ordering" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">QR Ordering</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/29.png" alt="QR Ordering" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">QR Ordering</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/30.png" alt="QR Ordering" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">QR Ordering</p>
+              </div>
+
+              <h3>Booking and Reservations</h3>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/31.png" alt="Booking and Reservations" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Booking and Reservations</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/32.png" alt="Booking and Reservations" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Booking and Reservations</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/33.png" alt="Booking and Reservations" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Booking and Reservations</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/34.png" alt="Booking and Reservations" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Booking and Reservations</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/35.png" alt="Booking and Reservations" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Booking and Reservations</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/36.png" alt="Booking and Reservations" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Booking and Reservations</p>
+              </div>
+
+              <h3>Staff and Shifts</h3>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/37.png" alt="Staff and Shifts" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Staff and Shifts</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/38.png" alt="Staff and Shifts" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Staff and Shifts</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/39.png" alt="Staff and Shifts" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Staff and Shifts</p>
+              </div>
+
+              <h3>Customers</h3>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/40.png" alt="Customers" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Customers</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/41.png" alt="Customers" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Customers</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/42.png" alt="Customers" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Customers</p>
+              </div>
+
+              <h3>Expenses</h3>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/43.png" alt="Expenses" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Expenses</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/44.png" alt="Expenses" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Expenses</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/45.png" alt="Expenses" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Expenses</p>
+              </div>
+
+              <h3>Deliveries</h3>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/46.png" alt="Deliveries" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Deliveries</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/47.png" alt="Deliveries" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Deliveries</p>
+              </div>
+
+              <h3>Inventory</h3>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/48.png" alt="Inventory" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Inventory</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/49.png" alt="Inventory" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Inventory</p>
+              </div>
+
+              <h3>Wastage Log</h3>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/50.png" alt="Wastage Log" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Wastage Log</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/51.png" alt="Wastage Log" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Wastage Log</p>
+              </div>
+
+              <h3>Analytics</h3>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/52.png" alt="Analytics" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Analytics</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/53.png" alt="Analytics" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Analytics</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/54.png" alt="Analytics" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Analytics</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/55.png" alt="Analytics" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Analytics</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/56.png" alt="Analytics" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Analytics</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/57.png" alt="Analytics" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Analytics</p>
+              </div>
+
+              <h3>Settings</h3>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/58.png" alt="Settings" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Settings</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/59.png" alt="Settings" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Settings</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/60.png" alt="Settings" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Settings</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/61.png" alt="Settings" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Settings</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/62.png" alt="Settings" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Settings</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/63.png" alt="Settings" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Settings</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/64.png" alt="Settings" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Settings</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/65.png" alt="Settings" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Settings</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/66.png" alt="Settings" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Settings</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/67.png" alt="Settings" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Settings</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/68.png" alt="Settings" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Settings</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/69.png" alt="Settings" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Settings</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/70.png" alt="Settings" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Settings</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/71.png" alt="Settings" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Settings</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/72.png" alt="Settings" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Settings</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/73.png" alt="Settings" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Settings</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/74.png" alt="Settings" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Settings</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/75.png" alt="Settings" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Settings</p>
+              </div>
+
+              <h3>Kitchen Display</h3>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/76.png" alt="Kitchen Display" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Kitchen Display</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/77.png" alt="Kitchen Display" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Kitchen Display</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/78.png" alt="Kitchen Display" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Kitchen Display</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/79.png" alt="Kitchen Display" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Kitchen Display</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/80.png" alt="Kitchen Display" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Kitchen Display</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/81.png" alt="Kitchen Display" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Kitchen Display</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/82.png" alt="Kitchen Display" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Kitchen Display</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/83.png" alt="Kitchen Display" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Kitchen Display</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/84.png" alt="Kitchen Display" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Kitchen Display</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/85.png" alt="Kitchen Display" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Kitchen Display</p>
+              </div>
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/restaurant/86.png" alt="Kitchen Display" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption">Kitchen Display</p>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="project-section">
+            <h2>Development Process</h2>
+            <p>The project followed a structured development process with AI-assisted coding:</p>
+            <ul>
+              <li><strong>Requirements gathering:</strong> Studied real restaurant operations across different types (cafe, quick-service, full-service), interviewed restaurant owners, managers, chefs, and servers to understand pain points, documented workflows for ordering, kitchen operations, seating, reservations, and delivery</li>
+              <li><strong>Architecture design:</strong> Chose Supabase for real-time data synchronization eliminating the need for custom WebSocket infrastructure, designed a tab-based module architecture for maintainability, planned the kitchen routing engine early to avoid refactoring menu structure, decided on custom state management to keep bundle size small</li>
+              <li><strong>Incremental implementation:</strong> Built core POS first (order creation, cart, checkout), then kitchen display with station routing, then front-of-house features (tables, reservations, QR ordering), then management features (menu, inventory, staff, analytics), then advanced features (print infrastructure, multi-branch, permissions), and finally commercial readiness features (licensing, provisioning, updates)</li>
+              <li><strong>AI-assisted development:</strong> Used Kiro for generating React components and refactoring code, Devin (formerly Windsurf) for debugging real-time subscription issues and performance optimization, Antigravity for architectural decisions and database schema design, Trae for building UI components and styling, and Claude for documentation, problem-solving, and edge case handling</li>
+              <li><strong>Testing and iteration:</strong> Tested each module with realistic restaurant scenarios, simulated peak hour operations with multiple concurrent orders, tested real-time synchronization across multiple devices and browsers, validated print output on actual thermal printers, gathered feedback from restaurant industry professionals, and iterated on the interface based on usability testing</li>
+            </ul>
+          </div>
+
+          <div class="project-section">
+            <h2>Challenges &amp; Lessons Learned</h2>
+            <ul>
+              <li><strong>Supabase Realtime complexity:</strong> Using Supabase Realtime for the Live Order Board required handling connection drops gracefully, implementing reconnection logic, managing subscription lifecycle to prevent memory leaks, and ensuring optimistic UI updates that rollback on error — learned that real-time systems need robust error handling and fallback mechanisms</li>
+              <li><strong>QR ordering session management:</strong> Designing the QR ordering flow so customers can browse, order, and track without needing an account while maintaining session state across page refreshes required a custom guest session system using localStorage with expiry, learned that guest sessions need to be stateless from the server side but stateful on the client for smooth UX</li>
+              <li><strong>Custom state management trade-offs:</strong> Keeping table state consistent across the floor plan, live order board, and kitchen simultaneously with a custom state management system instead of Redux or Zustand required careful design of the useStore hook and pub/sub patterns, learned that custom solutions work well for specific use cases but require more initial design work than off-the-shelf solutions</li>
+              <li><strong>Kitchen routing engine complexity:</strong> Building a kitchen routing engine that automatically assigns items to stations based on menu configuration while handling special requests and dietary flags required separating business logic from UI, learned that pure calculation engines (no React dependencies) are easier to test and maintain</li>
+              <li><strong>Browser API limitations for printing:</strong> Implementing ESC/POS thermal printer support across network, USB, and Bluetooth connections revealed browser API limitations (WebUSB and WebBluetooth have limited browser support), learned to provide browser-based printing as fallback and document printer compatibility clearly</li>
+              <li><strong>Multi-branch data isolation:</strong> Designing a multi-branch architecture that isolates data per branch while allowing branch switching without data leakage required careful database schema design with branch_id on all records, learned that data isolation must be enforced at both the database level (row-level security) and application level (UI filtering)</li>
+              <li><strong>Permission system granularity:</strong> Creating a role-based permission system that works across tabs, widgets, and actions while maintaining security required designing a flexible permission matrix that can express complex rules, learned that permissions should be defined declaratively and enforced consistently throughout the application</li>
+              <li><strong>Commercial readiness scope:</strong> Building commercial readiness features like client provisioning, licensing, and update workflows for production deployments expanded the scope significantly beyond core functionality, learned that commercial features should be planned from the start rather than added as an afterthought</li>
+            </ul>
+          </div>
+
+          </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-left">
+            <p>&copy; 2026 Rahil Tahir &mdash; Building things, breaking things, learning things.</p>
+          </div>
+          <ul class="footer-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/resume.html" target="_blank">Résumé</a></li>
+            <li><a href="https://www.linkedin.com/in/rahil-tahir/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="https://github.com/hippo246" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="mailto:Rahil.tahir01@gmail.com">Email</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Certificate Lightbox Modal -->
+    <div class="cert-modal" id="certModal" role="dialog" aria-modal="true" aria-labelledby="certModalTitle" hidden>
+      <div class="cert-modal-backdrop"></div>
+      <div class="cert-modal-content">
+        <button class="cert-modal-close" aria-label="Close certificate">&times;</button>
+        <p class="cert-modal-title" id="certModalTitle"></p>
+        <div class="cert-modal-img-wrapper" id="certModalImgWrapper">
+          <img class="cert-modal-img" id="certModalImg" src="" alt="" />
+        </div>
+        <div class="cert-modal-zoom-controls">
+          <button class="cert-modal-zoom-btn" id="zoomOut" aria-label="Zoom out" title="Zoom out">−</button>
+          <span class="cert-modal-zoom-level" id="zoomLevel">100%</span>
+          <button class="cert-modal-zoom-btn" id="zoomIn" aria-label="Zoom in" title="Zoom in">+</button>
+          <button class="cert-modal-zoom-btn" id="zoomReset" aria-label="Reset zoom" title="Reset zoom">↺</button>
+        </div>
+      </div>
+    </div>
+
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

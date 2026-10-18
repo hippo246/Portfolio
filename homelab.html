@@ -11,6 +11,7 @@
     <meta property="og:title" content="Homelab Documentation — Rahil Tahir" />
     <meta property="og:description" content="Dell OptiPlex Micro 7050 homelab running Ubuntu Server, Docker, Tailscale, and 10+ self-hosted services. Full infrastructure documentation." />
     <meta property="og:image" content="/profile.jpg" />
+    <link rel="canonical" href="https://rahiltahir.dev/homelab.html" />
     <meta name="twitter:card" content="summary" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -112,6 +113,11 @@ Remote Access via Tailscale
 (Private VPN, no public exposure)
                 </pre>
               </div>
+            </div>
+
+            <div class="homelab-live-screenshot">
+              <img src="/casaos-dashboard.png" alt="CasaOS dashboard showing live system status — 7% CPU, 21% RAM, 116GB used of 232GB storage, with deployed services: Nextcloud, Speedtest Tracker, Downlfy, Immich, Jellyfin, Syncthing, Navidrome" loading="lazy" />
+              <p class="homelab-screenshot-caption">Live CasaOS dashboard — nine-node, October 2026. 7% CPU · 21% RAM · 116 GB used · Services running: Nextcloud, Immich, Jellyfin, Navidrome, Syncthing, Speedtest Tracker</p>
             </div>
           </div>
 
@@ -414,10 +420,40 @@ Remote Access via Tailscale
 
     <footer class="footer">
       <div class="container">
-        <p>&copy; 2024–2026. Building things, breaking things, learning things.</p>
+        <div class="footer-inner">
+          <div class="footer-left">
+            <p>&copy; 2026 Rahil Tahir &mdash; Building things, breaking things, learning things.</p>
+          </div>
+          <ul class="footer-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/resume.html" target="_blank">Résumé</a></li>
+            <li><a href="https://www.linkedin.com/in/rahil-tahir/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="https://github.com/hippo246" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="mailto:Rahil.tahir01@gmail.com">Email</a></li>
+          </ul>
+        </div>
       </div>
     </footer>
 
+    <!-- Certificate Lightbox Modal -->
+    <div class="cert-modal" id="certModal" role="dialog" aria-modal="true" aria-labelledby="certModalTitle" hidden>
+      <div class="cert-modal-backdrop"></div>
+      <div class="cert-modal-content">
+        <button class="cert-modal-close" aria-label="Close certificate">&times;</button>
+        <p class="cert-modal-title" id="certModalTitle"></p>
+        <div class="cert-modal-img-wrapper" id="certModalImgWrapper">
+          <img class="cert-modal-img" id="certModalImg" src="" alt="" />
+        </div>
+        <div class="cert-modal-zoom-controls">
+          <button class="cert-modal-zoom-btn" id="zoomOut" aria-label="Zoom out" title="Zoom out">−</button>
+          <span class="cert-modal-zoom-level" id="zoomLevel">100%</span>
+          <button class="cert-modal-zoom-btn" id="zoomIn" aria-label="Zoom in" title="Zoom in">+</button>
+          <button class="cert-modal-zoom-btn" id="zoomReset" aria-label="Reset zoom" title="Reset zoom">↺</button>
+        </div>
+      </div>
+    </div>
+
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

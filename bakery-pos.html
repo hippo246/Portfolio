@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="BakeryPOS — a full React bakery point-of-sale system with Advanced POS, Token Management, Kitchen Display, Floor Plan, Waiter Terminal, QR Ordering, Dashboard, Reports, and Menu Designer." />
+    <title>Bakery POS — Rahil Tahir</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Bakery POS — Rahil Tahir" />
+    <meta property="og:description" content="Full React bakery POS — Advanced POS with course ordering, Token Management with TV mode, Kitchen Display, Floor Plan, Waiter Terminal, QR Ordering, and Reports." />
+    <meta property="og:image" content="/bakery/dashboard.png" />
+    <link rel="canonical" href="https://rahiltahir.dev/bakery-pos.html" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/style.css" />
+    <style>body { padding-top: 80px; }</style>
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <nav class="nav" aria-label="Primary navigation">
+      <div class="nav-container">
+        <div class="nav-left">
+          <a href="/" class="nav-logo-link">
+            <img src="/profile.jpg" alt="Rahil Tahir" class="nav-profile">
+            <span class="nav-logo">Rahil Tahir</span>
+          </a>
+        </div>
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-menu">
+          <li><a href="/#projects">Back to Portfolio</a></li>
+          <li><a href="/resume.html">Résumé</a></li>
+          <li><a href="/#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <main id="main-content">
+      <section class="section">
+        <div class="container">
+          <div class="page-header">
+            <h1>Bakery POS</h1>
+            <p class="page-subtitle">Full-stack bakery point-of-sale and management system — React, Vite, Tailwind CSS, Recharts</p>
+            <div class="page-header-actions">
+              <a href="/#projects" class="btn btn-secondary">← Back to Portfolio</a>
+            </div>
+          </div>
+
+          <div class="project-section">
+            <h2>Project Overview</h2>
+            <p>BakeryPOS is a full-featured point-of-sale and operations management system built specifically for bakeries and cafés with React, Vite, and Tailwind CSS. It goes well beyond a basic POS — featuring a per-seat course ordering system for multi-course meals, token management with a customer-facing TV display for order pickup, a drag-and-drop floor plan editor for table management, a waiter service terminal for staff order management, QR-code self-ordering for customers, kitchen display screens (KDS) for order preparation, advanced reporting with 80+ report types, and a comprehensive menu designer with raw ingredients tracking, cost calculation, and stock management. The system also includes on-device AI capabilities using @xenova/transformers for local inference.</p>
+            <p>The system addresses bakery-specific pain points: course-based ordering complexity (appetizers, mains, desserts served in sequence), customer pickup queue management (customers waiting for token numbers), inefficient table seating during busy periods, lack of real-time kitchen visibility, manual ingredient tracking leading to food waste, and inability to predict stock-outs before they happen.</p>
+            <p>Built with AI-assisted development using Kiro, Devin (formerly Windsurf), Antigravity, Trae, and Claude. My contribution involved defining all operational workflows by studying real bakery operations, designing the data model and navigation structure for 15+ modules, creating the per-seat course ordering system, building the token TV display for customer-facing status, implementing the kitchen order ticket and KDS systems, testing every module across different scenarios, and iterating on the interface based on usability feedback.</p>
+          </div>
+
+          <div class="project-section">
+            <h2>Problem Statement</h2>
+            <p>Bakeries and cafés have unique operational challenges that generic POS systems don't address:</p>
+            <ul>
+              <li><strong>Course-based ordering complexity:</strong> Unlike quick-service restaurants, bakeries with café seating serve courses (appetizers, mains, desserts) in sequence, requiring per-seat ordering and staged firing to the kitchen</li>
+              <li><strong>Pickup queue chaos:</strong> Customers waiting for takeout orders crowd the counter asking "is my order ready?" without knowing their token number or status</li>
+              <li><strong>Inefficient seating:</strong> Manual table tracking with basic tools causes poor table turnover during peak breakfast and lunch rushes</li>
+              <li><strong>Kitchen visibility gaps:</strong> Kitchen staff don't see order priority or elapsed time, leading to first-in-first-out processing regardless of urgency</li>
+              <li><strong>Ingredient waste:</strong> Manual ingredient tracking is error-prone, leading to over-preparation, food waste, and inconsistent food costs</li>
+              <li><strong>Stock-out surprises:</strong> No predictive insights for ingredient shortages, leading to last-minute panic ordering and disappointed customers</li>
+            </ul>
+            <p>BakeryPOS was built to address these bakery-specific needs with course ordering, token management with TV display, per-seat tracking, kitchen priority systems, ingredient-level inventory, and predictive stock-out alerts.</p>
+          </div>
+
+          <div class="project-section">
+            <h2>Solution Approach</h2>
+            <p>The solution uses a modular architecture with specialized modules for bakery operations. Key architectural decisions:</p>
+            <ul>
+              <li><strong>Per-seat course ordering:</strong> Data model designed around seats rather than just orders, with course sequencing (Course 1/2/3) and staged firing to kitchen based on customer progress</li>
+              <li><strong>Token TV display:</strong> Fullscreen customer-facing display showing order status (Being Prepared vs Ready to Collect) with large token numbers and scrolling ticker, designed for TV mounting in pickup area</li>
+              <li><strong>Floor plan editor:</strong> Drag-and-drop table layout editor with sections (Main, Outside, The Bar, Open), table status colors, and per-table bill panel with seat-level detail</li>
+              <li><strong>Kitchen dual-display:</strong> Both Kitchen Order Tickets (KOT) with printer lanes for traditional kitchens and Kitchen Display System (KDS) with digital order cards for modern kitchens</li>
+              <li><strong>Ingredient-level inventory:</strong> Menu items linked to raw ingredients with automatic stock deduction, cost calculation, and margin tracking per item</li>
+              <li><strong>On-device AI:</strong> @xenova/transformers integration for local AI inference (no cloud dependencies) for predictive analytics and pattern recognition</li>
+              <li><strong>Deferred integrations:</strong> Cloud storage providers (Supabase, AWS S3, Azure, WebDAV) and payment gateway (Razorpay) are architected but deferred for client deployment</li>
+            </ul>
+          </div>
+
+          <div class="project-section">
+            <h2>Implemented Features</h2>
+
+            <p><strong>Point of Sale</strong></p>
+            <ul>
+              <li><strong>POS — Standard Mode</strong> — menu organized by category (Breads, Pastries, Cakes, Coffee, Beverages, Breakfast, and more) with visual item cards, cart with quantity pad (+/- buttons), automatic GST calculation (18% with CGST/SGST split), discount application (percentage or flat), tip addition, service charge toggle, Hold order to pause and resume later, Voice order for phone orders, Custom order for special requests, order type selection (Dine-in / Takeaway / Delivery), table selection for dine-in orders, waiter assignment for service tracking, QR orders shortcut for quick access to customer-placed orders, aggregator integration placeholder for future food platform connections, and KDS/Printer status indicators showing kitchen and printer connectivity</li>
+              <li><strong>POS — Advanced / Course Mode</strong> — per-seat ordering system where each seat at a table can have its own order, course sequencing (Course 1 for appetizers, Course 2 for mains, Course 3 for desserts) with staged firing to kitchen, special request and allergy notes per seat for dietary accommodations, Dine-in / Takeout / Delivery order types with different workflows, Send Items action to fire specific courses to kitchen, Discount application per seat or per check, Service charge toggle, Tip addition, Cash Drawer management, Server assignment, Timing controls for delayed preparation, Tax configuration, Delay actions for holding orders, Split Check functionality for dividing bills by seat, and Pay action for checkout</li>
+              <li><strong>Checkout</strong> — bill summary showing subtotal, CGST, SGST, and total with clear tax breakdown, payment method selection (Cash / Card / UPI / Wallet / Split / UPI QR), quick cash buttons for common denominations, exact amount entry, change calculation displayed before payment, and Complete Payment action to finalize transaction</li>
+              <li><strong>Secure Checkout modal</strong> — GST configuration (18% with CGST/SGST split), Add Discount with percentage or flat amount options, Service charge toggle with configurable rate, Add Tip with percentage options, Add Note for special instructions or customer requests, Receipt Delivery options (Thermal Print Only / Email / SMS), multiple payment methods (Cash / Card / UPI / Wallet / Split / UPI QR), amount tendered entry with automatic change calculation, and secure payment processing</li>
+            </ul>
+
+            <p><strong>Token Management</strong></p>
+            <ul>
+              <li><strong>Token board</strong> — three-column Kanban board showing Pending / Preparing / Ready for Pickup, each token card displays customer name, order items summary, total amount, elapsed time since order placement, READY action to mark order as complete, SERVED action to mark as delivered to customer, RESET action to return to pending, voice search for rapid token lookup by customer name or token number, and TV Mode toggle to switch to customer-facing fullscreen display</li>
+              <li><strong>TV / Customer Display Mode</strong> — fullscreen order status board designed for TV mounting in pickup area, showing two sections: "In the Kitchen — Being Prepared" with pending token numbers and "Ready to Collect — Please Pick Up" with completed token numbers, large token numbers visible from a distance, scrolling ticker at the bottom showing announcements or promotions, ESC key to exit fullscreen mode, and automatic refresh to show real-time status updates</li>
+            </ul>
+
+            <p><strong>Tables</strong></p>
+            <ul>
+              <li><strong>Tables grid view</strong> — 8 tables (T1–T8) with 38 total seats across the restaurant, occupancy percentage calculation showing how many seats are currently occupied, Available/Occupied status indicators with color coding, merge tables functionality for large parties, bulk actions for operations like clearing all tables, add table functionality for expanding seating capacity, and quick status updates</li>
+              <li><strong>Floor plan view</strong> — drag-and-drop layout editor allowing visual table positioning, sections for organizing tables (Main, Outside, The Bar, Open), table status colors (Available / Seated / Active / Cleaning) for quick visual assessment, per-table bill panel showing seat tabs, items ordered per seat, Fire Starters/Mains/Desserts actions for staged kitchen firing, subtotal calculation, GST breakdown, service charge, total amount, and actions (Split bill, On the Way, Move to different table, Hold order, Pay)</li>
+            </ul>
+
+            <p><strong>Kitchen</strong></p>
+            <ul>
+              <li><strong>Kitchen Order Tickets (KOT)</strong> — check cards per order showing order details, status indicators (Preparing / New / Accepted / Out for Delivery / Ready / Completed), complete item listing with quantities and modifiers, Fire Appetisers action to send first course to kitchen, Hold Entrées action to delay main courses, Floor Plan link to see table location, Serve Order action when food is ready, Complete Serving when table has been served, printer lanes P1–P5 for routing to different kitchen stations, DONE action to clear completed tickets, RECALL action to bring back cleared tickets, VIEW action to see full order details, MOVE action to reorder tickets, CANCEL action for voided orders, and average prep time displayed for performance monitoring</li>
+              <li><strong>Kitchen Display System (KDS)</strong> — digital ticket view with Done / Runner / Recall / Void actions for order management, multiple view tabs (Tickets for all orders, Ticket Split for partial completions, Waiting for new orders, By Table for table-based view, By Product for item-based view, Overview for summary), filter options (All Day for all current orders, Recently Fulfilled for completed orders, Recall for bringing back orders), color-coded urgency indicators, elapsed time tracking, and order status updates in real-time</li>
+            </ul>
+
+            <p><strong>Waiters</strong></p>
+            <ul>
+              <li><strong>Waiter Service Terminal</strong> — per-waiter check cards showing active orders, served orders, and sales volume statistics, order status tracking (New / Preparing / Accepted / Ready / Out for Delivery / Completed), claim check action to assign orders to specific waiters, Fire Appetisers action to send first course, Hold Entrées action to delay mains, Floor Plan link to see table location, Serve Order action when food is delivered, Complete Serving when table is finished, Handover Shift for shift changeovers, Shift Checkout for end-of-shift reconciliation, staff filter (All Staff to see everyone or individual waiters for specific view), QR Orders filter to see customer-placed orders, and Unassigned filter to see orders not yet claimed by a waiter</li>
+            </ul>
+
+            <p><strong>QR Self-Ordering</strong></p>
+            <ul>
+              <li><strong>Guest menu page</strong> — customer-facing menu accessible via QR code scan, browsable by category (Mocktails, Specialty Teas, Artisanal Coffees, Breakfast, Beverages, Appetizer, Salads, Entrées, Sandwich, Sides), item images with high-quality photos, detailed descriptions for each item, vegetarian and non-vegetarian indicators with clear icons, allergen warnings, Add to cart functionality, and mobile-optimized responsive design</li>
+              <li><strong>Cart</strong> — item quantity adjustment (+/- buttons), special request entry per item for customizations, subtotal calculation with real-time updates, customer name entry for order identification, special requests section for overall order notes, tip options (10%, 15%, or custom amount), payment method selection (Pay at Counter / UPI / Card), Place Order action to submit order, Call for Assistance button for requesting waiter help, and Call Waiter button for immediate service needs</li>
+            </ul>
+
+            <p><strong>Dashboard, Reports &amp; Menu</strong></p>
+            <ul>
+              <li><strong>Dashboard</strong> — total orders count showing day's volume, total sales revenue with real-time updates, average order value calculation, reservations count (496 in demo), weekly revenue chart showing trends over time (₹34,353 in demo), category statistics donut chart showing order distribution (Takeaway 33.1%, Reservation 31%, Dine-in 21.6%, Delivery 14.2%), active orders count for current operations, Sync Data action for manual data refresh, and Export action for data backup</li>
+              <li><strong>Reports</strong> — comprehensive reporting suite with 80+ report types including Sales Summary, Sales Trends over time, Payment Methods breakdown, Item Sales popularity ranking, Category Sales performance, Section Sales by restaurant area, Employee Sales productivity, Labour vs Sales cost analysis, Discounts tracking, Modifier Sales analysis, Comps (complimentary items) tracking, time filters (hourly, daily, weekly, monthly), location filters (by section or table), display filters (summary vs detailed), top 5 items line chart showing best-sellers, itemised table with items sold, units sold, and gross sales, Export Excel functionality with multiple sheets, and Export PDF for formatted reports</li>
+              <li><strong>Menu Designer</strong> — 37 items across 14 categories in demo, active/sold-out tracking for availability management, cost and margin display showing profitability (100% margin on all demo items), Happy Hour toggle for promotional pricing, Combos toggle for bundle deals, bulk enable/disable for seasonal menu changes, Raw Ingredients & Stock tab for ingredient-level inventory management, search functionality by name, description, or allergens, and Create Item action for adding new menu items</li>
+            </ul>
+          </div>
+
+          <div class="project-section">
+            <h2>Screenshots</h2>
+            <div class="project-screenshots">
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/bakery/pos-layout1.png" alt="BakeryPOS Standard POS — menu grid with categories, cart with GST, order type selector, KDS/printer status" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>POS — Standard Mode</strong> — menu grid, cart, GST, order type, KDS/printer status</p>
+              </div>
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/bakery/pos-layout2.png" alt="BakeryPOS Advanced POS — per-seat course ordering, special requests, allergy notes, payment controls" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>POS — Advanced / Course Mode</strong> — per-seat ordering, course sequencing, allergy notes</p>
+              </div>
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/bakery/checkout-layout2.png" alt="BakeryPOS Checkout — bill with CGST/SGST breakdown, payment methods Cash/Card/UPI/Wallet/Split" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>Checkout</strong> — CGST + SGST breakdown, Cash / Card / UPI / Wallet / Split payment</p>
+              </div>
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/bakery/checkout.png" alt="BakeryPOS Secure Checkout modal — GST 18%, discount, tip, service, receipt delivery, amount tendered with change" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>Secure Checkout</strong> — GST, discount, tip, receipt delivery options, change calculation</p>
+              </div>
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/bakery/dashboard.png" alt="BakeryPOS Dashboard — orders, sales, revenue chart, category statistics, reservations" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>Dashboard</strong> — weekly revenue ₹34,353, category stats, reservations (496)</p>
+              </div>
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/bakery/reports.png" alt="BakeryPOS Reports — section sales line chart, itemised table, Export Excel/PDF" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>Reports</strong> — section sales chart, itemised breakdown, Export Excel / PDF</p>
+              </div>
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/bakery/menu.png" alt="BakeryPOS Menu Designer — 37 items across 14 categories, cost/margin, stock status, Happy Hour, Combos" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>Menu Designer</strong> — 37 items, 14 categories, cost/margin tracking, Happy Hour, Combos</p>
+              </div>
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/bakery/tokens.png" alt="BakeryPOS Token Management — Pending/Preparing/Ready Kanban, token cards with customer name and items" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>Token Management</strong> — Pending / Preparing / Ready Kanban with voice search and TV Mode</p>
+              </div>
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/bakery/tokens-tv.png" alt="BakeryPOS Token TV Mode — fullscreen customer display showing Being Prepared and Ready to Collect tokens" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>Token TV Mode</strong> — fullscreen customer-facing order status display</p>
+              </div>
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/bakery/tables-grid.png" alt="BakeryPOS Tables grid — 8 tables, 38 seats, 0% occupancy, Available status" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>Tables — Grid View</strong> — 8 tables, 38 seats, occupancy %, merge and bulk actions</p>
+              </div>
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/bakery/tables-floorplan.png" alt="BakeryPOS Floor Plan — drag-and-drop layout with Available/Seated/Active/Cleaning status, per-table bill panel" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>Tables — Floor Plan</strong> — drag-and-drop layout, table status, per-table bill with Fire courses</p>
+              </div>
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/bakery/waiters.png" alt="BakeryPOS Waiter Service Terminal — check cards per waiter with status, Fire Appetisers, claim check, shift checkout" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>Waiter Service Terminal</strong> — per-waiter checks, order status, Fire Appetisers, Shift Checkout</p>
+              </div>
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/bakery/kds1.png" alt="BakeryPOS KOT — kitchen order ticket cards with Preparing/Accepted/Ready/Completed status, printer lanes P1-P5" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>Kitchen Order Tickets (KOT)</strong> — order cards, status, printer lanes P1–P5, avg prep time</p>
+              </div>
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/bakery/kds2.png" alt="BakeryPOS Kitchen Display System — KDS ticket view with Done/Runner/Recall/Void, by table/product/overview tabs" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>Kitchen Display System (KDS)</strong> — ticket view with Done / Runner / Recall / Void</p>
+              </div>
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/bakery/qr-menu.png" alt="BakeryPOS QR Guest Menu — customer-facing menu with categories, item images, veg indicators, Add to cart" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>QR Self-Ordering — Menu</strong> — customer-facing menu with categories and veg/non-veg indicators</p>
+              </div>
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/bakery/qr-cart.png" alt="BakeryPOS QR Cart — item quantity, special request, name, tip options, Pay at Counter/UPI/Card payment methods" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>QR Self-Ordering — Cart</strong> — special requests, tip, Pay at Counter / UPI / Card / Call Waiter</p>
+              </div>
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/bakery/qr-payment.png" alt="BakeryPOS QR Payment — Pay at Counter, UPI (GPay/PhonePe/Paytm), Credit/Debit Card, Call for Assistance" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>QR Self-Ordering — Payment</strong> — Pay at Counter, UPI, Card, Call for Assistance</p>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="project-section">
+            <h2>Technology Stack</h2>
+            <ul>
+              <li><strong>Frontend:</strong> React, Vite, Tailwind CSS</li>
+              <li><strong>Charts:</strong> Recharts</li>
+              <li><strong>AI:</strong> @xenova/transformers (on-device inference)</li>
+              <li><strong>PDF / Print:</strong> jsPDF, jspdf-autotable</li>
+              <li><strong>Spreadsheets:</strong> xlsx (Excel export)</li>
+              <li><strong>Maps:</strong> Leaflet, React Leaflet</li>
+              <li><strong>QR codes:</strong> qrcode.react</li>
+              <li><strong>Storage (deferred):</strong> Supabase, AWS S3, Azure Blob, WebDAV</li>
+              <li><strong>Payment (deferred):</strong> Razorpay</li>
+            </ul>
+          </div>
+
+          <div class="project-section">
+            <h2>Development Process</h2>
+            <p>The project followed a structured development process with AI-assisted coding:</p>
+            <ul>
+              <li><strong>Requirements gathering:</strong> Studied real bakery operations across different types (standalone bakery, bakery with café seating, quick-service bakery), interviewed bakery owners, bakers, and counter staff to understand pain points, documented workflows for ordering, course service, token management, kitchen operations, and seating</li>
+              <li><strong>Architecture design:</strong> Designed per-seat data model for course ordering, planned token TV display architecture for customer-facing status, designed dual kitchen display (KOT for traditional, KDS for modern), planned ingredient-level inventory system, integrated @xenova/transformers for on-device AI, and decided which cloud integrations to defer for client deployment</li>
+              <li><strong>Incremental implementation:</strong> Built Standard POS first (basic ordering, cart, checkout), then Advanced POS with per-seat course ordering, then token management with TV display, then tables and floor plan editor, then kitchen systems (KOT and KDS), then waiter service terminal, then QR self-ordering, then menu designer with ingredients, then dashboard and reports, and finally polished UI and UX</li>
+              <li><strong>AI-assisted development:</strong> Used Kiro for generating React components and refactoring code, Devin (formerly Windsurf) for debugging state synchronization issues between token board and TV display, Antigravity for architectural decisions and data model design, Trae for building UI components with Tailwind CSS, and Claude for documentation, problem-solving, and edge case handling</li>
+              <li><strong>Testing and iteration:</strong> Tested each module with realistic bakery scenarios, simulated course-based ordering with multiple seats, tested token TV display on actual TV, tested floor plan drag-and-drop on different devices, validated kitchen order firing sequences, gathered feedback from bakery industry professionals, and iterated on the interface based on usability testing</li>
+            </ul>
+          </div>
+
+          <div class="project-section">
+            <h2>Challenges &amp; Lessons Learned</h2>
+            <ul>
+              <li><strong>Per-seat course ordering complexity:</strong> Per-seat course ordering adds significant complexity — items need to be associated with a seat and a course, then fired to the kitchen in sequence rather than all at once — required designing a complex data model and careful state management, learned that course-based workflows need clear rules for when courses fire and how the kitchen receives staged orders</li>
+              <li><strong>Token TV display synchronization:</strong> The token TV display runs as a separate fullscreen mode with its own state, needing to stay in sync with the main token board without refreshing, required implementing a shared state mechanism with real-time updates, learned that fullscreen displays need to handle window focus events and graceful exit</li>
+              <li><strong>Floor plan persistence and sync:</strong> Floor plan layout editing — storing table positions, sections, and status in a way that persists across sessions and syncs with live order state — required careful data structure design and conflict resolution, learned that UI state (layout) must be separated from operational state (orders) while maintaining linkage</li>
+              <li><strong>QR ordering context isolation:</strong> QR self-ordering runs on the customer's device with no staff login, so it needs a completely different UI context while sharing the same order data model, required designing a guest session system that isolates customer view from staff view, learned that guest sessions need to be stateless from server perspective but stateful on client for smooth UX</li>
+              <li><strong>Ingredient-level inventory integration:</strong> Linking menu items to raw ingredients with automatic stock deduction required careful transaction design to handle partial usage, returns, and stock corrections, learned that inventory transactions need complete audit trails and rollback capability</li>
+              <li><strong>On-device AI limitations:</strong> Using @xenova/transformers for on-device AI inference revealed model size and performance limitations on lower-end devices, learned to provide fallback to server-side AI or rule-based systems when on-device inference is too slow</li>
+              <li><strong>Dual kitchen display complexity:</strong> Supporting both Kitchen Order Tickets (KOT) for traditional kitchens and Kitchen Display System (KDS) for modern kitchens required designing two different interfaces for the same underlying data, learned that feature flags and configuration are essential for supporting different operational models</li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-left">
+            <p>&copy; 2026 Rahil Tahir &mdash; Building things, breaking things, learning things.</p>
+          </div>
+          <ul class="footer-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/resume.html" target="_blank">Résumé</a></li>
+            <li><a href="https://www.linkedin.com/in/rahil-tahir/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="https://github.com/hippo246" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="mailto:Rahil.tahir01@gmail.com">Email</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Certificate Lightbox Modal -->
+    <div class="cert-modal" id="certModal" role="dialog" aria-modal="true" aria-labelledby="certModalTitle" hidden>
+      <div class="cert-modal-backdrop"></div>
+      <div class="cert-modal-content">
+        <button class="cert-modal-close" aria-label="Close certificate">&times;</button>
+        <p class="cert-modal-title" id="certModalTitle"></p>
+        <div class="cert-modal-img-wrapper" id="certModalImgWrapper">
+          <img class="cert-modal-img" id="certModalImg" src="" alt="" />
+        </div>
+        <div class="cert-modal-zoom-controls">
+          <button class="cert-modal-zoom-btn" id="zoomOut" aria-label="Zoom out" title="Zoom out">−</button>
+          <span class="cert-modal-zoom-level" id="zoomLevel">100%</span>
+          <button class="cert-modal-zoom-btn" id="zoomIn" aria-label="Zoom in" title="Zoom in">+</button>
+          <button class="cert-modal-zoom-btn" id="zoomReset" aria-label="Reset zoom" title="Reset zoom">↺</button>
+        </div>
+      </div>
+    </div>
+
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

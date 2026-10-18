@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="IGRIS LAB — an AI-powered internship launch platform with a public landing site, student portal, task management, collaboration hub, certificates, and admin control centre. Built in vanilla HTML, CSS, and JavaScript." />
+    <title>IGRIS LAB — Rahil Tahir</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="IGRIS LAB — Rahil Tahir" />
+    <meta property="og:description" content="AI-powered internship platform — landing site, student portal, task Kanban, collaboration hub, certificates, and admin control centre." />
+    <meta property="og:image" content="/igris/dashboard.png" />
+    <link rel="canonical" href="https://rahiltahir.dev/igris-lab.html" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/style.css" />
+    <style>body { padding-top: 80px; }</style>
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <nav class="nav" aria-label="Primary navigation">
+      <div class="nav-container">
+        <div class="nav-left">
+          <a href="/#projects" class="nav-logo-link">
+            <img src="/profile.jpg" alt="Rahil Tahir" class="nav-profile">
+            <span class="nav-logo">Rahil Tahir</span>
+          </a>
+        </div>
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-menu">
+          <li><a href="/#projects">Back to Portfolio</a></li>
+          <li><a href="/resume.html">Résumé</a></li>
+          <li><a href="/#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <main id="main-content">
+      <section class="section">
+        <div class="container">
+          <div class="page-header">
+            <h1>IGRIS LAB</h1>
+            <p class="page-subtitle">AI-powered internship launch platform — Vanilla HTML, CSS, JavaScript</p>
+            <div class="page-header-actions">
+              <a href="/#projects" class="btn btn-secondary">← Back to Portfolio</a>
+            </div>
+          </div>
+
+          <div class="project-section">
+            <h2>Project Overview</h2>
+            <p>IGRIS LAB is a full internship management and launch platform with two distinct layers — a polished public marketing site for prospective students, mentors, and recruiters, and a private student portal with a complete internship management workspace.</p>
+            <p>Built entirely in vanilla HTML, CSS, and JavaScript — no framework, no build step. The design uses a consistent dark black and orange glow aesthetic across every view. Built with AI-assisted development. My contribution involved defining the product requirements, designing all workflows and page structures, and testing across every role.</p>
+            <p>The platform supports four roles: <strong>Students</strong>, <strong>Mentors</strong>, <strong>Recruiters</strong>, and <strong>Admins</strong>.</p>
+          </div>
+
+          <div class="project-section">
+            <h2>Implemented Features</h2>
+
+            <p><strong>Public Landing Site</strong></p>
+            <ul>
+              <li><strong>Hero</strong> — "Launch faster. Learn better." headline, live internship preview card (Data Analytics Internship 2.0, 88% complete), AI Mentor and Certificate widgets, stats (15,000 students / 500 mentors / 98% success), Get Started and See Process CTAs, built-for tags (Students, Mentors, Recruiters, Admins)</li>
+              <li><strong>Why IGRIS</strong> — four value cards: Implementation and tools (task submissions, GitHub proof, Drive links, mentor feedback), High-converting structure (landing sections, program modals, auth flow), Maximum clarity (students see progress, deadlines, completed tasks), Clear steps and trust (pending / under review / approved status visibility)</li>
+              <li><strong>Process</strong> — three steps: Share your vision (register, choose domain, set goals) → We design the path (dashboard roadmap, lessons, tasks, deadlines, mentor notes) → Ready to launch (submit projects, receive feedback, unlock badges, download certificate)</li>
+              <li><strong>Programs</strong> — three internship paths: Data Analytics (Excel, SQL, Python, Power BI — 8 weeks), Full Stack Web (HTML, CSS, JavaScript, APIs, GitHub, deployment — 10 weeks, Most Popular), UI/UX Design (research, wireframes, prototypes, visual design — 6 weeks); each with a program modal showing What You'll Learn, Requirements, application form (Full Name, Email, Phone, College/University), Apply Now / Send Inquiry</li>
+              <li><strong>FAQ</strong> — eight questions including AI Mentor, certificate download, mobile UI, Apply Now flow, progress tracking, and mentor interaction</li>
+              <li><strong>Contact</strong> — Send a message form (Name, Email, Message, Submit) + Platform Support panel (support@igrislab.online, Mon–Sat 10:00–18:00, Bengaluru, India, Login for Support)</li>
+            </ul>
+
+            <p><strong>Authentication Shell</strong></p>
+            <ul>
+              <li>Three tabs: Login / Register / Forgot — same warm black and orange theme throughout</li>
+              <li><strong>Login</strong> — Email and Password, Login to Dashboard, demo login pre-filled (mehreen@igrislab.online)</li>
+              <li><strong>Register</strong> — Full Name, Email, Role selector (Student / Mentor / Recruiter / Admin), Create Account</li>
+              <li><strong>Reset password</strong> — Email field, Send Reset Link</li>
+            </ul>
+
+            <p><strong>Student Portal</strong></p>
+            <ul>
+              <li><strong>Dashboard</strong> — personalised "Launch faster, Mehreen." header; active internship card (Data Analytics Internship 2.0, 68% progress, 77 days, HKBK Degree College); stat cards (Tasks Done 12/20, Learning Progress 68%, Badges 6, Team Rank #4 Top 10%); Internship Journey Timeline (Applied → Approved → Offer → Learning → Projects → Certified); Active Pathway (Domain, Remaining days, Goal); Today's Focus task card with priority indicator</li>
+              <li><strong>My Internship</strong> — programme details (Data Analytics Internship 2.0, Live Internship Online), mentor profile (Rayan Kapoor, Data Scientist, 4.9 rating, Contact Mentor), overall progress donut chart (69%), requirements checklist (Application submitted ✓, Application approved ✓, Offer accepted ✓, Learning started ✓, First project pending ○), Internship Roadmap (Orientation → Learning → Assessment → Project → Review → Complete), Download roadmap</li>
+              <li><strong>Tasks — Task Control Center</strong> — Kanban board: Pending (2) / In Progress (2) / Under Review (2) / Completed (2); task cards with priority badge, category tag, due date, time spent, mentor assigned, Start Task / Continue / View / Reopen actions; filter tabs (All / Pending / In Progress / Review / Completed)</li>
+              <li><strong>Notifications</strong> — bell panel: Mentor feedback added (2 min ago), Task deadline tomorrow — Submit EDA Report before 6 PM (1 hr ago), Certificate progress updated — 60% closer to completion (3 hrs ago), Mark all read</li>
+              <li><strong>Collaboration Hub</strong> — stats (Mentors 3 Active, Groups 5 Online, Projects 2 Ongoing, Events 4 This week); Featured Project (Sales Analytics Dashboard — Build an interactive KPI dashboard); Team Activity feed (Ayesha uploaded Sales_Insights.xlsx, Rohan commented on EDA, Mehak completed a milestone); Intern Discussion chat panel</li>
+              <li><strong>Announcements</strong> — Total Notices 24, Urgent 5, Events 7 this month; Spotlight card (Midterm Evaluation Started — submit progress report before deadline); Recent Announcements (System Maintenance Notice, Report Submission Deadline, New Project Briefs Released)</li>
+              <li><strong>Certificates</strong> — stats (Total Certificates 3, Badges 6, Completion 60%, Latest 18 May); Earned Certificates list (Data Analytics Internship 2.0, Data Visualization Specialist, Statistical Analysis Pro); Certificate preview card (IGRIS LAB Certificate of Completion, Mehreen Fatima, Data Analytics Internship 2.0, Download Certificate)</li>
+              <li><strong>Profile Settings</strong> — avatar with change photo, Active Intern badge; Personal Details (Full Name, Email, College — Mehreen Fatima, mehreen@igrislab.online, HKBK Degree College, Current Role: Data Analytics Intern); Skills &amp; Interests (Python, SQL, Java, DBMS; Domain: Data Analytics; Career Goal: Build internship-ready project); Notification Preferences (task deadline reminders, mentor feedback alerts, certificate updates, weekly email summary)</li>
+              <li><strong>Admin Control Centre</strong> — stats (Total Interns 248, Internships 96 Active, Tasks Done 1,142, Completion 78%); Pending Submissions Kanban with four card types (Application — Ayesha Khan, Report — Ahmed Raza, Task — Sara Mahmood, Certificate — Usman Tariq), each with Review and Approve actions</li>
+            </ul>
+          </div>
+
+          <div class="project-section">
+            <h2>Screenshots</h2>
+            <div class="project-screenshots">
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/igris/landing.png" alt="IGRIS LAB landing page — Launch faster Learn better hero, internship preview card, AI Mentor widget, 15000 students stat" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>Landing — Hero</strong> — live internship preview, AI Mentor, 15,000 students stat</p>
+              </div>
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/igris/why-igris.png" alt="IGRIS LAB Why IGRIS section — four value cards: Implementation and tools, High-converting structure, Maximum clarity, Clear steps and trust" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>Why IGRIS</strong> — four value proposition cards</p>
+              </div>
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/igris/process.png" alt="IGRIS LAB Process section — three steps: Share your vision, We design the path, Ready to launch; Programs section below" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>Process &amp; Programs</strong> — three-step journey and program paths</p>
+              </div>
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/igris/programs.png" alt="IGRIS LAB Programs — Data Analytics 8 weeks, Full Stack Web 10 weeks Most Popular, UI/UX Design 6 weeks" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>Programs</strong> — Data Analytics, Full Stack Web, UI/UX Design internship paths</p>
+              </div>
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/igris/program-modal.png" alt="IGRIS LAB program modal — Data Analytics: What You'll Learn and Requirements, Apply Now form with Full Name, Email, Phone, College" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>Program Modal</strong> — curriculum, requirements, and application form</p>
+              </div>
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/igris/faq.png" alt="IGRIS LAB FAQ — Questions We've got answers, eight accordion questions about AI Mentor, certificates, mobile UI, Apply Now" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>FAQ</strong> — eight questions covering AI Mentor, certificates, mobile, and progress</p>
+              </div>
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/igris/contact.png" alt="IGRIS LAB Contact — Send a message form and Platform Support panel with email, hours, location, Login for Support" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>Contact</strong> — message form and platform support details (Bengaluru, India)</p>
+              </div>
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/igris/auth-login.png" alt="IGRIS LAB Login — Start your launch auth page, Login tab with demo credentials pre-filled" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>Auth — Login</strong> — demo login with pre-filled credentials</p>
+              </div>
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/igris/auth-register.png" alt="IGRIS LAB Register — Create account form with Full Name, Email, Role selector (Student/Mentor/Recruiter/Admin)" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>Auth — Register</strong> — role selector (Student / Mentor / Recruiter / Admin)</p>
+              </div>
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/igris/auth-reset.png" alt="IGRIS LAB Reset password — email field and Send Reset Link button" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>Auth — Reset Password</strong></p>
+              </div>
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/igris/dashboard.png" alt="IGRIS LAB Student Dashboard — Launch faster Mehreen header, internship card 68% progress 77 days, task/learning/badge/rank stats, journey timeline, active pathway, today's focus" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>Student Dashboard</strong> — progress, stats, journey timeline, today's focus task</p>
+              </div>
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/igris/my-internship.png" alt="IGRIS LAB My Internship — programme details, mentor Rayan Kapoor, 69% progress donut, requirements checklist, internship roadmap 6 stages" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>My Internship</strong> — mentor profile, progress donut, requirements checklist, roadmap</p>
+              </div>
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/igris/tasks.png" alt="IGRIS LAB Tasks — Kanban board with Pending, In Progress, Under Review, Completed columns; task cards with priority, category, due date, time spent" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>Task Control Center</strong> — Kanban with priority badges, time tracking, mentor review</p>
+              </div>
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/igris/notifications.png" alt="IGRIS LAB Notifications panel — mentor feedback, task deadline tomorrow, certificate progress updated" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>Notifications</strong> — mentor feedback, deadlines, certificate progress</p>
+              </div>
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/igris/collaboration.png" alt="IGRIS LAB Collaboration Hub — mentor/group/project/event stats, featured project, team activity feed, intern discussion chat" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>Collaboration Hub</strong> — mentors, groups, projects, team activity, discussion chat</p>
+              </div>
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/igris/announcements.png" alt="IGRIS LAB Announcements — 24 total notices, 5 urgent, spotlight Midterm Evaluation Started, recent announcements list" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>Announcements</strong> — 24 notices, 5 urgent, spotlight card, recent updates</p>
+              </div>
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/igris/certificates.png" alt="IGRIS LAB Certificates — 3 certificates earned, 6 badges, 60% completion; certificate preview card for Mehreen Fatima, Download Certificate" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>Certificates</strong> — earned certificates, badges, downloadable certificate preview</p>
+              </div>
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/igris/profile.png" alt="IGRIS LAB Profile Settings — personal details, skills Python/SQL/Java/DBMS, domain Data Analytics, notification preferences" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>Profile Settings</strong> — personal details, skills, domain, notification preferences</p>
+              </div>
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/igris/admin.png" alt="IGRIS LAB Admin Control Centre — 248 interns, 96 active internships, 1142 tasks done, 78% completion; pending submissions Kanban with Application/Report/Task/Certificate cards" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>Admin Control Centre</strong> — 248 interns, 96 internships, pending submissions Kanban</p>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="project-section">
+            <h2>Technology Stack</h2>
+            <ul>
+              <li><strong>Frontend:</strong> Vanilla HTML, CSS, JavaScript — no framework, no build step, no dependencies</li>
+              <li><strong>Architecture:</strong> Single-page application pattern with JavaScript shell switching; landing, auth, and app shells rendered conditionally</li>
+              <li><strong>Design system:</strong> Custom dark black and orange glow palette, consistent across all views from landing to admin panel</li>
+              <li><strong>Routing:</strong> Client-side page switching via <code>switchPage()</code> and <code>showApp()</code> functions</li>
+            </ul>
+          </div>
+
+          <div class="project-section">
+            <h2>Challenges &amp; Lessons Learned</h2>
+            <ul>
+              <li>Building a full multi-role SPA (Students, Mentors, Recruiters, Admins) in vanilla JS — state management, role-based views, and navigation all had to be implemented from scratch without a framework or router library</li>
+              <li>Keeping a consistent design system across 15+ views without CSS variables or a component library — required disciplined custom CSS architecture</li>
+              <li>The AI chat bubble positioning — on mobile the sidebar drawer overlaps the right side, so the bubble had to be detected and moved to the left when the drawer is open</li>
+              <li>Designing the task Kanban, internship timeline, and certificate preview to feel polished in plain HTML without any JS UI framework</li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-left">
+            <p>&copy; 2026 Rahil Tahir &mdash; Building things, breaking things, learning things.</p>
+          </div>
+          <ul class="footer-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/resume.html" target="_blank">Résumé</a></li>
+            <li><a href="https://www.linkedin.com/in/rahil-tahir/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="https://github.com/hippo246" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="mailto:Rahil.tahir01@gmail.com">Email</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Certificate Lightbox Modal -->
+    <div class="cert-modal" id="certModal" role="dialog" aria-modal="true" aria-labelledby="certModalTitle" hidden>
+      <div class="cert-modal-backdrop"></div>
+      <div class="cert-modal-content">
+        <button class="cert-modal-close" aria-label="Close certificate">&times;</button>
+        <p class="cert-modal-title" id="certModalTitle"></p>
+        <div class="cert-modal-img-wrapper" id="certModalImgWrapper">
+          <img class="cert-modal-img" id="certModalImg" src="" alt="" />
+        </div>
+        <div class="cert-modal-zoom-controls">
+          <button class="cert-modal-zoom-btn" id="zoomOut" aria-label="Zoom out" title="Zoom out">−</button>
+          <span class="cert-modal-zoom-level" id="zoomLevel">100%</span>
+          <button class="cert-modal-zoom-btn" id="zoomIn" aria-label="Zoom in" title="Zoom in">+</button>
+          <button class="cert-modal-zoom-btn" id="zoomReset" aria-label="Reset zoom" title="Reset zoom">↺</button>
+        </div>
+      </div>
+    </div>
+
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="ClinOS — a full React/TypeScript medical suite with live queue, appointments, consultations, prescriptions, lab orders, billing, communications, and AI-assisted patient profiles." />
+    <title>Clinic CRM — ClinOS — Rahil Tahir</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Clinic CRM — ClinOS — Rahil Tahir" />
+    <meta property="og:description" content="Full medical suite — React, TypeScript, Firebase. Live queue, appointments, consultations, prescriptions, lab, billing, and AI patient profiles." />
+    <meta property="og:image" content="/clinic/dashboard.png" />
+    <link rel="canonical" href="https://rahiltahir.dev/clinic-crm-project.html" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/style.css" />
+    <style>body { padding-top: 80px; }</style>
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <nav class="nav" aria-label="Primary navigation">
+      <div class="nav-container">
+        <div class="nav-left">
+          <a href="/" class="nav-logo-link">
+            <img src="/profile.jpg" alt="Rahil Tahir" class="nav-profile">
+            <span class="nav-logo">Rahil Tahir</span>
+          </a>
+        </div>
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-menu">
+          <li><a href="/#projects">Back to Portfolio</a></li>
+          <li><a href="/resume.html">Résumé</a></li>
+          <li><a href="/#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <main id="main-content">
+      <section class="section">
+        <div class="container">
+          <div class="page-header">
+            <h1>Clinic CRM — ClinOS</h1>
+            <p class="page-subtitle">Full medical suite — React, TypeScript, Firebase, Recharts</p>
+            <div class="page-header-actions">
+              <a href="/#projects" class="btn btn-secondary">← Back to Portfolio</a>
+            </div>
+          </div>
+
+          <div class="project-section">
+            <h2>Project Overview</h2>
+            <p>ClinOS is a full-featured medical clinic management system built with React and TypeScript, backed by Firebase Firestore for real-time data synchronization and Firebase Auth for secure authentication. It covers the complete patient journey — from front-desk queue management and appointment scheduling through consultation documentation, prescriptions with dosage presets, lab orders and results tracking, billing with GST support, and multi-channel communications (SMS, Email, WhatsApp) — with an admin dashboard that surfaces critical alerts, overdue follow-ups, and priority actions in real time. The system includes AI-assisted patient profiles that surface key context and risk scores.</p>
+            <p>The system addresses key clinic pain points: fragmented patient data across different systems, manual queue management causing long wait times, prescription errors from lack of standardization, missed follow-ups leading to poor patient outcomes, lack of real-time visibility into clinic operations, and inefficient communication with patients.</p>
+            <p>Built with AI-assisted development using Kiro, Devin (formerly Windsurf), Antigravity, Trae, and Claude. Uses demonstration data only — no real patient information is stored or exposed. All patient names, IDs, and clinical data shown are simulated. My contribution involved defining healthcare workflows across all modules by studying real clinic operations, designing the data model and navigation structure, creating the AI-assisted patient profile system, implementing the queue management with real-time status tracking, testing functionality across different clinical scenarios, and iterating on the interface based on usability feedback.</p>
+          </div>
+
+          <div class="project-section">
+            <h2>Problem Statement</h2>
+            <p>Medical clinics, especially small to mid-sized practices, operate with fragmented systems:</p>
+            <ul>
+              <li><strong>Patient data fragmentation:</strong> Patient records spread across paper files, spreadsheets, and different software systems, leading to incomplete histories and inability to see the full patient picture</li>
+              <li><strong>Manual queue management:</strong> Queue tracking on paper or basic boards causes long wait times, no visibility into wait duration, and difficulty prioritizing urgent cases</li>
+              <li><strong>Prescription errors:</strong> Lack of standardized prescription templates and dosage presets leads to medication errors, illegible handwriting, and inconsistent prescribing practices</li>
+              <li><strong>Missed follow-ups:</strong> No systematic tracking of follow-up requirements leads to missed appointments, poor chronic disease management, and worse patient outcomes</li>
+              <li><strong>Operational blind spots:</strong> Management cannot see real-time clinic status — how many patients waiting, how many in consultation, how many overdue for follow-up — without being physically present</li>
+              <li><strong>Inefficient communication:</strong> Manual phone calls and paper reminders for appointments, lab results, and follow-ups are time-consuming and have low response rates</li>
+            </ul>
+            <p>ClinOS was built to unify all clinic operations into a single system with real-time queue management, standardized clinical workflows, automated follow-up tracking, comprehensive patient profiles, and multi-channel patient communication.</p>
+          </div>
+
+          <div class="project-section">
+            <h2>Solution Approach</h2>
+            <p>The solution uses a real-time architecture where Firebase Firestore stores all patient data and clinic operations with real-time synchronization across all devices. Key architectural decisions:</p>
+            <ul>
+              <li><strong>Real-time queue management:</strong> Queue status (Scheduled → Checked In → Waiting → With Doctor → Billing → Completed) updates instantly across all devices, allowing front desk, doctors, and billing to see the same patient flow</li>
+              <li><strong>Patient-centric data model:</strong> All clinical data (consultations, prescriptions, lab orders, billing, communications) linked to patient records, creating complete patient history and timeline</li>
+              <li><strong>Standardized clinical workflows:</strong> Prescription templates with dosage presets (OD/BD/TDS/QID/SOS), lab order templates with priority levels, and consultation note templates for consistency</li>
+              <li><strong>AI-assisted patient profiles:</strong> AI-generated patient snapshots surfacing key context (last seen, key clinical notes, risk score) and readiness checklists for each visit</li>
+              <li><strong>Role-based access control:</strong> Admin and Receptionist roles with different views and permissions, ensuring staff see only relevant information for their role</li>
+              <li><strong>Multi-channel communications:</strong> Integrated SMS, Email, and WhatsApp with template library for appointment reminders, lab results, medication reminders, and follow-up calls</li>
+              <li><strong>Demo mode with simulated data:</strong> All patient data is simulated (150 demo patients, 95 appointments, 24 overdue follow-ups) with clear demo mode indicators and no real patient information</li>
+            </ul>
+          </div>
+
+          <div class="project-section">
+            <h2>Implemented Features</h2>
+            <p><strong>Clinical Operations</strong></p>
+            <ul>
+              <li><strong>Admin Dashboard</strong> — live metrics showing today's appointments count, patients currently waiting, completed consultations, pending payments, and critical alerts, live queue/waiting room view with real-time patient status, follow-up centre with urgency indicators (overdue, due soon, upcoming), quick action buttons for common tasks (Add Patient, Book Appointment, Create Invoice, View Reports, Send Message), and drill-down capabilities for each metric</li>
+              <li><strong>Queue &amp; Front Desk</strong> — real-time patient flow tracking through 8 statuses (Scheduled → Checked In → Waiting → With Doctor → Billing → Completed), auto-refresh ensuring all devices show current status, walk-in check-in for immediate patient registration, call next patient action to advance queue, voice search for rapid patient lookup, and export queue to CSV for external reporting</li>
+              <li><strong>Appointments</strong> — calendar view with monthly navigation showing all appointments, filter by doctor for multi-doctor clinics, filter by appointment type (consultation, follow-up, procedure), filter by date range for specific periods, overdue view showing missed appointments requiring follow-up, upcoming view for scheduling, 95 total appointments in demo, 24 follow-up overdue requiring attention, and appointment status tracking</li>
+              <li><strong>Consultations &amp; Encounters</strong> — patient consultation notes saved to patient timeline for complete history, draft templates for common consultation types, activity log showing all consultation-related actions, encounter documentation with chief complaint, history, examination, assessment, and plan, 150 total patients in demo, and consultation history per patient</li>
+              <li><strong>Prescriptions</strong> — create prescriptions with multiple medications per prescription, dosage field with precise amount, frequency field with schedule, duration field with treatment length, quick-preset buttons for common patterns (OD - once daily, BD - twice daily, TDS - three times daily, QID - four times daily, SOS - as needed, Before food, After food), special instructions field for additional notes, refill request tracking, and prescription history per patient</li>
+              <li><strong>Lab &amp; Diagnostics</strong> — lab order creation with patient selection, test type selection from catalogue, priority levels (Routine for normal processing, Urgent for expedited, Stat for immediate), clinical notes for test context, results tracking when lab reports return, reporting by test type and priority, and export lab orders/results to CSV</li>
+            </ul>
+            <p><strong>Administration</strong></p>
+            <ul>
+              <li><strong>Billing</strong> — invoice creation with line items for services and medications, tax rate presets (0%, 5%, 12%, 18% GST) for different service categories, discount application (percentage or flat amount), due date setting for payment terms, payment tracking across three tabs (Invoices for outstanding, Payments for received, Insurance for insurance claims), payment status tracking (pending, partial, paid, overdue), and export billing data to CSV</li>
+              <li><strong>Communications</strong> — multi-channel communication supporting SMS, Email, and WhatsApp, quick template library for common messages (Appointment Reminder, Follow-up Call, Medication Reminder, Lab Results Ready, Payment Reminder), message scheduling for future delivery, call log for recording patient communications, automation rules for trigger-based communications, and communication history per patient</li>
+              <li><strong>Reports &amp; Analytics</strong> — patient statistics showing total patients (150 in demo), active patients (20), new registrations in period (150), status distribution chart visualizing patient categories, demographics breakdown (Male 54, Female 50, Other 46, average age 46), recent registrations table for quick review, specialized report tabs (Appointments analysis, Revenue tracking, Performance metrics, Follow-up compliance), and export reports to CSV/PDF</li>
+              <li><strong>Documents</strong> — document management system with file upload capability for patient reports, scans, and certificates, document categorization (lab reports, imaging, insurance documents, consent forms), document versioning, and secure document sharing with patients</li>
+              <li><strong>Staff</strong> — staff and doctor records with roles, permissions, contact information, and availability tracking</li>
+              <li><strong>Settings &amp; Audit</strong> — system configuration including clinic details, tax rates, appointment types, and audit trail showing all system actions with timestamps and user attribution</li>
+            </ul>
+            <p><strong>Patient Management</strong></p>
+            <ul>
+              <li><strong>Patients list</strong> — 150 patients in demo with comprehensive records, sortable table with columns for ID, age, assigned doctor, status, insurance status, last visit date, risk alerts, and risk score, filter functionality by status/doctor/insurance/risk level, list view for detailed data, card view for visual summary, analytics view for population-level insights, duplicate detection algorithm flagging potential duplicate records (29 flagged in demo), and import/export for data migration</li>
+              <li><strong>Patient profile</strong> — AI-generated snapshot showing last seen date, key clinical context, and risk indicators, quick action buttons for common tasks (Book Appointment, Start Consultation, New Prescription, Upload Report, Create Invoice, Call Patient, Schedule Follow-Up, Send Message), visit readiness checklist ensuring all requirements are met (phone verified, ID checked, consent signed, insurance verified, emergency contact recorded, documents uploaded), tabbed interface with Timeline (complete patient journey), Medical History (conditions, allergies, medications), Clinical Support (care plans), Documents (all patient files), Notes (internal notes), Follow-Up (scheduled follow-ups), Consents (signed consents), and Audit Log (all changes)</li>
+              <li><strong>Role-based access</strong> — Admin role with full system access including settings and audit log, Receptionist role with front-desk operations access (queue, appointments, billing, communications) but restricted from clinical data, local demo mode with sample data for testing without configuration, and secure authentication with Firebase Auth</li>
+            </ul>
+            <div class="note-box">
+              <p><strong>Data privacy:</strong> Demo mode only. All patient names, IDs, and clinical data shown are simulated. No real patient information is stored or processed. This is a demonstration system for portfolio purposes only.</p>
+            </div>
+          </div>
+
+          <div class="project-section">
+            <h2>Screenshots</h2>
+            <div class="project-screenshots">
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/clinic/dashboard.png" alt="ClinOS Admin Dashboard — live metrics, waiting room, follow-up centre with critical alerts" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>Dashboard</strong> — live metrics, waiting room, critical alerts, and follow-up centre</p>
+              </div>
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/clinic/queue.png" alt="ClinOS Queue — patient flow from Scheduled through to Completed, quick actions" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>Queue &amp; Front Desk</strong> — real-time patient flow, walk-in check-in, call next patient</p>
+              </div>
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/clinic/appointments.png" alt="ClinOS Appointments — monthly calendar, 95 total appointments, 24 follow-up overdue" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>Appointments</strong> — monthly calendar, filters by doctor/type/date, overdue tracking</p>
+              </div>
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/clinic/consultations.png" alt="ClinOS Consultations — patient search, consultation history, 150 total patients" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>Consultations &amp; Encounters</strong> — patient search, visit notes, templates</p>
+              </div>
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/clinic/prescriptions.png" alt="ClinOS Prescriptions — create prescription with medications, dosage presets, frequency, duration" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>Prescriptions</strong> — multi-medication with dosage presets (OD/BD/TDS/QID/SOS)</p>
+              </div>
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/clinic/lab.png" alt="ClinOS Lab — new lab order modal with patient, test type, priority (Routine/Urgent/Stat), clinical notes" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>Lab &amp; Diagnostics</strong> — lab orders with priority levels, results and reports</p>
+              </div>
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/clinic/billing.png" alt="ClinOS Billing — create invoice with GST presets, line items, discount, due date" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>Billing</strong> — invoice creation with GST presets (0%/5%/12%/18%), payments, insurance</p>
+              </div>
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/clinic/communications.png" alt="ClinOS Communications — send SMS/Email/WhatsApp, quick templates, scheduled messages, call log" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>Communications</strong> — SMS/Email/WhatsApp, quick templates, scheduling, call log</p>
+              </div>
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/clinic/reports.png" alt="ClinOS Reports — patient stats, status distribution chart, demographics, recent registrations" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>Reports &amp; Analytics</strong> — patient stats, status/risk distribution, demographics</p>
+              </div>
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/clinic/patients-list.png" alt="ClinOS Patients list — 150 patients with ID, age, doctor, status, insurance, risk alerts" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>Patients — List View</strong> — 150 patients with risk alerts, filters, and insurance status</p>
+              </div>
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/clinic/patients-cards.png" alt="ClinOS Patients card view — patient cards with risk level, status, doctor, insurance, last visit" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>Patients — Card View</strong> — visual patient cards with risk level and status</p>
+              </div>
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/clinic/patients-analytics.png" alt="ClinOS Patients analytics — status distribution, risk score distribution chart, overdue follow-ups" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>Patients — Analytics View</strong> — risk score distribution, status breakdown, overdue follow-ups</p>
+              </div>
+
+              <div class="project-screenshot-item">
+                <div class="project-screenshot-img">
+                  <img src="/clinic/patient-profile.png" alt="ClinOS Patient Profile — AI snapshot, quick actions, visit readiness checklist, timeline tabs" loading="lazy" />
+                </div>
+                <p class="project-screenshot-caption"><strong>Patient Profile</strong> — AI snapshot, quick actions, visit readiness checklist, full timeline</p>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="project-section">
+            <h2>Technology Stack</h2>
+            <ul>
+              <li><strong>Frontend:</strong> React, TypeScript, Vite</li>
+              <li><strong>Backend / Database:</strong> Firebase (Firestore, Auth)</li>
+              <li><strong>Charts:</strong> Recharts</li>
+              <li><strong>Routing:</strong> React Router DOM</li>
+            </ul>
+          </div>
+
+          <div class="project-section">
+            <h2>Development Process</h2>
+            <p>The project followed a structured development process with AI-assisted coding:</p>
+            <ul>
+              <li><strong>Requirements gathering:</strong> Studied real clinic operations across different types (single-doctor practice, multi-doctor clinic, specialty clinic), interviewed clinic administrators, doctors, and receptionists to understand pain points, documented workflows for patient intake, queue management, consultations, prescriptions, lab orders, billing, and communications</li>
+              <li><strong>Architecture design:</strong> Chose Firebase Firestore for real-time data synchronization eliminating the need for custom WebSocket infrastructure, designed a patient-centric data model where all clinical data links to patient records, planned the queue management system with 8 status transitions, designed the AI-assisted patient profile system, and implemented role-based access control from the start</li>
+              <li><strong>Incremental implementation:</strong> Built core data models first (patients, appointments, queue), then queue management with real-time status tracking, then appointments and calendar, then consultations and clinical documentation, then prescriptions with dosage presets, then lab orders and results, then billing with GST, then communications with templates, then analytics and reports, then AI-assisted patient profiles, and finally polished UI and UX</li>
+              <li><strong>AI-assisted development:</strong> Used Kiro for generating React components and TypeScript interfaces, Devin (formerly Windsurf) for debugging real-time subscription issues and performance optimization, Antigravity for architectural decisions and database schema design, Trae for building UI components and styling, and Claude for documentation, problem-solving, and edge case handling</li>
+              <li><strong>Testing and iteration:</strong> Tested each module with realistic clinic scenarios, simulated patient flow from registration through billing, tested real-time synchronization across multiple devices, validated prescription templates and dosage presets, tested communication templates and scheduling, gathered feedback from healthcare professionals, and iterated on the interface based on usability testing</li>
+            </ul>
+          </div>
+
+          <div class="project-section">
+            <h2>Challenges &amp; Lessons Learned</h2>
+            <ul>
+              <li><strong>Queue system complexity:</strong> Designing a queue system that tracks patient state across 8 statuses (Scheduled → Checked In → Waiting → With Doctor → Billing → Completed) in real time across multiple browser sessions required careful state management and conflict resolution, learned that real-time queue systems need optimistic UI updates with rollback on conflict</li>
+              <li><strong>Role-based access granularity:</strong> Role-based access — admin sees everything, receptionists see front-desk operations only, doctors see their own patients and consultations — required designing a flexible permission system that can express complex rules while maintaining security, learned that permissions should be enforced at both the UI and database level</li>
+              <li><strong>Prescription design balance:</strong> Prescription design — balancing clinical flexibility (any medication, any frequency) with quick-entry presets that make common patterns fast — required designing a system that supports both free-form entry and template-based entry, learned that clinical tools need to accommodate both routine cases and edge cases</li>
+              <li><strong>Patient risk scoring UX:</strong> Patient risk scoring — surfacing critical alerts without overwhelming the interface — required designing a graduated alert system (info, warning, critical) with contextual presentation, learned that clinical dashboards need to prioritize alerts without causing alert fatigue</li>
+              <li><strong>Data privacy considerations:</strong> Building a clinic management system required careful consideration of data privacy even with demo data, learned to implement clear demo mode indicators, use simulated data exclusively, and document that no real patient information is processed</li>
+              <li><strong>AI-assisted profile accuracy:</strong> Implementing AI-assisted patient profiles that surface key context required ensuring the AI-generated summaries are accurate and helpful rather than misleading, learned that AI features in healthcare need clear labeling of AI-generated content and human oversight</li>
+              <li><strong>Communication template flexibility:</strong> Designing communication templates that work across SMS, Email, and WhatsApp required accounting for different character limits, formatting capabilities, and delivery reliability of each channel, learned that multi-channel communication needs channel-specific template variations</li>
+            </ul>
+          </div>
+
+          </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-left">
+            <p>&copy; 2026 Rahil Tahir &mdash; Building things, breaking things, learning things.</p>
+          </div>
+          <ul class="footer-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/resume.html" target="_blank">Résumé</a></li>
+            <li><a href="https://www.linkedin.com/in/rahil-tahir/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="https://github.com/hippo246" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="mailto:Rahil.tahir01@gmail.com">Email</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Certificate Lightbox Modal -->
+    <div class="cert-modal" id="certModal" role="dialog" aria-modal="true" aria-labelledby="certModalTitle" hidden>
+      <div class="cert-modal-backdrop"></div>
+      <div class="cert-modal-content">
+        <button class="cert-modal-close" aria-label="Close certificate">&times;</button>
+        <p class="cert-modal-title" id="certModalTitle"></p>
+        <div class="cert-modal-img-wrapper" id="certModalImgWrapper">
+          <img class="cert-modal-img" id="certModalImg" src="" alt="" />
+        </div>
+        <div class="cert-modal-zoom-controls">
+          <button class="cert-modal-zoom-btn" id="zoomOut" aria-label="Zoom out" title="Zoom out">−</button>
+          <span class="cert-modal-zoom-level" id="zoomLevel">100%</span>
+          <button class="cert-modal-zoom-btn" id="zoomIn" aria-label="Zoom in" title="Zoom in">+</button>
+          <button class="cert-modal-zoom-btn" id="zoomReset" aria-label="Reset zoom" title="Reset zoom">↺</button>
+        </div>
+      </div>
+    </div>
+
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

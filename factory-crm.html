@@ -11,6 +11,7 @@
     <meta property="og:title" content="Factory CRM — Rahil Tahir" />
     <meta property="og:description" content="Factory CRM: a manufacturing workflow prototype exploring production tracking, inventory management, and operational reporting." />
     <meta property="og:image" content="/profile.jpg" />
+    <link rel="canonical" href="https://rahiltahir.dev/factory-crm.html" />
     <meta name="twitter:card" content="summary" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,7 +37,7 @@
           <span></span>
         </button>
         <ul class="nav-menu">
-          <li><a href="/">Back to Portfolio</a></li>
+          <li><a href="/#projects">Back to Portfolio</a></li>
           <li><a href="/resume.html">Résumé</a></li>
           <li><a href="/#contact">Contact</a></li>
         </ul>
@@ -49,104 +50,181 @@
           <div class="page-header">
             <h1>Factory CRM</h1>
             <p class="page-subtitle">Factory-oriented management prototype</p>
-            <span class="project-status-badge">Status: Prototype</span>
             <div class="page-header-actions">
-              <a href="/" class="btn btn-secondary">← Back to Portfolio</a>
+              <a href="/#projects" class="btn btn-secondary">← Back to Portfolio</a>
             </div>
           </div>
 
           <!-- Project Overview -->
           <div class="project-section">
             <h2>Project Overview</h2>
-            <p>
-              A factory-oriented management prototype focused on organizing operational and business workflows. This project explores manufacturing workflows, production tracking, and business process management.
-            </p>
+            <p>Factory CRM (internally named Paratha CRM) is a comprehensive factory and manufacturing management system built with React 18 and Firebase. It addresses the complete operational workflow of a manufacturing business — from production planning and raw material inventory management through to finished goods tracking, delivery logistics, GPS-based field agent monitoring, payment processing, financial reporting (including P&L analysis), and advanced predictive analytics.</p>
+            <p>The system was designed to solve real manufacturing pain points: lack of visibility into production schedules, manual inventory tracking errors, inability to track field agents and delivery vehicles in real-time, fragmented financial data across spreadsheets, and no predictive insights for stock-outs or customer churn.</p>
+            <p>Built with AI-assisted development using Kiro, Devin (formerly Windsurf), Antigravity, Trae, and Claude. My contribution involved defining manufacturing workflow requirements across all modules by studying real factory operations, designing the role-based permission system from scratch to handle complex access control needs, creating the GPS tracking architecture with browser location APIs and permission handling, implementing the unified export engine for multiple formats, designing the predictive analytics system, testing functionality across different scenarios, and iterating on the interface based on usability feedback.</p>
           </div>
 
-          <!-- Objectives -->
           <div class="project-section">
-            <h2>Project Objectives</h2>
+            <h2>Problem Statement</h2>
+            <p>Manufacturing businesses, especially small to mid-sized operations, often struggle with fragmented systems. Production planning happens in one tool, inventory in another, deliveries are tracked via phone calls, and financial data lives in spreadsheets. This fragmentation leads to:</p>
             <ul>
-              <li>Understand factory and manufacturing workflow requirements</li>
-              <li>Explore production tracking systems</li>
-              <li>Implement inventory management concepts</li>
-              <li>Design operational reporting interfaces</li>
-              <li>Practice business process analysis and requirements definition</li>
+              <li><strong>No real-time visibility:</strong> Management cannot see what's being produced, what's in stock, or where deliveries are at any given moment</li>
+              <li><strong>Manual errors:</strong> Data entry across multiple systems leads to inventory discrepancies and billing mistakes</li>
+              <li><strong>Inefficient field operations:</strong> Field agents and delivery vehicles operate without GPS tracking, making route optimization and accountability difficult</li>
+              <li><strong>No predictive insights:</strong> Businesses react to stock-outs and customer churn after they happen, rather than predicting and preventing them</li>
+              <li><strong>Permission chaos:</strong> With different roles (factory workers, field agents, managers, admins), access control becomes manual and error-prone</li>
+            </ul>
+            <p>Factory CRM was built to consolidate all these operations into a single, cohesive system with real-time data flow, role-based access control, and predictive analytics.</p>
+          </div>
+
+          <div class="project-section">
+            <h2>Solution Approach</h2>
+            <p>The solution takes a module-based architecture where each operational area (Production, Inventory, Deliveries, Payments, etc.) is a self-contained tab with its own data model and UI, but all sharing a centralized Firebase Firestore database for real-time synchronization. Key architectural decisions:</p>
+            <ul>
+              <li><strong>Centralized Firebase backend:</strong> All data lives in Firestore with real-time listeners, ensuring that changes in production immediately reflect in inventory and vice versa</li>
+              <li><strong>Role-based permission system:</strong> A granular permission matrix where each role (Admin, Factory, Agent) has specific access to tabs, widgets, and quick actions — enforced at both the UI and data level</li>
+              <li><strong>Service layer pattern:</strong> Business logic is extracted into service classes (ActivityService, FinancialService, CustomerService, etc.) to keep components clean and testable</li>
+              <li><strong>Unified export engine:</strong> A single export system that can generate PDFs, Excel files, CSVs, delivery labels, and WhatsApp shares from any module</li>
+              <li><strong>GPS tracking integration:</strong> Browser location APIs with permission prompts, manual fallbacks, and live ping writing to track field agents and delivery vehicles</li>
+              <li><strong>Predictive analytics:</strong> On-device and server-side predictions for stock-outs, churn risk, and demand forecasting based on historical data</li>
             </ul>
           </div>
 
-          <!-- Implementation -->
+          <!-- Implemented Features -->
           <div class="project-section">
-            <h2>Implementation Status</h2>
-            <p><strong>Current Status:</strong> Prototype</p>
-            <p>This project is in the prototype stage. Core features are being explored and implemented incrementally.</p>
+            <h2>Implemented Features</h2>
 
-            <div class="note-box">
-              <p><strong>Development Note:</strong> This project was developed with AI-assisted tools. My personal contribution included requirements definition, interface work, and testing.</p>
-            </div>
-          </div>
-
-          <!-- Features -->
-          <div class="project-section">
-            <h2>Explored Features</h2>
+            <p><strong>Production &amp; Operations</strong></p>
             <ul>
-              <li>Operational workflow organization</li>
-              <li>Business process management</li>
-              <li>Production tracking concepts</li>
-              <li>Basic reporting and data views</li>
+              <li><strong>Production Tab</strong> — production planning with daily/weekly targets, item-level production tracking against targets, production reports showing variance between planned and actual, batch tracking for quality control, and production efficiency metrics</li>
+              <li><strong>Inventory</strong> — comprehensive stock management with raw materials and finished goods tracking, supply chain supplier management, low stock alerts with reorder thresholds, stock-in/stock-out transaction logging, and inventory valuation reports</li>
+              <li><strong>Machines</strong> — equipment registry with specifications, maintenance scheduling and tracking, operational status monitoring (running/idle/maintenance), downtime logging, and preventive maintenance reminders</li>
+              <li><strong>Vehicles</strong> — fleet management with vehicle registration, maintenance records, fuel tracking, insurance expiry alerts, delivery assignment capabilities, and vehicle utilization metrics</li>
+              <li><strong>Deliveries</strong> — delivery scheduling with time slots, route planning optimization, GPS tracking integration for real-time delivery status, proof of delivery (photo/signature), delivery performance analytics, and customer notifications</li>
             </ul>
-            <div class="note-box">
-              <p><strong>Note:</strong> This project is in the prototype stage. A detailed feature breakdown will be added as development progresses.</p>
-            </div>
+
+            <p><strong>Financial Management</strong></p>
+            <ul>
+              <li><strong>Payments</strong> — payment processing with multiple payment modes (cash, bank transfer, UPI, cheque), invoice generation and management, payment tracking against invoices, aging reports for overdue payments, and payment reconciliation</li>
+              <li><strong>Expenses</strong> — expense logging with category-based organization (raw materials, utilities, salaries, maintenance), expense approval workflows, budget vs actual variance reporting, and expense trend analysis over time</li>
+              <li><strong>Wastage</strong> — waste tracking with reason codes (production defect, expiry, damage, theft), cost impact analysis, waste reduction reporting with trend lines, and root cause analysis reports</li>
+              <li><strong>P&amp;L (Profit &amp; Loss)</strong> — comprehensive financial reporting with revenue breakdown by product and customer, cost of goods sold calculation, gross margin analysis, operating expense tracking, net profit visualization, and period-over-period comparison</li>
+              <li><strong>Analytics</strong> — sales trends with line charts showing daily/weekly/monthly patterns, production metrics with efficiency dashboards, performance KPIs for staff and machines, customer segmentation analysis, and demand forecasting charts using Recharts</li>
+            </ul>
+
+            <p><strong>Customer &amp; Staff Management</strong></p>
+            <ul>
+              <li><strong>Customers</strong> — comprehensive customer records with contact information, purchase history with order timeline, financial summaries including outstanding balances and credit limits, payment behavior tracking, and churn risk indicators</li>
+              <li><strong>Staff</strong> — employee records with role assignments, attendance tracking, performance metrics (orders processed, deliveries completed, targets achieved), shift scheduling, and productivity dashboards</li>
+              <li><strong>GPS Tracking</strong> — live location tracking for field agents using browser Geolocation API, delivery vehicle tracking with route visualization, location permission management with user-friendly prompts, manual location checking as fallback, location history logging for audit trails, and geofencing capabilities for route deviation alerts</li>
+            </ul>
+
+            <p><strong>Advanced Features</strong></p>
+            <ul>
+              <li><strong>Role-Based Permissions</strong> — fine-grained permission system with three core roles (Admin, Factory, Agent) plus custom role definitions, tab-level access control determining which modules each role can see, widget permissions controlling dashboard elements, quick action permissions for operation-specific buttons, and permission inheritance with role templates</li>
+              <li><strong>Predictive Analytics</strong> — stock-out prediction based on consumption patterns and lead times, churn risk analysis using customer behavior signals (order frequency, payment delays, complaints), demand forecasting for production planning, and predictive alerts surfaced in the dashboard</li>
+              <li><strong>Collaboration</strong> — real-time presence indicators showing which users are currently active, editing notifications when multiple users work on the same record, activity timeline showing complete audit trail of all changes, and conflict resolution for concurrent edits</li>
+              <li><strong>Export System</strong> — unified export engine capable of generating PDFs with custom templates, Excel files with multiple sheets and formatting, CSV exports for data portability, delivery labels with barcodes and routing information, invoice generation with GST breakdown, receipt printing, and WhatsApp sharing for instant customer communication</li>
+              <li><strong>Command Palette</strong> — keyboard-driven navigation (Ctrl/Cmd + K) for power users, quick search across all modules and records, fast action execution without mouse clicks, and customizable command shortcuts</li>
+              <li><strong>Draggable Widgets</strong> — customizable dashboard layout where users can drag and drop widgets, widget personalization with size and visibility controls, per-user dashboard configuration persistence, and widget-specific data refresh intervals</li>
+              <li><strong>Kanban Board</strong> — visual workflow management for production orders and delivery tasks, drag-and-drop status transitions, column customization per workflow type, and automatic status updates triggering downstream actions</li>
+              <li><strong>Security</strong> — passkey management for passwordless authentication, security session tracking with device fingerprinting, failed login attempt monitoring with alert thresholds, soft-delete functionality for all records with trash recovery, audit logging for all data modifications, and role-based data filtering</li>
+              <li><strong>Quick Entry</strong> — floating action button (FAB) for rapid data entry from anywhere in the app, quick entry bar for commonly used actions, keyboard shortcuts for frequent operations, and smart defaults based on context</li>
+              <li><strong>Multi-platform Support</strong> — Capacitor integration for native iOS and Android apps with platform-specific optimizations, Tauri for desktop applications (Windows, Mac, Linux), shared codebase across all platforms with platform conditionals, and native feature access (camera, GPS, notifications)</li>
+            </ul>
           </div>
 
           <!-- Technology Stack -->
           <div class="project-section">
             <h2>Technology Stack</h2>
-            <p>The project was developed with AI-assisted tools as part of my learning workflow. Technology details will be documented in a future update.</p>
+            <ul>
+              <li><strong>Frontend:</strong> React 18, React Router DOM</li>
+              <li><strong>Backend / Database:</strong> Firebase (Firestore, Auth)</li>
+              <li><strong>Charts:</strong> Recharts</li>
+              <li><strong>PDF / Print:</strong> jsPDF, jspdf-autotable</li>
+              <li><strong>Spreadsheets:</strong> xlsx (Excel export)</li>
+              <li><strong>QR Codes:</strong> qrcode, html5-qrcode</li>
+              <li><strong>Email:</strong> EmailJS</li>
+              <li><strong>Drag &amp; Drop:</strong> @dnd-kit</li>
+              <li><strong>Mobile/Desktop:</strong> Capacitor (iOS/Android), Tauri (desktop)</li>
+              <li><strong>Styling:</strong> Tailwind CSS</li>
+            </ul>
           </div>
 
           <!-- Screenshots -->
           <div class="project-section">
             <h2>Screenshots</h2>
-            <p>Screenshots will be added as the project progresses.</p>
+            <p>Screenshots will be added as the project progresses. The system includes 15+ major screens across all modules.</p>
 
             <div class="empty-state">
-              <p>No screenshots available yet.</p>
+              <p>Screenshots coming soon — dashboard, production planning, inventory management, GPS tracking map, analytics charts, and more.</p>
             </div>
+          </div>
+
+          <div class="project-section">
+            <h2>Development Process</h2>
+            <p>The project followed an iterative development process with AI-assisted coding:</p>
+            <ul>
+              <li><strong>Requirements gathering:</strong> Studied real manufacturing operations to understand pain points, interviewed factory managers and operators, documented workflows for production, inventory, deliveries, and finance</li>
+              <li><strong>Architecture design:</strong> Chose Firebase for real-time data synchronization, designed a tab-based module architecture for scalability, planned the role-based permission system early to avoid refactoring</li>
+              <li><strong>Incremental implementation:</strong> Built modules one at a time starting with core features (Production, Inventory, Customers), then added advanced features (GPS, Analytics, Predictive), and finally polished UX (Command Palette, Draggable Widgets)</li>
+              <li><strong>AI-assisted development:</strong> Used Kiro for code generation and refactoring, Devin (formerly Windsurf) for debugging and optimization, Antigravity for architecture decisions, Trae for UI component building, and Claude for documentation and problem-solving</li>
+              <li><strong>Testing and iteration:</strong> Tested each module with demo data, gathered feedback on usability, fixed bugs discovered during testing, and iterated on the interface based on user experience</li>
+            </ul>
           </div>
 
           <!-- Challenges -->
           <div class="project-section">
-            <h2>Challenges & Lessons Learned</h2>
+            <h2>Challenges &amp; Lessons Learned</h2>
             <ul>
-              <li>Understanding manufacturing workflow requirements</li>
-              <li>Designing interfaces for factory operational workflows</li>
-              <li>Implementing data structures for production tracking</li>
+              <li>Designing a role-based permission system that works across tabs, widgets, and quick actions while maintaining security</li>
+              <li>Implementing GPS tracking with browser location APIs while handling permission prompts and manual fallbacks</li>
+              <li>Building a unified export engine that can handle PDF, Excel, CSV, and delivery labels from a single interface</li>
+              <li>Managing real-time collaboration features like presence indicators and editing notifications without overwhelming the UI</li>
+              <li>Integrating predictive analytics for stock-outs and churn risk while keeping the system performant</li>
+              <li>Supporting multiple platforms (web, iOS, Android, desktop) with Capacitor and Tauri while maintaining a single codebase</li>
             </ul>
           </div>
 
-          <!-- Next Steps -->
-          <div class="project-section">
-            <h2>Next Steps</h2>
-            <ul>
-              <li>Complete feature implementation based on requirements</li>
-              <li>Add comprehensive testing</li>
-              <li>Document actual technology stack and architecture</li>
-              <li>Add screenshots of implemented interfaces</li>
-            </ul>
           </div>
-
-        </div>
       </section>
     </main>
 
     <footer class="footer">
       <div class="container">
-        <p>&copy; 2024–2026. Building things, breaking things, learning things.</p>
+        <div class="footer-inner">
+          <div class="footer-left">
+            <p>&copy; 2026 Rahil Tahir &mdash; Building things, breaking things, learning things.</p>
+          </div>
+          <ul class="footer-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/resume.html" target="_blank">Résumé</a></li>
+            <li><a href="https://www.linkedin.com/in/rahil-tahir/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="https://github.com/hippo246" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="mailto:Rahil.tahir01@gmail.com">Email</a></li>
+          </ul>
+        </div>
       </div>
     </footer>
 
+    <!-- Certificate Lightbox Modal -->
+    <div class="cert-modal" id="certModal" role="dialog" aria-modal="true" aria-labelledby="certModalTitle" hidden>
+      <div class="cert-modal-backdrop"></div>
+      <div class="cert-modal-content">
+        <button class="cert-modal-close" aria-label="Close certificate">&times;</button>
+        <p class="cert-modal-title" id="certModalTitle"></p>
+        <div class="cert-modal-img-wrapper" id="certModalImgWrapper">
+          <img class="cert-modal-img" id="certModalImg" src="" alt="" />
+        </div>
+        <div class="cert-modal-zoom-controls">
+          <button class="cert-modal-zoom-btn" id="zoomOut" aria-label="Zoom out" title="Zoom out">−</button>
+          <span class="cert-modal-zoom-level" id="zoomLevel">100%</span>
+          <button class="cert-modal-zoom-btn" id="zoomIn" aria-label="Zoom in" title="Zoom in">+</button>
+          <button class="cert-modal-zoom-btn" id="zoomReset" aria-label="Reset zoom" title="Reset zoom">↺</button>
+        </div>
+      </div>
+    </div>
+
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
