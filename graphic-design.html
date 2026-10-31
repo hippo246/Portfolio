@@ -45,8 +45,9 @@
         text-transform: uppercase;
         padding: 0.2em 0.65em;
         border-radius: 4px;
-        background: var(--accent-muted, rgba(99,102,241,0.12));
+        background: var(--accent-light);
         color: var(--accent);
+        border: 1px solid var(--border);
       }
       .design-campaign-desc {
         color: var(--text-secondary);
@@ -105,38 +106,40 @@
         font: inherit;
         color: var(--accent);
         cursor: pointer;
-        text-decoration: underline dotted;
+        text-decoration: underline;
         text-underline-offset: 3px;
+        text-decoration-color: var(--border);
         position: relative;
         display: inline-block;
+        font-weight: 600;
       }
       .collab-trigger:hover {
-        text-decoration: underline;
+        text-decoration-color: var(--accent);
       }
 
       /* Popover card */
       .collab-popover {
         position: absolute;
-        top: calc(100% + 6px);
+        top: calc(100% + 8px);
         left: 0;
         z-index: 200;
-        background: var(--bg-card);
+        background: var(--bg-secondary);
         border: 1px solid var(--border);
         border-radius: 10px;
-        box-shadow: 0 8px 28px rgba(0,0,0,0.18);
-        padding: 0.5rem 0.4rem;
+        box-shadow: 0 8px 28px rgba(0,0,0,0.15);
+        padding: 0.4rem;
         display: flex;
         flex-direction: column;
         gap: 0.1rem;
-        min-width: 170px;
+        min-width: 175px;
       }
       .collab-popover[hidden] { display: none; }
       .collab-popover a {
         display: flex;
         align-items: center;
         gap: 0.55rem;
-        padding: 0.5rem 0.75rem;
-        border-radius: 6px;
+        padding: 0.55rem 0.85rem;
+        border-radius: 7px;
         font-size: 0.88rem;
         font-weight: 500;
         color: var(--text-primary);
@@ -144,12 +147,13 @@
         transition: background 0.15s ease, color 0.15s ease;
       }
       .collab-popover a:hover {
-        background: var(--bg-hover, rgba(99,102,241,0.08));
+        background: var(--bg-tertiary);
         color: var(--accent);
       }
       .collab-popover a svg {
         flex-shrink: 0;
-        opacity: 0.7;
+        opacity: 0.6;
+        color: var(--accent);
       }
 
       /* Volunteer callout — wide card */
@@ -195,7 +199,7 @@
       .design-toc a:hover {
         color: var(--accent);
         border-color: var(--accent);
-        background: color-mix(in srgb, var(--accent) 8%, var(--bg-card));
+        background: var(--accent-light);
       }
 
       @media (max-width: 600px) {
@@ -234,7 +238,8 @@
         letter-spacing: 0.07em;
         text-transform: uppercase;
         color: var(--accent);
-        background: color-mix(in srgb, var(--accent) 10%, transparent);
+        background: var(--accent-light);
+        border: 1px solid var(--border);
         padding: 0.2em 0.6em;
         border-radius: 4px;
         white-space: nowrap;

@@ -1052,7 +1052,7 @@ body {
 .project-card--featured {
   grid-column: span 2;
   border-top: 3px solid var(--accent) !important;
-  background: linear-gradient(135deg, var(--bg-tertiary) 0%, color-mix(in srgb, var(--accent) 5%, var(--bg-tertiary)) 100%);
+  background: var(--bg-tertiary);
 }
 
 .project-card--featured h3 {
@@ -1072,8 +1072,8 @@ body {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--accent);
-  background: color-mix(in srgb, var(--accent) 12%, transparent);
-  border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+  background: var(--accent-light);
+  border: 1px solid var(--border);
   padding: 0.2em 0.65em;
   border-radius: 4px;
   margin-bottom: 0.85rem;
