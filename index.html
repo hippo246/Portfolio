@@ -1131,11 +1131,13 @@ Remote Access via Tailscale
             <button class="projects-filter-btn" data-filter="automotive">Automotive</button>
             <button class="projects-filter-btn" data-filter="business">Business</button>
             <button class="projects-filter-btn" data-filter="web">Web</button>
+            <button class="projects-filter-btn" data-filter="design">Design</button>
           </div>
 
           <div class="projects-grid">
 
-            <div class="project-card" data-category="healthcare">
+            <div class="project-card project-card--featured" data-category="healthcare">
+              <span class="project-card-badge">Featured</span>
               <h3>Clinic CRM — ClinOS</h3>
               <p>Full medical suite — React, TypeScript, Firebase. Live queue, appointments calendar, consultations, prescriptions with dosage presets, lab orders, billing (GST), SMS/Email/WhatsApp communications, analytics, and AI-assisted patient profiles. 150 demo patients. Built with AI-assisted development.</p>
               <a href="/clinic-crm-project.html" class="btn btn-secondary">View Details →</a>
@@ -1147,7 +1149,8 @@ Remote Access via Tailscale
               <a href="/factory-crm.html" class="btn btn-secondary">View Details →</a>
             </div>
 
-            <div class="project-card" data-category="hospitality">
+            <div class="project-card project-card--featured" data-category="hospitality">
+              <span class="project-card-badge">Featured</span>
               <h3>CafeOS</h3>
               <p>Full React cafe POS with 25 feature modules — Dashboard, POS, Kitchen Display, Floor Plan, Analytics, CRM, Inventory, Workflows, and system health monitoring. Built with React 19, Vite, Tailwind CSS, and jsPDF. Built with AI-assisted development.</p>
               <a href="/cafeos.html" class="btn btn-secondary">View Details →</a>
@@ -1181,6 +1184,13 @@ Remote Access via Tailscale
               <h3>Veritas Acquisitions</h3>
               <p>Multi-page static website for a property acquisitions company operating across England and Wales. Professional financial services design with acquisition services, team, and compliance pages.</p>
               <a href="/veritas-acquisitions.html" class="btn btn-secondary">View Details →</a>
+            </div>
+
+            <div class="project-card project-card--featured" data-category="design">
+              <span class="project-card-badge">Featured</span>
+              <h3>Graphic Design</h3>
+              <p>Social media campaigns, charity flyers, restaurant branding, and freelance brand identity work. Clients include Thrift For Good, TARAHUM FOR GAZA, Shayhans Royal Dawat, Trine, and Eyeconic. Tools: Canva, Adobe Express.</p>
+              <a href="/graphic-design.html" class="btn btn-secondary">View Work →</a>
             </div>
 
           </div>
@@ -1418,7 +1428,37 @@ Remote Access via Tailscale
                 I'm looking for an entry-level role where I can contribute practically, keep learning, and grow alongside an IT team.
               </p>
 
-              <div class="about-roles">
+              <!-- Professional & Internship Background -->
+              <div class="internship-history" style="margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--border);">
+                <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.75rem;">Internship &amp; Professional Background (Non-IT)</h4>
+                <div style="display: flex; flex-direction: column; gap: 0.85rem;">
+                  <div style="background: var(--bg-tertiary); padding: 0.85rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border);">
+                    <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 0.25rem;">
+                      <strong style="color: var(--text-primary); font-size: 0.88rem;">Digital Marketing Intern · Enhance ROI</strong>
+                      <span style="font-size: 0.76rem; color: var(--text-muted); font-family: var(--font-mono);">Jan 2025 – Feb 2025</span>
+                    </div>
+                    <p style="font-size: 0.78rem; color: var(--text-secondary); margin: 0.25rem 0 0 0;">Customer inquiries handling, digital documentation, and remote communication via Google Workspace &amp; MS Office.</p>
+                  </div>
+
+                  <div style="background: var(--bg-tertiary); padding: 0.85rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border);">
+                    <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 0.25rem;">
+                      <strong style="color: var(--text-primary); font-size: 0.88rem;">Graphic Designer Intern · ADM Education &amp; Welfare Society</strong>
+                      <span style="font-size: 0.76rem; color: var(--text-muted); font-family: var(--font-mono);">Jul 2024 – Aug 2024</span>
+                    </div>
+                    <p style="font-size: 0.78rem; color: var(--text-secondary); margin: 0.25rem 0 0 0;">Visual communication design, digital/print collateral, brand consistency, and deadline-driven delivery.</p>
+                  </div>
+
+                  <div style="background: var(--bg-tertiary); padding: 0.85rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border);">
+                    <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 0.25rem;">
+                      <strong style="color: var(--text-primary); font-size: 0.88rem;">Social Media Marketing Intern · Thrift for Good</strong>
+                      <span style="font-size: 0.76rem; color: var(--text-muted); font-family: var(--font-mono);">Jul 2023 – Dec 2023</span>
+                    </div>
+                    <p style="font-size: 0.78rem; color: var(--text-secondary); margin: 0.25rem 0 0 0;">Dubai (Remote). Content planning, multi-channel user engagement, trend analysis, and team coordination.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="about-roles" style="margin-top: 1.5rem;">
                 <p class="about-roles-label">Open to</p>
                 <div class="role-tags">
                   <span class="role-tag">IT Support</span>
@@ -1488,6 +1528,24 @@ Remote Access via Tailscale
           <span class="cert-modal-zoom-level" id="zoomLevel">100%</span>
           <button class="cert-modal-zoom-btn" id="zoomIn" aria-label="Zoom in" title="Zoom in">+</button>
           <button class="cert-modal-zoom-btn" id="zoomReset" aria-label="Reset zoom" title="Reset zoom">↺</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interactive Resume Preview Modal -->
+    <div class="cert-modal" id="resumeModal" role="dialog" aria-modal="true" aria-labelledby="resumeModalTitle" hidden>
+      <div class="cert-modal-backdrop" id="resumeModalBackdrop"></div>
+      <div class="cert-modal-content resume-modal-content">
+        <button class="cert-modal-close" id="resumeModalClose" aria-label="Close résumé preview">&times;</button>
+        <div class="resume-modal-header">
+          <h3 id="resumeModalTitle">Rahil Tahir — Résumé Preview</h3>
+          <div class="resume-modal-actions">
+            <button class="btn btn-secondary btn-sm" id="resumePrintBtn">🖨️ Print / Save PDF</button>
+            <a href="/resume.html" target="_blank" class="btn btn-primary btn-sm">Full Page ↗</a>
+          </div>
+        </div>
+        <div class="resume-iframe-wrapper">
+          <iframe id="resumeIframe" src="/resume.html" title="Rahil Tahir Résumé" loading="lazy"></iframe>
         </div>
       </div>
     </div>

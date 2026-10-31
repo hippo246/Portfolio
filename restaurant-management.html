@@ -72,18 +72,164 @@
           </div>
 
           <div class="project-section">
-            <h2>Solution Approach</h2>
-            <p>The solution uses a real-time architecture where Supabase PostgreSQL stores all data and WebSocket subscriptions push updates instantly to all connected devices. Key architectural decisions:</p>
-            <ul>
-              <li><strong>Supabase real-time backend:</strong> All data lives in PostgreSQL with Supabase Realtime subscriptions, ensuring that an order placed on a customer's phone immediately appears on the kitchen display without polling</li>
-              <li><strong>Station-based kitchen routing:</strong> Menu items are assigned to kitchen stations (grill, fry, prep, bar, etc.), and the kitchen engine automatically routes orders to the appropriate stations based on item configuration</li>
-              <li><strong>Multi-branch architecture:</strong> Each restaurant branch has isolated data with a branch switching system, allowing management to view and manage multiple locations from a single interface</li>
-              <li><strong>Custom state management:</strong> Instead of Redux or Zustand, built a custom useStore hook with localStorage persistence and optional cloud sync, keeping the bundle small and dependencies minimal</li>
-              <li><strong>Role-based permissions:</strong> Fine-grained permission system with Admin, Manager, Staff, Kitchen, and Cashier roles, each with specific access to tabs, widgets, and actions</li>
-              <li><strong>Print infrastructure:</strong> Complete printing system supporting browser-based printing for invoices and ESC/POS commands for thermal printers, with network/USB/Bluetooth connectivity</li>
-              <li><strong>Tax engine:</strong> Built a tax calculation engine that handles CGST/SGST by category with configurable rates, automatically calculating taxes at order time</li>
-              <li><strong>Commercial readiness:</strong> Phase 13 completed with demo deployment guides, client provisioning workflows, licensing documentation, and update processes for production deployments</li>
-            </ul>
+            <h2>Solution Approach &amp; System Architecture</h2>
+            <p>The solution uses a real-time event-driven architecture where Supabase PostgreSQL stores relational data and WebSocket subscriptions push updates instantly to all connected kitchen, POS, and floor devices without polling.</p>
+
+            <!-- Interactive Architecture Map -->
+            <div class="architecture-diagram" style="margin: 2rem 0;">
+              <div class="diagram-header-tabs">
+                <h3>System Architecture &amp; Event Stream</h3>
+                <div class="diagram-tabs" role="tablist">
+                  <button class="diagram-tab-btn active" data-diagram-target="resto-interactive" role="tab" aria-selected="true">⚡ Live Event Architecture</button>
+                  <button class="diagram-tab-btn" data-diagram-target="resto-summary" role="tab" aria-selected="false">📋 Key Architectural Decisions</button>
+                </div>
+              </div>
+
+              <div class="interactive-topology" id="restoInteractiveTopology">
+                <div class="topo-legend">
+                  <span class="topo-badge badge-wan">Client Endpoints</span>
+                  <span class="topo-badge badge-host">Real-Time Core</span>
+                  <span class="topo-badge badge-service">Station Routing</span>
+                  <span class="topo-badge badge-storage">Hardware Layer</span>
+                </div>
+
+                <div class="topo-canvas">
+                  <!-- Layer 1: Client Ingress -->
+                  <div class="topo-row">
+                    <div class="topo-node topo-node-wan">
+                      <div class="topo-node-icon">📱</div>
+                      <div class="topo-node-content">
+                        <h4>Guest QR Order Interface</h4>
+                        <p>Mobile-optimized PWA · Zero login required · Table session token</p>
+                      </div>
+                      <span class="topo-status live">Guest</span>
+                    </div>
+
+                    <div class="topo-node topo-node-lan">
+                      <div class="topo-node-icon">💻</div>
+                      <div class="topo-node-content">
+                        <h4>POS Express &amp; POS Pro</h4>
+                        <p>Waiter tablets &amp; counter cashier · Split bills · Discounts &amp; taxes</p>
+                      </div>
+                      <span class="topo-status live">Staff</span>
+                    </div>
+                  </div>
+
+                  <!-- Connector -->
+                  <div class="topo-connector">
+                    <span class="connector-line"></span>
+                    <span class="connector-arrow">↓ Secure WebSocket &amp; REST Event Dispatch ↓</span>
+                  </div>
+
+                  <!-- Layer 2: Central Realtime Hub -->
+                  <div class="topo-row">
+                    <div class="topo-node topo-node-host topo-highlight">
+                      <div class="topo-node-header">
+                        <div class="topo-node-icon">⚡</div>
+                        <div>
+                          <h4>Supabase PostgreSQL + Realtime Engine</h4>
+                          <span class="topo-ip">Multi-tenant Row Level Security (RLS) · PostgreSQL Subscriptions</span>
+                        </div>
+                      </div>
+                      <div class="topo-specs-grid">
+                        <span class="spec-pill"><strong>State:</strong> Custom reactive useStore</span>
+                        <span class="spec-pill"><strong>Sync:</strong> Instant WebSocket push</span>
+                        <span class="spec-pill"><strong>Offline:</strong> LocalStorage fallback</span>
+                        <span class="spec-pill"><strong>Tax Engine:</strong> CGST &amp; SGST breakdown</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Connector -->
+                  <div class="topo-connector">
+                    <span class="connector-line"></span>
+                    <span class="connector-arrow">↓ Sub-second Push to Kitchen &amp; Floor Displays ↓</span>
+                  </div>
+
+                  <!-- Layer 3: Kitchen Display Stations -->
+                  <div class="topo-services-container">
+                    <div class="topo-group-title">Kitchen Routing &amp; Floor Coordination</div>
+                    <div class="topo-services-grid">
+                      <div class="topo-service-card" tabindex="0">
+                        <div class="service-head">
+                          <span class="service-icon">🍳</span>
+                          <strong>KDS (Grill &amp; Fry)</strong>
+                        </div>
+                        <p>Urgency color-coded cards with chef acknowledgment bump bar</p>
+                        <span class="service-port">Station 1</span>
+                      </div>
+                      <div class="topo-service-card" tabindex="0">
+                        <div class="service-head">
+                          <span class="service-icon">🥗</span>
+                          <strong>KDS (Cold Prep &amp; Pantry)</strong>
+                        </div>
+                        <p>Item-level filtering isolates appetizers, salads &amp; desserts</p>
+                        <span class="service-port">Station 2</span>
+                      </div>
+                      <div class="topo-service-card" tabindex="0">
+                        <div class="service-head">
+                          <span class="service-icon">🍸</span>
+                          <strong>Bar &amp; Beverage Station</strong>
+                        </div>
+                        <p>Direct ticket routing for cocktails, coffee &amp; drink modifiers</p>
+                        <span class="service-port">Station 3</span>
+                      </div>
+                      <div class="topo-service-card" tabindex="0">
+                        <div class="service-head">
+                          <span class="service-icon">🪑</span>
+                          <strong>Interactive Floor Plan</strong>
+                        </div>
+                        <p>Real-time visual table statuses: Available / Seated / Dirty / Cleaning</p>
+                        <span class="service-port">FOH Map</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Connector -->
+                  <div class="topo-connector">
+                    <span class="connector-line"></span>
+                    <span class="connector-arrow">↓ Hardware Integration Layer ↓</span>
+                  </div>
+
+                  <!-- Layer 4: Hardware Outputs -->
+                  <div class="topo-storage-grid">
+                    <div class="topo-storage-node">
+                      <div class="storage-icon">🖨️</div>
+                      <div>
+                        <strong>ESC/POS Thermal Printing</strong>
+                        <p>WebUSB, WebBluetooth &amp; Network drivers for instant receipt &amp; kitchen tickets</p>
+                      </div>
+                    </div>
+                    <div class="topo-storage-node">
+                      <div class="storage-icon">🏷️</div>
+                      <div>
+                        <strong>Takeaway Label Engine</strong>
+                        <p>Automated parcel labels with customer details, order items &amp; tracking QR</p>
+                      </div>
+                    </div>
+                    <div class="topo-storage-node">
+                      <div class="storage-icon">📺</div>
+                      <div>
+                        <strong>Customer Pickup Board</strong>
+                        <p>Full-screen monitor display showing "Preparing" vs "Ready for Pickup"</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Collapsed Architectural Decisions List -->
+              <div class="diagram-box" id="restoArchitecturalSummary" hidden>
+                <ul style="margin: 0; padding-left: 1.25rem; line-height: 1.8;">
+                  <li><strong>Supabase real-time backend:</strong> All data lives in PostgreSQL with Supabase Realtime subscriptions, ensuring that an order placed on a customer's phone immediately appears on the kitchen display without polling.</li>
+                  <li><strong>Station-based kitchen routing:</strong> Menu items are assigned to kitchen stations (grill, fry, prep, bar, etc.), and the kitchen engine automatically routes orders to the appropriate stations based on item configuration.</li>
+                  <li><strong>Multi-branch architecture:</strong> Each restaurant branch has isolated data with a branch switching system, allowing management to view and manage multiple locations from a single interface.</li>
+                  <li><strong>Custom state management:</strong> Built a custom useStore hook with localStorage persistence and cloud sync, keeping dependencies minimal.</li>
+                  <li><strong>Print infrastructure:</strong> Complete printing system supporting browser-based printing for invoices and ESC/POS commands for thermal printers via network, WebUSB, or Bluetooth.</li>
+                  <li><strong>Tax engine:</strong> Handles CGST/SGST by category with configurable rates, calculating taxes automatically at order time.</li>
+                </ul>
+              </div>
+            </div>
           </div>
 
           <div class="project-section">

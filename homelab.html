@@ -73,8 +73,183 @@
             </div>
 
             <div class="architecture-diagram">
-              <h3>Infrastructure Architecture</h3>
-              <div class="diagram-box">
+              <div class="diagram-header-tabs">
+                <h3>Infrastructure Architecture</h3>
+                <div class="diagram-tabs" role="tablist">
+                  <button class="diagram-tab-btn active" data-diagram-target="interactive" role="tab" aria-selected="true">⚡ Interactive Visual Map</button>
+                  <button class="diagram-tab-btn" data-diagram-target="ascii" role="tab" aria-selected="false">📄 Raw ASCII</button>
+                </div>
+              </div>
+
+              <!-- Interactive Node Topology -->
+              <div class="interactive-topology" id="homelabInteractiveTopology">
+                <div class="topo-legend">
+                  <span class="topo-badge badge-wan">WAN / VPN</span>
+                  <span class="topo-badge badge-lan">LAN Layer</span>
+                  <span class="topo-badge badge-host">Host &amp; OS</span>
+                  <span class="topo-badge badge-service">Docker Service</span>
+                  <span class="topo-badge badge-storage">Storage Mount</span>
+                </div>
+
+                <div class="topo-canvas">
+                  <!-- Layer 1: Ingress & Remote Access -->
+                  <div class="topo-row">
+                    <div class="topo-node topo-node-wan">
+                      <div class="topo-node-icon">🔒</div>
+                      <div class="topo-node-content">
+                        <h4>Remote Access (Tailscale Mesh)</h4>
+                        <p>Zero-exposure WireGuard VPN mesh · Encrypted peer-to-peer</p>
+                      </div>
+                      <span class="topo-status live">Secure</span>
+                    </div>
+
+                    <div class="topo-node topo-node-lan">
+                      <div class="topo-node-icon">🌐</div>
+                      <div class="topo-node-content">
+                        <h4>Home LAN Clients &amp; Router</h4>
+                        <p>Gateway 192.168.0.1 · Gigabit Ethernet uplink</p>
+                      </div>
+                      <span class="topo-status live">1 Gbps</span>
+                    </div>
+                  </div>
+
+                  <!-- Flow Connector -->
+                  <div class="topo-connector">
+                    <span class="connector-line"></span>
+                    <span class="connector-arrow">↓ Local Gigabit Ingress &amp; Tailscale Interface ↓</span>
+                  </div>
+
+                  <!-- Layer 2: Core Server Host -->
+                  <div class="topo-row">
+                    <div class="topo-node topo-node-host topo-highlight">
+                      <div class="topo-node-header">
+                        <div class="topo-node-icon">🖥️</div>
+                        <div>
+                          <h4>nine-node (Primary Server Host)</h4>
+                          <span class="topo-ip">192.168.0.198 · Tailscale 100.x.x.x</span>
+                        </div>
+                      </div>
+                      <div class="topo-specs-grid">
+                        <span class="spec-pill"><strong>OS:</strong> Ubuntu Server 24.04</span>
+                        <span class="spec-pill"><strong>Dashboard:</strong> CasaOS</span>
+                        <span class="spec-pill"><strong>Runtime:</strong> Docker Engine &amp; Compose</span>
+                        <span class="spec-pill"><strong>RAM:</strong> 16 GB DDR4</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Flow Connector -->
+                  <div class="topo-connector">
+                    <span class="connector-line"></span>
+                    <span class="connector-arrow">↓ Docker Virtual Bridge Networks &amp; Host Mounts ↓</span>
+                  </div>
+
+                  <!-- Layer 3: Services Grid -->
+                  <div class="topo-services-container">
+                    <div class="topo-group-title">Self-Hosted Microservices &amp; Applications</div>
+                    <div class="topo-services-grid">
+                      <div class="topo-service-card" tabindex="0">
+                        <div class="service-head">
+                          <span class="service-icon">🎬</span>
+                          <strong>Jellyfin</strong>
+                        </div>
+                        <p>Hardware accelerated media streaming</p>
+                        <span class="service-port">:8096</span>
+                      </div>
+                      <div class="topo-service-card" tabindex="0">
+                        <div class="service-head">
+                          <span class="service-icon">🎵</span>
+                          <strong>Navidrome</strong>
+                        </div>
+                        <p>High-efficiency FLAC/MP3 music server</p>
+                        <span class="service-port">:4533</span>
+                      </div>
+                      <div class="topo-service-card" tabindex="0">
+                        <div class="service-head">
+                          <span class="service-icon">📸</span>
+                          <strong>Immich</strong>
+                        </div>
+                        <p>Self-hosted machine-learning photo backup</p>
+                        <span class="service-port">:2283</span>
+                      </div>
+                      <div class="topo-service-card" tabindex="0">
+                        <div class="service-head">
+                          <span class="service-icon">☁️</span>
+                          <strong>Nextcloud</strong>
+                        </div>
+                        <p>Document sync &amp; Collabora CODE office suite</p>
+                        <span class="service-port">:8080</span>
+                      </div>
+                      <div class="topo-service-card" tabindex="0">
+                        <div class="service-head">
+                          <span class="service-icon">🔄</span>
+                          <strong>Syncthing</strong>
+                        </div>
+                        <p>Continuous encrypted cross-device file sync</p>
+                        <span class="service-port">:8384</span>
+                      </div>
+                      <div class="topo-service-card" tabindex="0">
+                        <div class="service-head">
+                          <span class="service-icon">🛡️</span>
+                          <strong>AdGuard Home</strong>
+                        </div>
+                        <p>Network-wide DNS sinkhole &amp; tracker blocker</p>
+                        <span class="service-port">:53/DNS</span>
+                      </div>
+                      <div class="topo-service-card" tabindex="0">
+                        <div class="service-head">
+                          <span class="service-icon">📊</span>
+                          <strong>Netdata &amp; Glances</strong>
+                        </div>
+                        <p>Real-time system health, telemetry &amp; I/O metrics</p>
+                        <span class="service-port">:19999</span>
+                      </div>
+                      <div class="topo-service-card" tabindex="0">
+                        <div class="service-head">
+                          <span class="service-icon">⚡</span>
+                          <strong>Speedtest Tracker</strong>
+                        </div>
+                        <p>Automated periodic WAN bandwidth benchmarking</p>
+                        <span class="service-port">:8088</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Flow Connector -->
+                  <div class="topo-connector">
+                    <span class="connector-line"></span>
+                    <span class="connector-arrow">↓ Dedicated Physical Storage Pools (Non-Merged) ↓</span>
+                  </div>
+
+                  <!-- Layer 4: Storage Drives -->
+                  <div class="topo-storage-grid">
+                    <div class="topo-storage-node">
+                      <div class="storage-icon">⚡</div>
+                      <div>
+                        <strong>NVMe M.2 Drive</strong>
+                        <p>Host OS root filesystem, Docker container runtimes &amp; SQLite/Postgres DBs</p>
+                      </div>
+                    </div>
+                    <div class="topo-storage-node">
+                      <div class="storage-icon">💾</div>
+                      <div>
+                        <strong>Secondary SATA SSD</strong>
+                        <p>High-speed scratch cache, active downloads &amp; app data backups</p>
+                      </div>
+                    </div>
+                    <div class="topo-storage-node">
+                      <div class="storage-icon">💽</div>
+                      <div>
+                        <strong>~1 TB Surveillance HDD</strong>
+                        <p>Bulk media library (Jellyfin/Navidrome) &amp; full historical photo archive (Immich)</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Fallback ASCII diagram (hidden by default) -->
+              <div class="diagram-box" id="homelabAsciiDiagram" hidden>
                 <pre>
 Client Devices (LAN)
        ↓

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zakia Shah | Graphic Design Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: #667eea;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #764ba2;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .year {
+            font-size: 1.2rem;
+            color: #888;
+            font-weight: 400;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            padding: 20px 0;
+        }
+
+        .portfolio-item {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        .portfolio-item h3 {
+            font-size: 1.4rem;
+            color: #667eea;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .portfolio-item p {
+            color: #555;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        .portfolio-item .icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .category {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: white;
+            margin-top: 40px;
+        }
+
+        footer p {
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Zakia Shah</h1>
+            <p class="subtitle">Graphic Design Portfolio</p>
+            <p class="year">2026</p>
+        </header>
+
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <span class="icon">🎭</span>
+                <span class="category">Event Design</span>
+                <h3>Banner Option 1</h3>
+                <p>Banner design for a school musical event, featuring vibrant colors and creative typography to capture the spirit of the performance.</p>
+            </div>
+
+            <div class="portfolio-item">
+                <span class="icon">🎪</span>
+                <span class="category">Event Design</span>
+                <h3>Banner Option 2</h3>
+                <p>Alternative banner design for a school musical event, showcasing a different creative approach with dynamic visual elements.</p>
+            </div>
+
+            <div class="portfolio-item">
+                <span class="icon">🏫</span>
+                <span class="category">School Event</span>
+                <h3>Primary School Event Banner</h3>
+                <p>Eye-catching banner design created specifically for a primary school event, with playful and engaging visual elements.</p>
+            </div>
+
+            <div class="portfolio-item">
+                <span class="icon">✨</span>
+                <span class="category">Digital Design</span>
+                <h3>Animated Digi-Banner</h3>
+                <p>Animated digital banner design for the Primary School's Hindi Event, incorporating motion graphics and cultural elements.</p>
+            </div>
+
+            <div class="portfolio-item">
+                <span class="icon">🏆</span>
+                <span class="category">Print Design</span>
+                <h3>Certificate Designs</h3>
+                <p>Professional certificate designs used for the school's cultural competitions, featuring elegant layouts and official aesthetics.</p>
+            </div>
+
+            <div class="portfolio-item">
+                <span class="icon">📰</span>
+                <span class="category">Publication</span>
+                <h3>Multi-Page Event Report</h3>
+                <p>Comprehensive multi-page event report summarising the week-long, annual, inter-school fest with engaging visuals and organized content.</p>
+            </div>
+
+            <div class="portfolio-item">
+                <span class="icon">🎵</span>
+                <span class="category">Invitation Design</span>
+                <h3>School Choir's Farewell Invitation</h3>
+                <p>Emotional and beautifully designed farewell invitation for the school choir, capturing the sentimental essence of the occasion.</p>
+            </div>
+
+            <div class="portfolio-item">
+                <span class="icon">💼</span>
+                <span class="category">Brand Identity</span>
+                <h3>Business Card Design</h3>
+                <p>Professional business card design for a small start-up, balancing modern aesthetics with brand identity elements.</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 Zakia Shah | Graphic Design Portfolio</p>
+        </footer>
+    </div>
+</body>
+</html>

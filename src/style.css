@@ -71,6 +71,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px;
 }
 
 body {
@@ -1047,6 +1048,48 @@ body {
   border-top: 3px solid var(--accent);
 }
 
+/* ── Featured project cards ── */
+.project-card--featured {
+  grid-column: span 2;
+  border-top: 3px solid var(--accent) !important;
+  background: linear-gradient(135deg, var(--bg-tertiary) 0%, color-mix(in srgb, var(--accent) 5%, var(--bg-tertiary)) 100%);
+}
+
+.project-card--featured h3 {
+  font-size: 2rem;
+}
+
+.project-card--featured p {
+  max-width: 72ch;
+}
+
+.project-card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+  padding: 0.2em 0.65em;
+  border-radius: 4px;
+  margin-bottom: 0.85rem;
+}
+
+.project-card-badge::before {
+  content: '★';
+  font-size: 0.65rem;
+}
+
+@media (max-width: 720px) {
+  .project-card--featured {
+    grid-column: span 1;
+  }
+}
+
 .project-card {
   background-color: var(--bg-tertiary);
   padding: 2.5rem;
@@ -1380,6 +1423,334 @@ body {
   line-height: 1.6;
   color: var(--text-secondary);
   white-space: pre;
+}
+
+/* ─── Interactive Topology Diagram ─── */
+.diagram-header-tabs {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.diagram-header-tabs h3 {
+  margin: 0;
+}
+
+.diagram-tabs {
+  display: inline-flex;
+  gap: 0.35rem;
+  background: var(--bg-secondary);
+  padding: 0.3rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+}
+
+.diagram-tab-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  padding: 0.4rem 0.9rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.diagram-tab-btn:hover {
+  color: var(--text-primary);
+}
+
+.diagram-tab-btn.active {
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.interactive-topology {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+.topo-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.topo-badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+}
+
+.badge-wan { background: rgba(59, 130, 246, 0.12); color: #60a5fa; border-color: rgba(59, 130, 246, 0.3); }
+.badge-lan { background: rgba(16, 185, 129, 0.12); color: #34d399; border-color: rgba(16, 185, 129, 0.3); }
+.badge-host { background: rgba(168, 85, 247, 0.12); color: #c084fc; border-color: rgba(168, 85, 247, 0.3); }
+.badge-service { background: rgba(245, 158, 11, 0.12); color: #fbbf24; border-color: rgba(245, 158, 11, 0.3); }
+.badge-storage { background: rgba(236, 72, 153, 0.12); color: #f472b6; border-color: rgba(236, 72, 153, 0.3); }
+
+.topo-canvas {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.topo-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.topo-node {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.topo-node:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+
+.topo-node-icon {
+  font-size: 1.75rem;
+  flex-shrink: 0;
+  width: 2.8rem;
+  height: 2.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+}
+
+.topo-node-content h4 {
+  margin: 0 0 0.25rem 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.topo-node-content p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.topo-status.live {
+  margin-left: auto;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #34d399;
+  background: rgba(16, 185, 129, 0.12);
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.topo-node-host {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.85rem;
+  border-color: rgba(168, 85, 247, 0.4);
+  background: linear-gradient(180deg, var(--bg-tertiary) 0%, rgba(168, 85, 247, 0.05) 100%);
+}
+
+.topo-node-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.topo-node-header h4 {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.topo-ip {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: #c084fc;
+}
+
+.topo-specs-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px dashed var(--border);
+}
+
+.spec-pill {
+  font-size: 0.75rem;
+  background: var(--bg-secondary);
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+}
+
+.spec-pill strong {
+  color: var(--text-primary);
+}
+
+.topo-connector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0.25rem 0;
+}
+
+.connector-arrow {
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  color: var(--text-muted);
+  background: var(--bg-tertiary);
+  padding: 0.2rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+}
+
+.topo-services-container {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+}
+
+.topo-group-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #fbbf24;
+  margin-bottom: 0.85rem;
+}
+
+.topo-services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 0.75rem;
+}
+
+.topo-service-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem 1rem;
+  transition: all 0.18s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.topo-service-card:hover, .topo-service-card:focus {
+  border-color: #fbbf24;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(251, 191, 36, 0.15);
+  outline: none;
+}
+
+.service-head {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.service-icon {
+  font-size: 1.1rem;
+}
+
+.service-head strong {
+  font-size: 0.88rem;
+  color: var(--text-primary);
+}
+
+.topo-service-card p {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  line-height: 1.35;
+}
+
+.service-port {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: #fbbf24;
+  background: rgba(245, 158, 11, 0.1);
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  align-self: flex-start;
+}
+
+.topo-storage-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 0.85rem;
+}
+
+.topo-storage-node {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.15rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  transition: border-color 0.15s ease;
+}
+
+.topo-storage-node:hover {
+  border-color: #f472b6;
+}
+
+.storage-icon {
+  font-size: 1.3rem;
+  margin-top: 0.1rem;
+}
+
+.topo-storage-node strong {
+  display: block;
+  font-size: 0.88rem;
+  color: var(--text-primary);
+  margin-bottom: 0.2rem;
+}
+
+.topo-storage-node p {
+  margin: 0;
+  font-size: 0.76rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
 }
 
 .note-box {
@@ -1879,6 +2250,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 160px;
+  aspect-ratio: 16 / 9;
   margin: 0.75rem;
   border-radius: var(--radius-md);
   border: 1px solid var(--border);
@@ -1892,10 +2264,11 @@ body {
 
 .pt-lab-img img {
   width: 100%;
-  flex: 1;
+  height: 100%;
   object-fit: cover;
   object-position: top center;
   display: block;
+  aspect-ratio: 16 / 9;
   transition: transform 0.25s ease;
 }
 
@@ -2121,6 +2494,57 @@ body {
 @keyframes modal-in {
   from { opacity: 0; transform: scale(0.96) translateY(8px); }
   to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Resume Preview Modal */
+.resume-modal-content {
+  max-width: 900px;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.resume-modal-header {
+  padding: 1rem 3.5rem 1rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-tertiary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.resume-modal-header h3 {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.resume-modal-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-sm {
+  padding: 0.35rem 0.8rem !important;
+  font-size: 0.82rem !important;
+}
+
+.resume-iframe-wrapper {
+  flex: 1;
+  width: 100%;
+  background: #fff;
+  overflow: hidden;
+}
+
+.resume-iframe-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
 }
 
 .cert-modal-close {
@@ -3101,14 +3525,16 @@ body {
 
   .home h1 {
     font-size: 2rem;
+    letter-spacing: -0.02em;
   }
 
+  /* Remove the duplicate — keep only the 1.6rem rule below */
   .section h2 {
-    font-size: 2rem;
+    font-size: 1.6rem;
   }
 
   .homelab .homelab-section h3 {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
   }
 
   .subsection,
@@ -3117,6 +3543,16 @@ body {
   .about-content,
   .contact-content {
     padding: 1.5rem;
+  }
+
+  /* Project sections less padding on tiny screens */
+  .project-section {
+    padding: 1.25rem;
+  }
+
+  /* Featured card heading scales down */
+  .project-card--featured h3 {
+    font-size: 1.5rem;
   }
 
   .services-table {
@@ -3136,20 +3572,14 @@ body {
     font-size: 0.72rem;
   }
 
-  /* Home h1 very small */
-  .home h1 {
-    font-size: 2rem;
-    letter-spacing: -0.02em;
-  }
-
-  /* Section h2 keeps readable */
-  .section h2 {
-    font-size: 1.6rem;
-  }
-
   /* Homelab section headings */
   .homelab .homelab-section h3 {
     font-size: 1.25rem;
+  }
+
+  /* topo-row single column */
+  .topo-row {
+    grid-template-columns: 1fr;
   }
 
   /* PT lab screenshots stack */

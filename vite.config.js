@@ -20,6 +20,8 @@ export default defineConfig({
         igrisLab: './igris-lab.html',
         restaurantManagement: './restaurant-management.html',
         veritasAcquisitions: './veritas-acquisitions.html',
+        graphicDesign: './graphic-design.html',
+        notFound: './404.html',
       },
     },
   },

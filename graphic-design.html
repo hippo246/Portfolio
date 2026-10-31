@@ -1,0 +1,631 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Graphic design work by Rahil Tahir — social media campaigns, charity flyers, restaurant branding, business cards, and carousel content for Thrift For Good, TARAHUM FOR GAZA, Shayhans Royal Dawat, Trine, and Eyeconic." />
+    <title>Graphic Design — Rahil Tahir</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Graphic Design — Rahil Tahir" />
+    <meta property="og:description" content="Social media campaigns, charity flyers, restaurant branding, and freelance design work by Rahil Tahir." />
+    <meta property="og:image" content="/profile.jpg" />
+    <link rel="canonical" href="https://rahiltahir.dev/graphic-design.html" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/style.css" />
+    <style>
+      body { padding-top: 80px; }
+
+      /* ── Design gallery layout ── */
+      .design-campaign {
+        margin-bottom: 3.5rem;
+      }
+      .design-campaign-header {
+        display: flex;
+        align-items: baseline;
+        gap: 1rem;
+        margin-bottom: 1.25rem;
+        padding-bottom: 0.6rem;
+        border-bottom: 2px solid var(--border);
+      }
+      .design-campaign-header h2 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin: 0;
+        color: var(--text-primary);
+      }
+      .design-campaign-tag {
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        padding: 0.2em 0.65em;
+        border-radius: 4px;
+        background: var(--accent-muted, rgba(99,102,241,0.12));
+        color: var(--accent);
+      }
+      .design-campaign-desc {
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        margin-bottom: 1.25rem;
+        max-width: 72ch;
+      }
+      .design-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 1.25rem;
+      }
+      .design-item {
+        border-radius: 10px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        background: var(--bg-card);
+        cursor: pointer;
+        transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+      }
+      .design-item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.14);
+        border-color: var(--accent);
+      }
+      .design-item-img {
+        width: 100%;
+        max-height: 380px;
+        min-height: 160px;
+        object-fit: contain;
+        object-position: center;
+        display: block;
+        background: #f5f5f5;
+      }
+      .design-item-caption {
+        padding: 0.65rem 0.85rem;
+        font-size: 0.82rem;
+        color: var(--text-secondary);
+        border-top: 1px solid var(--border);
+      }
+
+      /* Two-col layout for logo + menu side by side */
+      .design-gallery.two-col {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      @media (max-width: 600px) {
+        .design-gallery.two-col { grid-template-columns: 1fr; }
+        .design-gallery { grid-template-columns: 1fr; }
+      }
+
+      /* Collaborator popover trigger */
+      .collab-trigger {
+        background: none;
+        border: none;
+        padding: 0;
+        font: inherit;
+        color: var(--accent);
+        cursor: pointer;
+        text-decoration: underline dotted;
+        text-underline-offset: 3px;
+        position: relative;
+        display: inline-block;
+      }
+      .collab-trigger:hover {
+        text-decoration: underline;
+      }
+
+      /* Popover card */
+      .collab-popover {
+        position: absolute;
+        top: calc(100% + 6px);
+        left: 0;
+        z-index: 200;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        box-shadow: 0 8px 28px rgba(0,0,0,0.18);
+        padding: 0.5rem 0.4rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.1rem;
+        min-width: 170px;
+      }
+      .collab-popover[hidden] { display: none; }
+      .collab-popover a {
+        display: flex;
+        align-items: center;
+        gap: 0.55rem;
+        padding: 0.5rem 0.75rem;
+        border-radius: 6px;
+        font-size: 0.88rem;
+        font-weight: 500;
+        color: var(--text-primary);
+        text-decoration: none;
+        transition: background 0.15s ease, color 0.15s ease;
+      }
+      .collab-popover a:hover {
+        background: var(--bg-hover, rgba(99,102,241,0.08));
+        color: var(--accent);
+      }
+      .collab-popover a svg {
+        flex-shrink: 0;
+        opacity: 0.7;
+      }
+
+      /* Volunteer callout — wide card */
+      .design-item.wide {
+        grid-column: 1 / -1;
+      }
+
+      /* ── Campaign jump nav (TOC) ── */
+      .design-toc {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.4rem 0.5rem;
+        margin-bottom: 2.5rem;
+        padding: 1rem 1.25rem;
+        background: var(--bg-tertiary);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+      }
+
+      .design-toc-label {
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        margin-right: 0.25rem;
+      }
+
+      .design-toc a {
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: var(--text-secondary);
+        text-decoration: none;
+        padding: 0.3em 0.75em;
+        border-radius: 20px;
+        border: 1px solid var(--border);
+        background: var(--bg-card);
+        transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+        white-space: nowrap;
+      }
+
+      .design-toc a:hover {
+        color: var(--accent);
+        border-color: var(--accent);
+        background: color-mix(in srgb, var(--accent) 8%, var(--bg-card));
+      }
+
+      @media (max-width: 600px) {
+        .design-toc { gap: 0.35rem; padding: 0.75rem 1rem; }
+        .design-toc a { font-size: 0.78rem; padding: 0.25em 0.6em; }
+        .design-toc-label { width: 100%; margin-bottom: 0.1rem; }
+
+        /* Keep popover on-screen — flip to right-aligned on narrow phones */
+        .collab-popover {
+          left: auto;
+          right: 0;
+        }
+      }
+
+      /* ── Sub-campaign (nested under TFG) ── */
+      .design-subcampaign {
+        margin-top: 2rem;
+        padding: 1.5rem;
+        border-radius: 10px;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-left: 3px solid var(--accent);
+      }
+
+      .design-subcampaign-header {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 0.75rem;
+        flex-wrap: wrap;
+      }
+
+      .design-subcampaign-label {
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        color: var(--accent);
+        background: color-mix(in srgb, var(--accent) 10%, transparent);
+        padding: 0.2em 0.6em;
+        border-radius: 4px;
+        white-space: nowrap;
+      }
+
+      .design-subcampaign h3 {
+        font-family: var(--font-display);
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin: 0;
+      }
+
+      .design-subcampaign .design-campaign-desc {
+        margin-bottom: 1rem;
+      }
+
+      /* ── Freelance section divider ── */
+      .design-section-divider {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin: 3rem 0 2rem;
+        color: var(--text-muted);
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .design-section-divider::before,
+      .design-section-divider::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: var(--border);
+      }
+    </style>
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <nav class="nav" aria-label="Primary navigation">
+      <div class="nav-container">
+        <div class="nav-left">
+          <a href="/" class="nav-logo-link">
+            <img src="/profile.jpg" alt="Rahil Tahir" class="nav-profile">
+            <span class="nav-logo">Rahil Tahir</span>
+          </a>
+        </div>
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul class="nav-menu">
+          <li><a href="/#projects">Back to Portfolio</a></li>
+          <li><a href="/resume.html">Résumé</a></li>
+          <li><a href="/#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <main id="main-content">
+      <section class="section">
+        <div class="container">
+
+          <div class="page-header">
+            <h1>Graphic Design</h1>
+            <p class="page-subtitle">Social media campaigns, charity flyers, restaurant branding, business cards, and carousel content</p>
+            <div class="page-header-actions">
+              <a href="/#projects" class="btn btn-secondary">← Back to Portfolio</a>
+            </div>
+          </div>
+
+          <!-- Overview -->
+          <div class="project-section">
+            <h2>Overview</h2>
+            <p>Alongside software development, I've done graphic design work for charities, community events, local businesses, and freelance clients. This covers social media content for Thrift For Good (a charity thrift shop), a Gaza humanitarian campaign, restaurant menu and logo design, and brand identity work for a private tuition company and a medical education platform.</p>
+            <p>Tools used: Canva, Adobe Express, and image editing tools depending on the deliverable. All work was created to brief for real organisations and events.</p>
+          </div>
+
+          <!-- Jump nav -->
+          <nav class="design-toc" aria-label="Jump to campaign">
+            <span class="design-toc-label">Jump to</span>
+            <a href="#thrift-for-good">Thrift For Good</a>
+            <a href="#shayhans-royal-dawat">Shayhans Royal Dawat</a>
+            <a href="#trine">Trine</a>
+            <a href="#eyeconic">Eyeconic</a>
+          </nav>
+
+          <!-- ── 1. Thrift For Good (umbrella) ── -->
+          <div class="project-section design-campaign" id="thrift-for-good">
+            <div class="design-campaign-header">
+              <h2>Thrift For Good</h2>
+              <span class="design-campaign-tag">Charity · Social Media</span>
+            </div>
+            <p class="design-campaign-desc">Thrift For Good is a charity thrift shop initiative — I created social media posts and promotional flyers covering shop announcements, donation drives, and community engagement content. Mend For Good and TARAHUM FOR GAZA are campaigns that ran under the Thrift For Good umbrella.</p>
+            <div class="design-gallery">
+              <div class="design-item" role="button" tabindex="0" aria-label="View Thrift For Good post 1" data-cert="/design/thrift-for-good/1.png" data-cert-title="Thrift For Good — Post 1">
+                <img class="design-item-img" src="/design/thrift-for-good/1.png" alt="Thrift For Good social media post 1" loading="lazy" />
+                <p class="design-item-caption">Social media post — shop announcement</p>
+              </div>
+              <div class="design-item" role="button" tabindex="0" aria-label="View Thrift For Good post 2" data-cert="/design/thrift-for-good/2.png" data-cert-title="Thrift For Good — Post 2">
+                <img class="design-item-img" src="/design/thrift-for-good/2.png" alt="Thrift For Good social media post 2" loading="lazy" />
+                <p class="design-item-caption">Social media post — donation drive</p>
+              </div>
+              <div class="design-item" role="button" tabindex="0" aria-label="View Thrift For Good post 3" data-cert="/design/thrift-for-good/3.png" data-cert-title="Thrift For Good — Post 3">
+                <img class="design-item-img" src="/design/thrift-for-good/3.png" alt="Thrift For Good social media post 3" loading="lazy" />
+                <p class="design-item-caption">Social media post — community engagement</p>
+              </div>
+              <div class="design-item" role="button" tabindex="0" aria-label="View Thrift For Good post 4" data-cert="/design/thrift-for-good/4.png" data-cert-title="Thrift For Good — Post 4">
+                <img class="design-item-img" src="/design/thrift-for-good/4.png" alt="Thrift For Good social media post 4" loading="lazy" />
+                <p class="design-item-caption">Social media post — promotional content</p>
+              </div>
+              <div class="design-item wide" role="button" tabindex="0" aria-label="View Calling All Volunteers flyer" data-cert="/design/thrift-for-good/calling-all-volunteers.png" data-cert-title="Calling All Volunteers! — Thrift For Good">
+                <img class="design-item-img" src="/design/thrift-for-good/calling-all-volunteers.png" alt="Calling All Volunteers flyer for Thrift For Good" loading="lazy" />
+                <p class="design-item-caption">Volunteer recruitment flyer — "Calling All Volunteers!"</p>
+              </div>
+            </div>
+
+            <!-- Sub-campaign: Mend For Good -->
+            <div class="design-subcampaign" id="mend-for-good">
+              <div class="design-subcampaign-header">
+                <span class="design-subcampaign-label">Campaign under TFG</span>
+                <h3>Mend For Good</h3>
+              </div>
+              <p class="design-campaign-desc">A repair-and-reuse campaign run by Thrift For Good — focused on sustainable community impact and giving items a second life.</p>
+              <div class="design-gallery">
+                <div class="design-item" role="button" tabindex="0" aria-label="View Mend For Good post 1" data-cert="/design/mend-for-good/1.png" data-cert-title="Mend For Good — Post 1">
+                  <img class="design-item-img" src="/design/mend-for-good/1.png" alt="Mend For Good campaign post 1" loading="lazy" />
+                  <p class="design-item-caption">Campaign post — Mend For Good launch</p>
+                </div>
+                <div class="design-item" role="button" tabindex="0" aria-label="View Mend For Good post 2" data-cert="/design/mend-for-good/2.png" data-cert-title="Mend For Good — Post 2">
+                  <img class="design-item-img" src="/design/mend-for-good/2.png" alt="Mend For Good campaign post 2" loading="lazy" />
+                  <p class="design-item-caption">Campaign post — repair and reuse messaging</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sub-campaign: TARAHUM FOR GAZA -->
+            <div class="design-subcampaign" id="tarahum-for-gaza">
+              <div class="design-subcampaign-header">
+                <span class="design-subcampaign-label">Campaign under TFG</span>
+                <h3>TARAHUM FOR GAZA</h3>
+              </div>
+              <p class="design-campaign-desc">A humanitarian fundraising campaign for Gaza relief efforts — I designed social media graphics to raise awareness and drive donations.</p>
+              <div class="design-gallery">
+                <div class="design-item" role="button" tabindex="0" aria-label="View TARAHUM FOR GAZA post 1" data-cert="/design/tarahum-for-gaza/1.png" data-cert-title="TARAHUM FOR GAZA — Post 1">
+                  <img class="design-item-img" src="/design/tarahum-for-gaza/1.png" alt="TARAHUM FOR GAZA campaign post 1" loading="lazy" />
+                  <p class="design-item-caption">Campaign graphic — awareness post</p>
+                </div>
+                <div class="design-item" role="button" tabindex="0" aria-label="View TARAHUM FOR GAZA post 2" data-cert="/design/tarahum-for-gaza/2.png" data-cert-title="TARAHUM FOR GAZA — Post 2">
+                  <img class="design-item-img" src="/design/tarahum-for-gaza/2.png" alt="TARAHUM FOR GAZA campaign post 2" loading="lazy" />
+                  <p class="design-item-caption">Campaign graphic — donation drive</p>
+                </div>
+                <div class="design-item" role="button" tabindex="0" aria-label="View TARAHUM FOR GAZA post 3" data-cert="/design/tarahum-for-gaza/3.png" data-cert-title="TARAHUM FOR GAZA — Post 3">
+                  <img class="design-item-img" src="/design/tarahum-for-gaza/3.png" alt="TARAHUM FOR GAZA campaign post 3" loading="lazy" />
+                  <p class="design-item-caption">Campaign graphic — fundraising call to action</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Freelance divider ── -->
+          <div class="design-section-divider">
+            <span>Freelance Projects</span>
+          </div>
+
+          <!-- ── 4. Shayhans Royal Dawat ── -->
+          <div class="project-section design-campaign" id="shayhans-royal-dawat">
+            <div class="design-campaign-header">
+              <h2>Shayhans Royal Dawat</h2>
+              <span class="design-campaign-tag">Restaurant · Branding</span>
+            </div>
+            <p class="design-campaign-desc">Shayhans Royal Dawat is a restaurant client. I designed their logo and a full menu redesign — bringing a consistent visual identity across both print and digital formats.</p>
+            <div class="design-gallery two-col">
+              <div class="design-item" role="button" tabindex="0" aria-label="View Shayhans Royal Dawat logo" data-cert="/design/shayhans-royal-dawat/shayhans-logo.png" data-cert-title="Shayhans Royal Dawat — Logo">
+                <img class="design-item-img" src="/design/shayhans-royal-dawat/shayhans-logo.png" alt="Shayhans Royal Dawat restaurant logo" loading="lazy" />
+                <p class="design-item-caption">Logo design — Shayhans Royal Dawat</p>
+              </div>
+              <div class="design-item" role="button" tabindex="0" aria-label="View Shayhans Royal Dawat menu redesign" data-cert="/design/shayhans-royal-dawat/menu-redesign.png" data-cert-title="Shayhans Royal Dawat — Menu Redesign">
+                <img class="design-item-img" src="/design/shayhans-royal-dawat/menu-redesign.png" alt="Shayhans Royal Dawat menu redesign" loading="lazy" />
+                <p class="design-item-caption">Menu redesign — print and digital layout</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── 5. Trine ── -->
+          <div class="project-section design-campaign" id="trine">
+            <div class="design-campaign-header">
+              <h2>Trine</h2>
+              <span class="design-campaign-tag">Freelance · Brand Identity</span>
+            </div>
+            <p class="design-campaign-desc">Trine is a private tuition company. I designed their logo and a range of business card variants — giving the client multiple layout options to choose from before finalising print-ready files. This was a collaborative project with <button class="collab-trigger" id="zakiaTrigger" aria-haspopup="true" aria-expanded="false">Zakia Shah
+                <span class="collab-popover" id="zakiaPopover" role="dialog" aria-label="Contact Zakia Shah" hidden>
+                  <a href="https://zack-portfolio-nine.vercel.app/" target="_blank" rel="noopener noreferrer">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+                    Portfolio
+                  </a>
+                  <a href="https://www.linkedin.com/in/zakia-shah-6bb5a1281" target="_blank" rel="noopener noreferrer">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                    LinkedIn
+                  </a>
+                  <a href="mailto:zakiashah.ccs@gmail.com">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    Email
+                  </a>
+                </span>
+              </button>, with both of us contributing to the creative direction and deliverables.
+            </p>
+
+            <h3 style="font-size: 1rem; font-weight: 600; margin: 1.25rem 0 0.75rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.8rem;">Logo</h3>
+            <div class="design-gallery two-col">
+              <div class="design-item" role="button" tabindex="0" aria-label="View Trine logo variant 1" data-cert="/design/trine/logo-1.png" data-cert-title="Trine — Logo Variant 1">
+                <img class="design-item-img" src="/design/trine/logo-1.png" alt="Trine logo variant 1" loading="lazy" />
+                <p class="design-item-caption">Logo — variant 1</p>
+              </div>
+              <div class="design-item" role="button" tabindex="0" aria-label="View Trine logo variant 2" data-cert="/design/trine/logo-2.png" data-cert-title="Trine — Logo Variant 2">
+                <img class="design-item-img" src="/design/trine/logo-2.png" alt="Trine logo variant 2" loading="lazy" />
+                <p class="design-item-caption">Logo — variant 2</p>
+              </div>
+            </div>
+
+            <h3 style="font-size: 0.8rem; font-weight: 600; margin: 2rem 0 0.75rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">Business Card Variants</h3>
+            <div class="design-gallery">
+              <div class="design-item" role="button" tabindex="0" aria-label="View Trine business card option 1 — side A" data-cert="/design/trine/bc-one-1.png" data-cert-title="Trine Business Card — Option 1, Side A">
+                <img class="design-item-img" src="/design/trine/bc-one-1.png" alt="Trine business card option 1 side A" loading="lazy" />
+                <p class="design-item-caption">Business card — option 1, side A</p>
+              </div>
+              <div class="design-item" role="button" tabindex="0" aria-label="View Trine business card option 1 — side B" data-cert="/design/trine/bc-one-2.png" data-cert-title="Trine Business Card — Option 1, Side B">
+                <img class="design-item-img" src="/design/trine/bc-one-2.png" alt="Trine business card option 1 side B" loading="lazy" />
+                <p class="design-item-caption">Business card — option 1, side B</p>
+              </div>
+              <div class="design-item" role="button" tabindex="0" aria-label="View Trine business card option 2 — side A" data-cert="/design/trine/bc-two-1.png" data-cert-title="Trine Business Card — Option 2, Side A">
+                <img class="design-item-img" src="/design/trine/bc-two-1.png" alt="Trine business card option 2 side A" loading="lazy" />
+                <p class="design-item-caption">Business card — option 2, side A</p>
+              </div>
+              <div class="design-item" role="button" tabindex="0" aria-label="View Trine business card option 2 — side B" data-cert="/design/trine/bc-two-2.png" data-cert-title="Trine Business Card — Option 2, Side B">
+                <img class="design-item-img" src="/design/trine/bc-two-2.png" alt="Trine business card option 2 side B" loading="lazy" />
+                <p class="design-item-caption">Business card — option 2, side B</p>
+              </div>
+              <div class="design-item" role="button" tabindex="0" aria-label="View Trine business card option 3 — side A" data-cert="/design/trine/bc-three-1.png" data-cert-title="Trine Business Card — Option 3, Side A">
+                <img class="design-item-img" src="/design/trine/bc-three-1.png" alt="Trine business card option 3 side A" loading="lazy" />
+                <p class="design-item-caption">Business card — option 3, side A</p>
+              </div>
+              <div class="design-item" role="button" tabindex="0" aria-label="View Trine business card option 3 — side B" data-cert="/design/trine/bc-three-2.png" data-cert-title="Trine Business Card — Option 3, Side B">
+                <img class="design-item-img" src="/design/trine/bc-three-2.png" alt="Trine business card option 3 side B" loading="lazy" />
+                <p class="design-item-caption">Business card — option 3, side B</p>
+              </div>
+              <div class="design-item" role="button" tabindex="0" aria-label="View Trine business card option 4 — panel 1" data-cert="/design/trine/bc-four-1.png" data-cert-title="Trine Business Card — Option 4, Panel 1">
+                <img class="design-item-img" src="/design/trine/bc-four-1.png" alt="Trine business card option 4 panel 1" loading="lazy" />
+                <p class="design-item-caption">Business card — option 4, panel 1</p>
+              </div>
+              <div class="design-item" role="button" tabindex="0" aria-label="View Trine business card option 4 — panel 2" data-cert="/design/trine/bc-four-2.png" data-cert-title="Trine Business Card — Option 4, Panel 2">
+                <img class="design-item-img" src="/design/trine/bc-four-2.png" alt="Trine business card option 4 panel 2" loading="lazy" />
+                <p class="design-item-caption">Business card — option 4, panel 2</p>
+              </div>
+              <div class="design-item" role="button" tabindex="0" aria-label="View Trine business card option 4 — panel 3" data-cert="/design/trine/bc-four-3.png" data-cert-title="Trine Business Card — Option 4, Panel 3">
+                <img class="design-item-img" src="/design/trine/bc-four-3.png" alt="Trine business card option 4 panel 3" loading="lazy" />
+                <p class="design-item-caption">Business card — option 4, panel 3</p>
+              </div>
+              <div class="design-item" role="button" tabindex="0" aria-label="View Trine business card option 4 — panel 4" data-cert="/design/trine/bc-four-4.png" data-cert-title="Trine Business Card — Option 4, Panel 4">
+                <img class="design-item-img" src="/design/trine/bc-four-4.png" alt="Trine business card option 4 panel 4" loading="lazy" />
+                <p class="design-item-caption">Business card — option 4, panel 4</p>
+              </div>
+              <div class="design-item" role="button" tabindex="0" aria-label="View Trine business card option 4 — panel 6" data-cert="/design/trine/bc-four-6.png" data-cert-title="Trine Business Card — Option 4, Panel 6">
+                <img class="design-item-img" src="/design/trine/bc-four-6.png" alt="Trine business card option 4 panel 6" loading="lazy" />
+                <p class="design-item-caption">Business card — option 4, panel 6</p>
+              </div>
+              <div class="design-item" role="button" tabindex="0" aria-label="View Trine business card option 5 — panel 1" data-cert="/design/trine/bc-five-1.png" data-cert-title="Trine Business Card — Option 5, Panel 1">
+                <img class="design-item-img" src="/design/trine/bc-five-1.png" alt="Trine business card option 5 panel 1" loading="lazy" />
+                <p class="design-item-caption">Business card — option 5, panel 1</p>
+              </div>
+              <div class="design-item" role="button" tabindex="0" aria-label="View Trine business card option 5 — panel 2" data-cert="/design/trine/bc-five-2.png" data-cert-title="Trine Business Card — Option 5, Panel 2">
+                <img class="design-item-img" src="/design/trine/bc-five-2.png" alt="Trine business card option 5 panel 2" loading="lazy" />
+                <p class="design-item-caption">Business card — option 5, panel 2</p>
+              </div>
+              <div class="design-item" role="button" tabindex="0" aria-label="View Trine business card option 5 — panel 3" data-cert="/design/trine/bc-five-3.png" data-cert-title="Trine Business Card — Option 5, Panel 3">
+                <img class="design-item-img" src="/design/trine/bc-five-3.png" alt="Trine business card option 5 panel 3" loading="lazy" />
+                <p class="design-item-caption">Business card — option 5, panel 3</p>
+              </div>
+              <div class="design-item" role="button" tabindex="0" aria-label="View Trine business card option 5 — panel 4" data-cert="/design/trine/bc-five-4.png" data-cert-title="Trine Business Card — Option 5, Panel 4">
+                <img class="design-item-img" src="/design/trine/bc-five-4.png" alt="Trine business card option 5 panel 4" loading="lazy" />
+                <p class="design-item-caption">Business card — option 5, panel 4</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── 6. Eyeconic ── -->
+          <div class="project-section design-campaign" id="eyeconic">
+            <div class="design-campaign-header">
+              <h2>Eyeconic — NEET PG 2028</h2>
+              <span class="design-campaign-tag">Freelance · Social Media</span>
+            </div>
+            <p class="design-campaign-desc">Eyeconic is a medical education platform preparing students for NEET PG 2028. I designed a social media carousel series for their content marketing — promoting exam prep resources and course features.</p>
+            <div class="design-gallery">
+              <div class="design-item" role="button" tabindex="0" aria-label="View Eyeconic carousel slide 1" data-cert="/design/eyeconic/1.png" data-cert-title="Eyeconic NEET PG 2028 — Carousel Slide 1">
+                <img class="design-item-img" src="/design/eyeconic/1.png" alt="Eyeconic NEET PG 2028 carousel slide 1" loading="lazy" />
+                <p class="design-item-caption">Carousel slide 1</p>
+              </div>
+              <div class="design-item" role="button" tabindex="0" aria-label="View Eyeconic carousel slide 2" data-cert="/design/eyeconic/2.png" data-cert-title="Eyeconic NEET PG 2028 — Carousel Slide 2">
+                <img class="design-item-img" src="/design/eyeconic/2.png" alt="Eyeconic NEET PG 2028 carousel slide 2" loading="lazy" />
+                <p class="design-item-caption">Carousel slide 2</p>
+              </div>
+              <div class="design-item" role="button" tabindex="0" aria-label="View Eyeconic carousel slide 3" data-cert="/design/eyeconic/3.png" data-cert-title="Eyeconic NEET PG 2028 — Carousel Slide 3">
+                <img class="design-item-img" src="/design/eyeconic/3.png" alt="Eyeconic NEET PG 2028 carousel slide 3" loading="lazy" />
+                <p class="design-item-caption">Carousel slide 3</p>
+              </div>
+              <div class="design-item" role="button" tabindex="0" aria-label="View Eyeconic carousel slide 4" data-cert="/design/eyeconic/4.png" data-cert-title="Eyeconic NEET PG 2028 — Carousel Slide 4">
+                <img class="design-item-img" src="/design/eyeconic/4.png" alt="Eyeconic NEET PG 2028 carousel slide 4" loading="lazy" />
+                <p class="design-item-caption">Carousel slide 4</p>
+              </div>
+              <div class="design-item" role="button" tabindex="0" aria-label="View Eyeconic carousel slide 5" data-cert="/design/eyeconic/5.png" data-cert-title="Eyeconic NEET PG 2028 — Carousel Slide 5">
+                <img class="design-item-img" src="/design/eyeconic/5.png" alt="Eyeconic NEET PG 2028 carousel slide 5" loading="lazy" />
+                <p class="design-item-caption">Carousel slide 5</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-left">
+            <p>&copy; 2026 Rahil Tahir &mdash; Building things, breaking things, learning things.</p>
+          </div>
+          <ul class="footer-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/resume.html" target="_blank">Résumé</a></li>
+            <li><a href="https://www.linkedin.com/in/rahil-tahir/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="https://github.com/hippo246" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="mailto:Rahil.tahir01@gmail.com">Email</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Lightbox Modal (reuses cert-modal pattern) -->
+    <div class="cert-modal" id="certModal" role="dialog" aria-modal="true" aria-labelledby="certModalTitle" hidden>
+      <div class="cert-modal-backdrop"></div>
+      <div class="cert-modal-content">
+        <button class="cert-modal-close" aria-label="Close image">&times;</button>
+        <p class="cert-modal-title" id="certModalTitle"></p>
+        <div class="cert-modal-img-wrapper" id="certModalImgWrapper">
+          <img class="cert-modal-img" id="certModalImg" src="" alt="" />
+        </div>
+        <div class="cert-modal-zoom-controls">
+          <button class="cert-modal-zoom-btn" id="zoomOut" aria-label="Zoom out" title="Zoom out">−</button>
+          <span class="cert-modal-zoom-level" id="zoomLevel">100%</span>
+          <button class="cert-modal-zoom-btn" id="zoomIn" aria-label="Zoom in" title="Zoom in">+</button>
+          <button class="cert-modal-zoom-btn" id="zoomReset" aria-label="Reset zoom" title="Reset zoom">↺</button>
+        </div>
+      </div>
+    </div>
+
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
+    <script>
+      // Zakia Shah contact popover
+      const zakiaTrigger = document.getElementById('zakiaTrigger');
+      const zakiaPopover = document.getElementById('zakiaPopover');
+      if (zakiaTrigger && zakiaPopover) {
+        zakiaTrigger.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const isOpen = !zakiaPopover.hasAttribute('hidden');
+          if (isOpen) {
+            zakiaPopover.setAttribute('hidden', '');
+            zakiaTrigger.setAttribute('aria-expanded', 'false');
+          } else {
+            zakiaPopover.removeAttribute('hidden');
+            zakiaTrigger.setAttribute('aria-expanded', 'true');
+          }
+        });
+        // Close on outside click
+        document.addEventListener('click', () => {
+          zakiaPopover.setAttribute('hidden', '');
+          zakiaTrigger.setAttribute('aria-expanded', 'false');
+        });
+        // Close on Escape
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') {
+            zakiaPopover.setAttribute('hidden', '');
+            zakiaTrigger.setAttribute('aria-expanded', 'false');
+          }
+        });
+        // Keep open when clicking inside the popover
+        zakiaPopover.addEventListener('click', (e) => e.stopPropagation());
+      }
+    </script>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

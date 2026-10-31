@@ -38,7 +38,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     const target = document.querySelector(href);
     if (target) {
       e.preventDefault();
-      const headerOffset = 70; // Account for sticky nav
+      const nav = document.querySelector('.nav');
+      const headerOffset = nav ? nav.getBoundingClientRect().height : 80;
       const elementPosition = target.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.scrollY - headerOffset;
 
@@ -57,7 +58,9 @@ const navLinks = document.querySelectorAll('.nav-menu a[href^="#"]');
 if (sections.length > 0 && navLinks.length > 0) {
   window.addEventListener('scroll', () => {
     let current = '';
-    const scrollPosition = window.scrollY + 100; // Offset for better UX
+    const nav = document.querySelector('.nav');
+    const navHeight = nav ? nav.getBoundingClientRect().height : 80;
+    const scrollPosition = window.scrollY + navHeight + 8;
 
     sections.forEach(section => {
       const sectionTop = section.offsetTop;
@@ -322,6 +325,26 @@ if (certModal) {
   const screenshotItems = Array.from(document.querySelectorAll('.lab-test-img, .lab-inline-img, .pt-lab-img, .project-screenshot-img, .homelab-live-screenshot'))
     .filter(item => !item.classList.contains('pt-lab-img--none') && item.querySelector('img'));
 
+  // Design gallery items (graphic-design.html)
+  const designItems = Array.from(document.querySelectorAll('.design-item[data-cert]'));
+  const designGallery = designItems.map(item => ({
+    src: item.dataset.cert,
+    title: item.dataset.certTitle || '',
+    alt: item.querySelector('img')?.alt || ''
+  }));
+  designItems.forEach((item, idx) => {
+    item.style.cursor = 'zoom-in';
+    item.addEventListener('click', () => {
+      openCertModal(designGallery[idx].src, designGallery[idx].title, designGallery[idx].alt, designGallery, idx);
+    });
+    item.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openCertModal(designGallery[idx].src, designGallery[idx].title, designGallery[idx].alt, designGallery, idx);
+      }
+    });
+  });
+
   const screenshotGallery = screenshotItems.map(item => {
     const img = item.querySelector('img');
     const title = item.dataset.certTitle
@@ -453,3 +476,103 @@ filterBtns.forEach(btn => {
     });
   });
 });
+
+// Architecture & topology diagram tab switchers
+document.querySelectorAll('.diagram-tabs').forEach(tabGroup => {
+  const buttons = tabGroup.querySelectorAll('.diagram-tab-btn');
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.diagramTarget;
+      buttons.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+
+      // Homelab topology toggle
+      if (target === 'interactive') {
+        const topo = document.getElementById('homelabInteractiveTopology');
+        const ascii = document.getElementById('homelabAsciiDiagram');
+        if (topo) topo.removeAttribute('hidden');
+        if (ascii) ascii.setAttribute('hidden', '');
+      } else if (target === 'ascii') {
+        const topo = document.getElementById('homelabInteractiveTopology');
+        const ascii = document.getElementById('homelabAsciiDiagram');
+        if (topo) topo.setAttribute('hidden', '');
+        if (ascii) ascii.removeAttribute('hidden');
+      }
+
+      // RestoCRM architecture toggle
+      if (target === 'resto-interactive') {
+        const topo = document.getElementById('restoInteractiveTopology');
+        const summary = document.getElementById('restoArchitecturalSummary');
+        if (topo) topo.removeAttribute('hidden');
+        if (summary) summary.setAttribute('hidden', '');
+      } else if (target === 'resto-summary') {
+        const topo = document.getElementById('restoInteractiveTopology');
+        const summary = document.getElementById('restoArchitecturalSummary');
+        if (topo) topo.setAttribute('hidden', '');
+        if (summary) summary.removeAttribute('hidden');
+      }
+    });
+  });
+});
+
+// Interactive Resume Preview Modal Controller
+const resumeModal = document.getElementById('resumeModal');
+const resumeModalClose = document.getElementById('resumeModalClose');
+const resumeModalBackdrop = document.getElementById('resumeModalBackdrop');
+const resumePrintBtn = document.getElementById('resumePrintBtn');
+const resumeIframe = document.getElementById('resumeIframe');
+
+function openResumeModal() {
+  if (!resumeModal) return;
+  resumeModal.removeAttribute('hidden');
+  document.body.style.overflow = 'hidden';
+  if (resumeModalClose) resumeModalClose.focus();
+}
+
+function closeResumeModal() {
+  if (!resumeModal) return;
+  resumeModal.setAttribute('hidden', '');
+  document.body.style.overflow = '';
+}
+
+if (resumeModal) {
+  // Bind all resume links that have class "open-resume-preview" or primary hero resume button
+  document.querySelectorAll('a[href="/resume.html"]').forEach(link => {
+    // Exclude the link inside the modal header itself so it can open the full page!
+    if (link.closest('#resumeModal')) return;
+
+    // Keep footer/standalone full-page links, but attach modal to hero/nav buttons on index
+    if (link.classList.contains('btn') || link.classList.contains('resume-preview-trigger')) {
+      link.addEventListener('click', (e) => {
+        // Allow ctrl+click or middle click to open full page in new tab
+        if (e.ctrlKey || e.metaKey || e.button === 1) return;
+        e.preventDefault();
+        openResumeModal();
+      });
+    }
+  });
+
+  if (resumeModalClose) resumeModalClose.addEventListener('click', closeResumeModal);
+  if (resumeModalBackdrop) resumeModalBackdrop.addEventListener('click', closeResumeModal);
+
+  if (resumePrintBtn && resumeIframe) {
+    resumePrintBtn.addEventListener('click', () => {
+      try {
+        resumeIframe.contentWindow.print();
+      } catch (err) {
+        window.open('/resume.html', '_blank');
+      }
+    });
+  }
+
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !resumeModal.hasAttribute('hidden')) {
+      closeResumeModal();
+    }
+  });
+}
