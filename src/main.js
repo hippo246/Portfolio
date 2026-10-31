@@ -83,22 +83,99 @@ const certModalTitle = document.getElementById('certModalTitle');
 const certModalClose = document.querySelector('.cert-modal-close');
 const certModalBackdrop = document.querySelector('.cert-modal-backdrop');
 
-function openCertModal(src, title, alt) {
+// Dynamically inject Next & Previous buttons into cert-modal if not present
+if (certModal) {
+  const modalContent = certModal.querySelector('.cert-modal-content');
+  if (modalContent && !document.getElementById('certModalPrev')) {
+    const prevBtn = document.createElement('button');
+    prevBtn.id = 'certModalPrev';
+    prevBtn.className = 'cert-modal-nav-btn cert-modal-prev';
+    prevBtn.setAttribute('aria-label', 'Previous image');
+    prevBtn.setAttribute('title', 'Previous (Left Arrow)');
+    prevBtn.innerHTML = '‹';
+    prevBtn.style.display = 'none';
+
+    const nextBtn = document.createElement('button');
+    nextBtn.id = 'certModalNext';
+    nextBtn.className = 'cert-modal-nav-btn cert-modal-next';
+    nextBtn.setAttribute('aria-label', 'Next image');
+    nextBtn.setAttribute('title', 'Next (Right Arrow)');
+    nextBtn.innerHTML = '›';
+    nextBtn.style.display = 'none';
+
+    modalContent.appendChild(prevBtn);
+    modalContent.appendChild(nextBtn);
+  }
+}
+
+// Active gallery item tracking
+let activeGallery = [];
+let activeIndex = -1;
+
+function updateModalNavButtons() {
+  const prevBtn = document.getElementById('certModalPrev');
+  const nextBtn = document.getElementById('certModalNext');
+  if (!prevBtn || !nextBtn) return;
+
+  if (activeGallery.length <= 1) {
+    prevBtn.style.display = 'none';
+    nextBtn.style.display = 'none';
+    return;
+  }
+  prevBtn.style.display = 'flex';
+  nextBtn.style.display = 'flex';
+  prevBtn.disabled = activeIndex <= 0;
+  nextBtn.disabled = activeIndex >= activeGallery.length - 1;
+}
+
+function openCertModal(src, title, alt, gallery = [], index = -1) {
   certModalImg.src = src;
   certModalImg.alt = alt || title;
   certModalTitle.textContent = title;
   certModal.removeAttribute('hidden');
   document.body.style.overflow = 'hidden';
   certModalClose.focus();
-  // Reset zoom when opening new image
-  resetZoom();
+
+  activeGallery = gallery.length ? gallery : [{ src, title, alt }];
+  activeIndex = index >= 0 ? index : activeGallery.findIndex(item => item.src === src);
+  if (activeIndex === -1) activeIndex = 0;
+
+  updateModalNavButtons();
+
+  // If image is already cached/complete in memory
+  if (certModalImg.complete && certModalImg.naturalWidth) {
+    naturalWidth = certModalImg.naturalWidth;
+    naturalHeight = certModalImg.naturalHeight;
+    resetZoom();
+  }
+}
+
+function navigateModal(direction) {
+  if (activeGallery.length <= 1) return;
+  const newIndex = activeIndex + direction;
+  if (newIndex >= 0 && newIndex < activeGallery.length) {
+    activeIndex = newIndex;
+    const item = activeGallery[activeIndex];
+    certModalImg.src = item.src;
+    certModalImg.alt = item.alt || item.title;
+    certModalTitle.textContent = item.title;
+    updateModalNavButtons();
+    if (certModalImg.complete && certModalImg.naturalWidth) {
+      naturalWidth = certModalImg.naturalWidth;
+      naturalHeight = certModalImg.naturalHeight;
+      resetZoom();
+    }
+  }
 }
 
 function closeCertModal() {
   certModal.setAttribute('hidden', '');
   document.body.style.overflow = '';
   certModalImg.src = '';
-  // Reset zoom when closing
+  naturalWidth = 0;
+  naturalHeight = 0;
+  activeGallery = [];
+  activeIndex = -1;
   resetZoom();
 }
 
@@ -106,17 +183,43 @@ function closeCertModal() {
 let currentZoom = 1;
 let naturalWidth = 0;
 let naturalHeight = 0;
-const minZoom = 0.25;
+const minZoom = 0.1;
 const maxZoom = 5;
 
+const imgWrapper = document.getElementById('certModalImgWrapper');
+
+function calculateFitZoom() {
+  if (!imgWrapper || !naturalWidth || !naturalHeight) return 1;
+
+  // Compute available space inside the image wrapper (accounting for padding)
+  const wrapperWidth = imgWrapper.clientWidth || (window.innerWidth * 0.85);
+  const wrapperHeight = imgWrapper.clientHeight || (window.innerHeight * 0.7);
+  const paddingX = 32;
+  const paddingY = 32;
+
+  const availW = Math.max(wrapperWidth - paddingX, 100);
+  const availH = Math.max(wrapperHeight - paddingY, 100);
+
+  const scaleW = availW / naturalWidth;
+  const scaleH = availH / naturalHeight;
+
+  // Fit inside wrapper; don't upscale tiny icons beyond 100%
+  const fitScale = Math.min(scaleW, scaleH);
+  return Math.min(fitScale, 1);
+}
+
 function updateZoom() {
+  if (!naturalWidth || !naturalHeight) return;
   const newWidth = naturalWidth * currentZoom;
   const newHeight = naturalHeight * currentZoom;
-  certModalImg.style.width = `${newWidth}px`;
-  certModalImg.style.height = `${newHeight}px`;
+  certModalImg.style.width = `${Math.round(newWidth)}px`;
+  certModalImg.style.height = `${Math.round(newHeight)}px`;
   certModalImg.style.maxWidth = 'none';
   certModalImg.style.maxHeight = 'none';
-  document.getElementById('zoomLevel').textContent = `${Math.round(currentZoom * 100)}%`;
+  const zoomLevelEl = document.getElementById('zoomLevel');
+  if (zoomLevelEl) {
+    zoomLevelEl.textContent = `${Math.round(currentZoom * 100)}%`;
+  }
 }
 
 function zoomIn() {
@@ -134,9 +237,11 @@ function zoomOut() {
 }
 
 function resetZoom() {
-  currentZoom = 1;
-  imgWrapper.scrollLeft = 0;
-  imgWrapper.scrollTop = 0;
+  currentZoom = calculateFitZoom();
+  if (imgWrapper) {
+    imgWrapper.scrollLeft = 0;
+    imgWrapper.scrollTop = 0;
+  }
   updateZoom();
 }
 
@@ -144,18 +249,20 @@ function resetZoom() {
 let isPanning = false;
 let startX, startY, scrollLeft, scrollTop;
 
-const imgWrapper = document.getElementById('certModalImgWrapper');
-
 if (imgWrapper) {
-  // Store natural dimensions when image loads
+  // Store natural dimensions when image loads and fit it
   certModalImg.addEventListener('load', () => {
     naturalWidth = certModalImg.naturalWidth;
     naturalHeight = certModalImg.naturalHeight;
-    updateZoom();
+    resetZoom();
   });
 
+  function canPan() {
+    return imgWrapper.scrollWidth > imgWrapper.clientWidth || imgWrapper.scrollHeight > imgWrapper.clientHeight;
+  }
+
   imgWrapper.addEventListener('mousedown', (e) => {
-    if (currentZoom > 1) {
+    if (canPan()) {
       isPanning = true;
       imgWrapper.style.cursor = 'grabbing';
       startX = e.pageX - imgWrapper.offsetLeft;
@@ -167,12 +274,12 @@ if (imgWrapper) {
 
   imgWrapper.addEventListener('mouseleave', () => {
     isPanning = false;
-    imgWrapper.style.cursor = currentZoom > 1 ? 'grab' : 'default';
+    imgWrapper.style.cursor = canPan() ? 'grab' : 'default';
   });
 
   imgWrapper.addEventListener('mouseup', () => {
     isPanning = false;
-    imgWrapper.style.cursor = currentZoom > 1 ? 'grab' : 'default';
+    imgWrapper.style.cursor = canPan() ? 'grab' : 'default';
   });
 
   imgWrapper.addEventListener('mousemove', (e) => {
@@ -188,23 +295,22 @@ if (imgWrapper) {
 }
 
 if (certModal) {
-  // Open on card click or Enter/Space keypress
-  document.querySelectorAll('.cert-card').forEach(card => {
+  // Open on card click or Enter/Space keypress (grouped by cert list)
+  const certCards = Array.from(document.querySelectorAll('.cert-card'));
+  const certGallery = certCards.map(c => ({
+    src: c.dataset.cert,
+    title: c.dataset.certTitle || '',
+    alt: c.querySelector('img')?.alt || ''
+  }));
+
+  certCards.forEach((card, idx) => {
     card.addEventListener('click', () => {
-      openCertModal(
-        card.dataset.cert,
-        card.dataset.certTitle,
-        card.querySelector('img')?.alt
-      );
+      openCertModal(card.dataset.cert, card.dataset.certTitle, card.querySelector('img')?.alt, certGallery, idx);
     });
     card.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        openCertModal(
-          card.dataset.cert,
-          card.dataset.certTitle,
-          card.querySelector('img')?.alt
-        );
+        openCertModal(card.dataset.cert, card.dataset.certTitle, card.querySelector('img')?.alt, certGallery, idx);
       }
     });
   });
@@ -212,26 +318,71 @@ if (certModal) {
   certModalClose.addEventListener('click', closeCertModal);
   certModalBackdrop.addEventListener('click', closeCertModal);
 
-  // Open lightbox on any clickable image: cert cards, lab images, project screenshots, homelab screenshots
-  document.querySelectorAll('.lab-test-img, .lab-inline-img, .pt-lab-img, .project-screenshot-img, .homelab-live-screenshot').forEach(item => {
-    if (item.classList.contains('pt-lab-img--none')) return;
+  // Group screenshot items on page
+  const screenshotItems = Array.from(document.querySelectorAll('.lab-test-img, .lab-inline-img, .pt-lab-img, .project-screenshot-img, .homelab-live-screenshot'))
+    .filter(item => !item.classList.contains('pt-lab-img--none') && item.querySelector('img'));
+
+  const screenshotGallery = screenshotItems.map(item => {
+    const img = item.querySelector('img');
+    const title = item.dataset.certTitle
+      || item.closest('.project-screenshot-item')?.querySelector('.project-screenshot-caption')?.textContent.trim()
+      || item.closest('.homelab-live-screenshot')?.querySelector('.homelab-screenshot-caption')?.textContent.trim()
+      || img?.alt
+      || '';
+    return { src: img ? img.src : '', title, alt: img?.alt || '' };
+  });
+
+  screenshotItems.forEach((item, idx) => {
     item.style.cursor = 'zoom-in';
     item.addEventListener('click', () => {
-      const img = item.querySelector('img');
-      if (!img) return;
-      const title = item.dataset.certTitle
-        || item.closest('.project-screenshot-item')?.querySelector('.project-screenshot-caption')?.textContent.trim()
-        || item.closest('.homelab-live-screenshot')?.querySelector('.homelab-screenshot-caption')?.textContent.trim()
-        || img.alt
-        || '';
-      openCertModal(img.src, title, img.alt);
+      const data = screenshotGallery[idx];
+      if (data && data.src) {
+        openCertModal(data.src, data.title, data.alt, screenshotGallery, idx);
+      }
     });
   });
 
-  // Close on Escape
+  // Next / Previous buttons
+  const prevBtn = document.getElementById('certModalPrev');
+  const nextBtn = document.getElementById('certModalNext');
+  if (prevBtn) prevBtn.addEventListener('click', () => navigateModal(-1));
+  if (nextBtn) nextBtn.addEventListener('click', () => navigateModal(1));
+
+  // Double-click to toggle zoom between fit and 100%
+  if (imgWrapper) {
+    imgWrapper.addEventListener('dblclick', (e) => {
+      e.preventDefault();
+      const fitZoom = calculateFitZoom();
+      if (Math.abs(currentZoom - fitZoom) < 0.05) {
+        currentZoom = 1; // zoom to 100%
+      } else {
+        currentZoom = fitZoom; // reset back to fit
+      }
+      updateZoom();
+    });
+  }
+
+  // Keyboard navigation & controls
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !certModal.hasAttribute('hidden')) {
+    if (certModal.hasAttribute('hidden')) return;
+
+    if (e.key === 'Escape') {
       closeCertModal();
+    } else if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      navigateModal(-1);
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      navigateModal(1);
+    } else if (e.key === '+' || e.key === '=') {
+      e.preventDefault();
+      zoomIn();
+    } else if (e.key === '-' || e.key === '_') {
+      e.preventDefault();
+      zoomOut();
+    } else if (e.key === '0') {
+      e.preventDefault();
+      resetZoom();
     }
   });
 
@@ -243,22 +394,6 @@ if (certModal) {
   if (zoomInBtn) zoomInBtn.addEventListener('click', zoomIn);
   if (zoomOutBtn) zoomOutBtn.addEventListener('click', zoomOut);
   if (zoomResetBtn) zoomResetBtn.addEventListener('click', resetZoom);
-
-  // Zoom with keyboard
-  document.addEventListener('keydown', (e) => {
-    if (!certModal.hasAttribute('hidden')) {
-      if (e.key === '+' || e.key === '=') {
-        e.preventDefault();
-        zoomIn();
-      } else if (e.key === '-' || e.key === '_') {
-        e.preventDefault();
-        zoomOut();
-      } else if (e.key === '0') {
-        e.preventDefault();
-        resetZoom();
-      }
-    }
-  });
 
   // Zoom with mouse wheel
   if (imgWrapper) {
@@ -273,6 +408,13 @@ if (certModal) {
       }
     });
   }
+
+  // Recalculate fit on window resize if modal is open
+  window.addEventListener('resize', () => {
+    if (!certModal.hasAttribute('hidden') && naturalWidth && naturalHeight) {
+      resetZoom();
+    }
+  });
 }
 
 // Scroll-to-top button
